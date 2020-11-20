@@ -1,0 +1,9 @@
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
+example.pdf
+*.synctex.gz
+*.toc
+*.out
+*.xdv

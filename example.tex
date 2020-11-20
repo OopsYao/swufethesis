@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\input{./thesis-spec}
+
+\usepackage{zhlipsum}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\begin{document}
+    \begin{abstractZH}
+        \zhlipsum[1]
+
+        \keywords{毕业论文；毕业设计；西南财经大学}
+    \end{abstractZH}
+
+    \begin{abstractEN}
+        \lipsum[1]
+
+        \keywordsEn{Dissertation; Graduation project; Swufe}
+    \end{abstractEN}
+
+
+    \newpage
+    \setcounter{page}{1}
+    \tableofcontents
+    \newpage
+
+    \setcounter{page}{1}
+    \section{背景介绍}
+    \zhlipsum
+    \section{主体内容}
+
+    \subsection{二级标题}
+    \subsubsection{三级标题}
+    \zhlipsum[2-5]
+    巴拉两阿里\footnote{注释}
+
+    \zhlipsum
+    
+    \begin{table}[htb]
+        \caption{表格示例}
+        \centering
+        \begin{tabular}{lrrrr}
+            \toprule
+            项目 & 指标 \\
+            \midrule
+            A &    1.7 \\
+            B &    1.2 \\
+            C &   -12.6\\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \appendix
+    \section{XX代码}
+    \newpage
+    \section{致谢}
+
+\end{document}
