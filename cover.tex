@@ -1,0 +1,45 @@
+{
+\thispagestyle{empty} % 取消页码
+\def\thesistitle{总之这是一个很长很长很长很长很长很长的——《题目》}
+\def\adviser{XX老师}
+\def\school{哪一个学院}
+\def\major{这也是我财一个很长很长很长很长很长的专业名称（长到要加备注说明）}
+\def\stuid{4XXXXXXX}
+\def\name{某某某\textperiodcentered 某某}
+\noindent
+\includegraphics[scale=0.75]{logo-Swufe.png} % 貌似png图片不包含分辨率信息，需要手动指定 https://tex.stackexchange.com/questions/1625/how-to-make-images-appear-at-their-actual-size
+\vspace{46pt}
+\begin{center}
+    {
+        % 黑体小初加粗
+        \zihao{-0}
+        \heiti
+        \bfseries
+        2017届\break
+        本科毕业论文（设计）
+    }
+
+    \vspace{64pt}
+    {
+        % 三号 华文仿宋
+        % 左侧加粗，右侧下划线
+        \zihao{3}
+        \let\ep\expandafter
+        % `\CJKunderline*`将不会跳过中文标点
+        % `*`与`{`前那个`\ep`是为了消除`*`与`{`带来的位置影响
+        \def\entry#1:#2 {{\bfseries #1：}&{\ep\CJKunderline\ep*\ep{#2\hfill}} \\}
+        \begin{tabular}{lp{15em}}
+            \entry 论文题目:\thesistitle{}
+            \entry 学生姓名:\name{}
+            \entry {所在学院}:\school{}
+            \entry {专\hspace{2em}业}:\major{}
+            \entry {学\hspace{2em}号}:\stuid{}
+            \entry {指导教师}:\adviser{}
+            \entry {成\hspace{2em}绩}:{}
+        \end{tabular}
+    }
+    \vspace{\fill}
+
+    {\fangsong\today}
+\end{center}
+}

@@ -60,9 +60,10 @@
 }
 \pagestyle{plain} 
 
-\usepackage[normalem]{ulem} % 下划线，同时保持emph为默认
 
 % 文献引用，基于biblatex
 % 采用gb7714-2015样式，以语言、作者、年份、标题、升序排列
 % 见https://github.com/hushidong/biblatex-gb7714-2015/
 \usepackage[style=gb7714-2015,sorting=gb7714-2015]{biblatex}
+
+\usepackage{xeCJKfntef} % 中文可换行下划线，文档见xeCJK
