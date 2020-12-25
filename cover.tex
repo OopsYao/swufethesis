@@ -20,10 +20,10 @@
     }
 
     \vspace{64pt}
+    \zihao{3}
     {
         % 三号 华文仿宋
         % 左侧加粗，右侧下划线
-        \zihao{3}
         \let\ep\expandafter
         % `\CJKunderline*`将不会跳过中文标点
         % `*`与`{`前那个`\ep`是为了消除`*`与`{`带来的位置影响
@@ -40,6 +40,9 @@
     }
     \vspace{\fill}
 
-    {\fangsong\today}
+    {
+        \def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+        \fangsong\bfseries\the\year 年\twodigits\month 月
+    }
 \end{center}
 }
