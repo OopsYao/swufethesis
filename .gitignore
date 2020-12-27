@@ -7,3 +7,8 @@ example.pdf
 *.toc
 *.out
 *.xdv
+# Biblatex
+*.bbl
+*.bcf
+*.blg
+*.run.xml

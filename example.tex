@@ -8,6 +8,8 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 
+\addbibresource{sample.bib}
+
 \begin{document}
     \begin{abstractZH}
         \zhlipsum[1]
@@ -35,7 +37,7 @@
     \subsection{二级标题}
     \subsubsection{三级标题}
     \zhlipsum[2-5]
-    巴拉两阿里\footnote{注释}
+    巴拉两阿里\footnote{注释}，一个英文文献\cite{dirac}提出了，一个中文文献\cite{蔡敏2006--}提出了balabala。
 
     \zhlipsum
     
@@ -53,6 +55,7 @@
         \end{tabular}
     \end{table}
 
+    \printbibliography
     \appendix
     \section{XX代码}
     \newpage
