@@ -1,4 +1,34 @@
-latex-bin platex uplatex tex xetex
-latexmk texliveonfly
-latexindent
-biber biblatex-gb7714-2015
+# 一行一个，否则powershell会把同一行识别为一项
+# 行末也不要有空格
+
+# Base
+latex-bin
+
+# 开发用
+latexmk
+
+# 依赖
+ctex
+geometry
+biblatex
+biblatex-gb7714-2015
+biber
+l3packages
+l3backend
+caption
+emptypage
+fancyhdr
+pdfpages
+filehook
+tocloft
+kvoptions
+kvdefinekeys
+hyperref
+booktabs
+xstring
+everysel
+pdflscape
+
+# 其他依赖
+lipsum
+zhlipsum

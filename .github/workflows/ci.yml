@@ -23,7 +23,7 @@ jobs:
           path: |
             /tmp/texlive
             /opt/hostedtoolcache/perl
-          key: ${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages', '.github/workflows/perl-modules') }}-${{ env.cache-version }}
+          key: ${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/perl-modules') }}-${{ env.cache-version }}
       - name: Download install-tl.zip
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
@@ -36,7 +36,8 @@ jobs:
       - name: Run tlmgr install
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          tlmgr install $(cat .github/workflows/texlive-packages)
+          tlmgr update --self
+          tlmgr install latex-bin latexindent
       - name: Setup Perl environment
         uses: shogo82148/actions-setup-perl@v1.10.0
       - name: Install some other perl dependencies
@@ -55,6 +56,8 @@ jobs:
     name: Linux TeX Live
     runs-on: ubuntu-18.04
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    env:
+      cache-version: v20210104
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -63,7 +66,7 @@ jobs:
         uses: actions/cache@v2.1.3
         with:
           path: /tmp/texlive
-          key: ${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
+          key: ${{ env.cache-version }}-${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
       - name: Set up PATH
         run: echo "/tmp/texlive/bin/x86_64-linux" >> $GITHUB_PATH
       - name: Download install-tl.zip
@@ -79,8 +82,43 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           tlmgr update --self
-          tlmgr install $(cat .github/workflows/texlive-packages)
-      # Packages installed during this step will also be cached (as the cache is based on path),
-      # but it will not be so well controlled.
-      - name: Run texliveonfly
-        run: texliveonfly -c latexmk example.tex
+          tlmgr install $(cat .github/workflows/texlive-packages | grep '^[^#]')
+      - name: Run latexmk
+        run: latexmk example.tex
+
+  windows-texlive:
+    name: Windows TeX Live
+    runs-on: windows-2019
+    env:
+      cache-version: v20210205.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Set up PATH
+        run: |
+          echo "C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "D:\texlive\bin\win32" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Cache TeX Live
+        id: cache
+        uses: actions/cache@v2.1.3
+        with:
+          path: D:\texlive
+          key: ${{ env.cache-version }}-${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
+      - name: Download install-tl.zip
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          curl -sOL http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
+          unzip -q install-tl.zip
+          mv install-tl-2* install-tl-dir
+      - name: Run install-tl-windows.bat
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: install-tl-dir\install-tl-windows.bat --profile .github\workflows\texlive-windows.profile
+        shell: cmd
+      - name: Run tlmgr install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          tlmgr update --self
+          tlmgr install $(cat .github\workflows\texlive-packages | Where-Object { $_ -NotMatch '^#' })
+      - name: Run latexmk
+        shell: powershell
+        run: latexmk example.tex
