@@ -534,4 +534,4 @@
   \fi
 }
 
-\swufesetup{ cjk-font = auto }
+% \swufesetup{ cjk-font = auto }

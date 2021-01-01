@@ -123,3 +123,36 @@ jobs:
       - name: Run latexmk
         shell: powershell
         run: latexmk example.tex
+  macosx:
+    name: MacTeX
+    runs-on: macos-10.15
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    env:
+      cache-version: v20210205
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Set up PATH
+        run: echo "/tmp/texlive/bin/x86_64-darwin" >> $GITHUB_PATH
+      - name: Cache TeX Live
+        id: cache
+        uses: actions/cache@v2.1.4
+        with:
+          path: /tmp/texlive
+          key: ${{ env.cache-version }}-${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
+      - name: Download install-tl.zip
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          curl -sOL http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
+          unzip -q install-tl.zip
+          mv install-tl-2* install-tl-dir
+      - name: Run install-tl
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: install-tl-dir/install-tl --profile .github/workflows/texlive-mac.profile
+      - name: Run tlmgr install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          tlmgr update --self
+          tlmgr install $(cat .github/workflows/texlive-packages | grep '^[^#]')
+      - name: Run latexmk
+        run: latexmk -interaction=nonstopmode example.tex
