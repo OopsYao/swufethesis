@@ -40,7 +40,6 @@ jobs:
         if: steps.cache-texlive.outputs.installed != 'true'
         run: |
           tlmgr update --self
-          tlmgr install latex-bin platex uplatex tex xetex
-          tlmgr install latexmk texliveonfly
+          tlmgr install $(cat .github/workflows/texlive-packages)
       - name: Run texliveonfly
         run: texliveonfly -c latexmk example.tex
