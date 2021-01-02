@@ -1,6 +1,4 @@
-\documentclass{article}
-
-\input{./thesis-spec}
+\documentclass{swufethesis}
 
 \usepackage{zhlipsum}
 \usepackage{lipsum}
@@ -11,8 +9,8 @@
 \addbibresource{sample.bib}
 
 \begin{document}
-    \input{./cover}
-    \input{./declare}
+    \maketitle % 封面
+    \statement % 版权申明
     \begin{abstractZH}
         \zhlipsum[1]
 
