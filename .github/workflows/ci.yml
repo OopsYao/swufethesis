@@ -13,33 +13,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Cache TeX Live
+        id: cache
         uses: actions/cache@v2.1.3
         with:
           path: /tmp/texlive
-          key: ${{ runner.os }}-texlive-${{ github.run_id }} # Save the cache every time
-          restore-keys: ${{ runner.os }}-texlive-
+          key: ${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
       - name: Set up PATH
         run: echo "/tmp/texlive/bin/x86_64-linux" >> $GITHUB_PATH
-      - name: Check TeX Live
-        id: cache-texlive
-        run: |
-          if command -v texliveonfly &> /dev/null
-          then
-            echo "::set-output name=installed::true"
-          fi
       - name: Download install-tl.zip
-        if: steps.cache-texlive.outputs.installed != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           curl -s -O -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
           unzip -q install-tl.zip
           mv install-tl-2* install-tl-dir
       - name: Run install-tl
-        if: steps.cache-texlive.outputs.installed != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: install-tl-dir/install-tl --profile .github/workflows/texlive-linux.profile
       - name: Run tlmgr install
-        if: steps.cache-texlive.outputs.installed != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           tlmgr update --self
           tlmgr install $(cat .github/workflows/texlive-packages)
+      # Packages installed during this step will also be cached (as the cache is based on path),
+      # but it will not be so well controlled.
       - name: Run texliveonfly
         run: texliveonfly -c latexmk example.tex
