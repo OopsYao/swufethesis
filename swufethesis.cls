@@ -45,22 +45,21 @@
 \def\endtable{\oldendtable}
 
 % 关键词和摘要
-\def\keywords#1{\noindent\textbf{关键词：#1}}
-\def\keywordsEn#1{\noindent\textbf{Keywords: #1}}
-\def\abstractZH{
+\newcommand{\keywords}{\@ifstar\@@keywords\@keywords}
+\newcommand{\@keywords}[1]{\noindent\textbf{关键词：#1}}
+\newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: #1}}
+\renewenvironment{abstract}{%
     \newpage
     \setcounter{page}{1}
     \zihao{-4}
     {\centering\bfseries\zihao{2}摘要\par\vspace{1ex}} % 二号华文中宋
-}
-\def\endabstract{}
-\def\abstractEN{
+}{}
+\newenvironment{abstract*}{%
     \newpage
     \setcounter{page}{1}
     \zihao{-4}
     {\centering\bfseries\zihao{2}Abstract\par\vspace{1ex}} % 二号Time New Roman
-}
-\def\endabstract{}
+}{}
 
 % 页码居中
 \RequirePackage{fancyhdr} 
