@@ -1,6 +1,24 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 
+% 用户接口设置
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{%
+    family = swufe,
+    prefix = swufe@
+}
+\newcommand\swufesetup[1]{%
+    \kvsetkeys{swufe}{#1}%
+}
+\DeclareStringOption{index} % 第多少届
+\DeclareStringOption{title} % 论文题目
+\DeclareStringOption{author} % 学生姓名
+\DeclareStringOption{school} % 学院
+\DeclareStringOption{discipline} % 专业
+\DeclareStringOption{studentid} % 学号
+\DeclareStringOption{supervisor} % 指导教师
+\ProcessKeyvalOptions* % 解析用户传递过来的选项
+
 % 正文小四号宋体
 % 一级标题居中
 \RequirePackage[zihao=-4,heading]{ctex}
@@ -73,12 +91,6 @@
 % 封面
 \renewcommand{\maketitle}{%
     \thispagestyle{empty} % 取消页码
-    \def\thesistitle{总之这是一个很长很长很长很长很长很长的——《题目》}
-    \def\adviser{XX老师}
-    \def\school{哪一个学院}
-    \def\major{这也是我财一个很长很长很长很长很长的专业名称（长到要加备注说明）}
-    \def\stuid{4XXXXXXX}
-    \def\name{某某某\textperiodcentered 某某}
     \noindent
     \includegraphics[scale=0.75]{logo-Swufe.png} % 貌似png图片不包含分辨率信息，需要手动指定 https://tex.stackexchange.com/questions/1625/how-to-make-images-appear-at-their-actual-size
     \vspace{46pt}
@@ -88,7 +100,7 @@
             \zihao{-0}
             \heiti
             \bfseries
-            2017届\break
+            \swufe@index 届\break
             本科毕业论文（设计）
         }
 
@@ -102,12 +114,12 @@
             % `*`与`{`前那个`\ep`是为了消除`*`与`{`带来的位置影响
             \def\entry##1:##2 {{\bfseries ##1：}&{\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
             \begin{tabular}{lp{15em}}
-                \entry 论文题目:\thesistitle{}
-                \entry 学生姓名:\name{}
-                \entry {所在学院}:\school{}
-                \entry {专\hspace{2em}业}:\major{}
-                \entry {学\hspace{2em}号}:\stuid{}
-                \entry {指导教师}:\adviser{}
+                \entry 论文题目:\swufe@title{}
+                \entry 学生姓名:\swufe@author{}
+                \entry {所在学院}:\swufe@school{}
+                \entry {专\hspace{2em}业}:\swufe@discipline{}
+                \entry {学\hspace{2em}号}:\swufe@studentid{}
+                \entry {指导教师}:\swufe@supervisor{}
                 \entry {成\hspace{2em}绩}:{}
             \end{tabular}
         }
