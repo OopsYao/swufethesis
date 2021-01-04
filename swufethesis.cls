@@ -7,7 +7,9 @@
     family = swufe,
     prefix = swufe@
 }
-\DeclareStringOption{index} % 第多少届
+% 第多少届，默认值根据当前年月设定
+% 例如2020年9月（含）至2021年9月（不含）设定为2017届
+\DeclareStringOption[\the\numexpr\year - 4 \ifnum\month>8 + 1\fi\relax]{index} % 第多少届
 \DeclareStringOption{title} % 论文题目
 \DeclareStringOption{author} % 学生姓名
 \DeclareStringOption{school} % 学院
