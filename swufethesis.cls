@@ -7,9 +7,6 @@
     family = swufe,
     prefix = swufe@
 }
-\newcommand\swufesetup[1]{%
-    \kvsetkeys{swufe}{#1}%
-}
 \DeclareStringOption{index} % 第多少届
 \DeclareStringOption{title} % 论文题目
 \DeclareStringOption{author} % 学生姓名
@@ -17,7 +14,28 @@
 \DeclareStringOption{discipline} % 专业
 \DeclareStringOption{studentid} % 学号
 \DeclareStringOption{supervisor} % 指导教师
+\DeclareStringOption{keywords} % 中文关键词
+\DeclareStringOption{keywords*} % 英文关键词
 \ProcessKeyvalOptions* % 解析用户传递过来的选项
+
+\newcommand\swufesetup[1]{%
+    \kvsetkeys{swufe}{#1}%
+}
+
+% 将逗号分隔列表转为特定分隔符间隔的字串
+\newcommand{\swufe@join@clist}[2]{%
+    \def\swufe@tmp{}%
+    % 列表的第二项开始将附带分隔符
+    \def\swufe@clist@processor##1{%
+        \ifx\swufe@tmp\@empty
+            \def\swufe@tmp{#2}%
+        \else
+            #2%
+        \fi
+        ##1%
+    }%
+    \expandafter\comma@parse\expandafter{#1}{\swufe@clist@processor}
+}
 
 % 正文小四号宋体
 % 一级标题居中
@@ -63,21 +81,30 @@
 \def\endtable{\oldendtable}
 
 % 关键词和摘要
-\newcommand{\keywords}{\@ifstar\@@keywords\@keywords}
-\newcommand{\@keywords}[1]{\noindent\textbf{关键词：#1}}
-\newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: #1}}
+\newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
+\newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: \swufe@join@clist{#1}{; }}}
 \renewenvironment{abstract}{%
     \newpage
     \setcounter{page}{1}
     \zihao{-4}
     {\centering\bfseries\zihao{2}摘要\par\vspace{1ex}} % 二号华文中宋
-}{}
+}{%
+    
+    \@keywords{\swufe@keywords}
+}
+
 \newenvironment{abstract*}{%
     \newpage
     \setcounter{page}{1}
     \zihao{-4}
     {\centering\bfseries\zihao{2}Abstract\par\vspace{1ex}} % 二号Time New Roman
-}{}
+}{%
+    
+    % 通过\@nameuse来调用\swufe@keywords
+    % 并立刻展开其定义
+    \xdef\swufe@keywords@en{\@nameuse{swufe@keywords*}}
+    \@@keywords{\swufe@keywords@en}
+}
 
 % 页码居中
 \RequirePackage{fancyhdr} 
