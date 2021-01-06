@@ -1,3 +1,4 @@
 latex-bin platex uplatex tex xetex
 latexmk texliveonfly
+latexindent
 biber biblatex-gb7714-2015
