@@ -5,6 +5,52 @@ on:
   pull_request:
     branches: main
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-18.04
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    env:
+      cache-version: v20200107.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Set up PATH
+        run: echo "/tmp/texlive/bin/x86_64-linux" >> $GITHUB_PATH
+      - name: Cache
+        id: cache
+        uses: actions/cache@v2.1.3
+        with:
+          path: |
+            /tmp/texlive
+            /opt/hostedtoolcache/perl
+          key: ${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages', '.github/workflows/perl-modules') }}-${{ env.cache-version }}
+      - name: Download install-tl.zip
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          curl -sOL http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
+          unzip -q install-tl.zip
+          mv install-tl-2* install-tl-dir
+      - name: Run install-tl
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: install-tl-dir/install-tl --profile .github/workflows/texlive-linux.profile
+      - name: Run tlmgr install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          tlmgr install $(cat .github/workflows/texlive-packages)
+      - name: Setup Perl environment
+        uses: shogo82148/actions-setup-perl@v1.8.3
+      - name: Install some other perl dependencies
+        run: cpanm $(cat .github/workflows/perl-modules)
+      - name: Check format
+        run: |
+          set -e
+          for f in $(find -name '*.dtx' \
+                          -or -name '*.tex' \
+                          -or -name '*.cls' \
+                          -or -name '*.bib'); do
+            latexindent -l "$f" | diff "$f" -
+          done
+
   linux-texlive:
     name: Linux TeX Live
     runs-on: ubuntu-18.04
