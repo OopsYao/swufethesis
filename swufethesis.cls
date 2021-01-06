@@ -24,6 +24,35 @@
     \kvsetkeys{swufe}{#1}%
 }
 
+\RequirePackage{kvdefinekeys}
+% 这个内部命令用于设置用户接口
+% 现支持设置alias
+\newcommand{\swufe@define@key}[1]{%
+    \kvsetkeys{swufe@key}{#1}
+}
+% 为每一个key设置handler
+\kv@set@family@handler{swufe@key}{%
+    \kv@define@key{swufe@value}{alias}{%
+        % 用\swufe@<key>@alias存储别名的值
+        \@namedef{swufe@#1@alias}{##1}
+    }
+    % 执行上面的handler
+    \kvsetkeys{swufe@value}{#2}
+
+    % 设定别名可以调用用户传入的值
+    \kv@define@key{swufe}{#1}{%
+        \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}
+    }
+}
+\swufe@define@key{
+    student-id = {
+        alias = student@id
+    },
+    keywords* = {
+        alias = keywords@en
+    },
+}
+
 % 将逗号分隔列表转为特定分隔符间隔的字串
 \newcommand{\swufe@join@clist}[2]{%
     \def\swufe@tmp{}%
@@ -102,9 +131,6 @@
     {\centering\bfseries\zihao{2}Abstract\par\vspace{1ex}} % 二号Time New Roman
 }{%
     
-    % 通过\@nameuse来调用\swufe@keywords
-    % 并立刻展开其定义
-    \xdef\swufe@keywords@en{\@nameuse{swufe@keywords*}}
     \@@keywords{\swufe@keywords@en}
 }
 
@@ -147,7 +173,7 @@
                 \entry 学生姓名:\swufe@author{}
                 \entry {所在学院}:\swufe@school{}
                 \entry {专\hspace{2em}业}:\swufe@discipline{}
-                \entry {学\hspace{2em}号}:\swufe@studentid{}
+                \entry {学\hspace{2em}号}:\swufe@student@id{}
                 \entry {指导教师}:\swufe@supervisor{}
                 \entry {成\hspace{2em}绩}:{}
             \end{tabular}
