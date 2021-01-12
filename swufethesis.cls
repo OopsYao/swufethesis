@@ -144,6 +144,7 @@
 \pagestyle{plain}
 
 % 封面
+\RequirePackage{graphicx}
 \renewcommand{\maketitle}{%
   \thispagestyle{empty} % 取消页码
   \noindent
