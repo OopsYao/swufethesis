@@ -1,3 +1,4 @@
+% vim: set ft=latex:
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 
@@ -25,8 +26,17 @@
 }
 
 \RequirePackage{kvdefinekeys}
+\newcommand{\swufe@@check}[2]{
+  \@nameuse{ifswufe@#1@choicesenabled}%
+  \@ifundefined{ifswufe@#1@#2}{\ClassError{swufethesis}{%
+      Invalid value #2 for option #1%
+    }{}}%
+  % 将\ifswufe@<key>@<choice>置为true
+  \@nameuse{swufe@#1@#2true}%
+  \fi
+}
 % 这个内部命令用于设置用户接口
-% 现支持设置alias
+% 现支持设置alias, choices
 \newcommand{\swufe@define@key}[1]{%
   \kvsetkeys{swufe@key}{#1}
 }
@@ -37,12 +47,25 @@
     % 用\swufe@<key>@alias存储别名的值
     \@namedef{swufe@#1@alias}{##1}
   }
+
+  \expandafter\newif\csname ifswufe@#1@choicesenabled\endcsname
+  \kv@set@family@handler{swufe@choices}{%
+    \@nameuse{swufe@#1@choicesenabledtrue}
+    % 为该choice设置一个if变量\ifswufe@<key>@<choice>
+    % 用于后续的一些基于choices的设定
+    \expandafter\newif\csname ifswufe@#1@##1\endcsname
+  }
+  \kv@define@key{swufe@value}{choices}{%
+    \kvsetkeys{swufe@choices}{##1}
+  }
+
   % 执行上面的handler
   \kvsetkeys{swufe@value}{#2}
 
   % 设定别名可以调用用户传入的值
   \kv@define@key{swufe}{#1}{%
     \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}
+    \swufe@@check{#1}{##1}
   }
 }
 \swufe@define@key{
@@ -52,6 +75,13 @@
   keywords* = {
       alias = keywords@en
     },
+  school = {
+      choices = {
+          % 目前仅仅是作为choices的例子
+          经济信息工程学院,
+          经济数学学院,
+        }
+    }
 }
 
 % 将逗号分隔列表转为特定分隔符间隔的字串
