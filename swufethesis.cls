@@ -32,6 +32,7 @@
 }
 % 为每一个key设置handler
 \kv@set@family@handler{swufe@key}{%
+  \@namedef{swufe@#1@alias}{#1} % alias默认为key
   \kv@define@key{swufe@value}{alias}{%
     % 用\swufe@<key>@alias存储别名的值
     \@namedef{swufe@#1@alias}{##1}
