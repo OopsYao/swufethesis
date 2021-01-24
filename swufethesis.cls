@@ -80,10 +80,6 @@
       name = student@id
     },
   supervisor,
-  keywords,
-  keywords* = {
-      name = keywords@en
-    },
 }
 
 % 将逗号分隔列表转为特定分隔符间隔的字串
@@ -147,21 +143,23 @@
 % 关键词和摘要
 \newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
 \newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: \swufe@join@clist{#1}{; }}}
-\renewenvironment{abstract}{%
+\renewenvironment{abstract}[1]{%
   \newpage
   \setcounter{page}{1}
   \zihao{-4}
   {\centering\bfseries\zihao{2}摘要\par\vspace{1ex}} % 二号华文中宋
+  \newcommand{\swufe@keywords}{#1}
 }{%
 
   \@keywords{\swufe@keywords}
 }
 
-\newenvironment{abstract*}{%
+\newenvironment{abstract*}[1]{%
   \newpage
   \setcounter{page}{1}
   \zihao{-4}
   {\centering\bfseries\zihao{2}Abstract\par\vspace{1ex}} % 二号Time New Roman
+  \newcommand{\swufe@keywords@en}{#1}
 }{%
 
   \@@keywords{\swufe@keywords@en}
