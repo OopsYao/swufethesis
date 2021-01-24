@@ -60,11 +60,17 @@
     \swufe@@check{#1}{##1}
   }
 }
+
+% 将\month和\day转为两位数
+\def\swufe@twodigits#1{\ifnum#1<10 0\fi\the#1}
 \swufe@define@key{
-  % 第多少届，默认值根据当前年月设定
+  % 第多少届，默认值根据date选项设定
   % 例如2020年9月（含）至2021年9月（不含）设定为2017届
   index = {
-      default = \the\numexpr\year - 4 \ifnum\month>8 + 1\fi\relax
+      default = \swufe@date@format{\swufe@date}{\swufe@index@formatter}
+    },
+  date = {
+      default = \the\year-\swufe@twodigits\month-\swufe@twodigits\day
     },
   title,
   author,
@@ -99,6 +105,27 @@
     ##1%
   }%
   \expandafter\comma@parse\expandafter{#1}{\swufe@clist@processor}
+}
+
+% 第一个参数是日期
+% 第二个参数是一个宏（非宏的定义），接受年月日三个参数
+\newcommand{\swufe@date@format}[2]{
+  % 这里`\@nil`是参数表达式的一部分（一个常见的写法，本身无意义），
+  % 用于标识参数的结束，否则最后的日期将只有一位数被纳入参数
+  \def\swufe@@date@format@processor##1-##2-##3\@nil{
+    #2{##1}{##2}{##3}
+  }
+  \expandafter\swufe@@date@format@processor#1\@nil
+}
+\newcommand{\swufe@date@zh@digit}[3]{
+  #1年\number#2月\number#3日
+}
+\newcommand{\swufe@date@zh@digit@short}[3]{
+  #1年#2月
+}
+% 将日期转化为相应的届数
+\newcommand{\swufe@index@formatter}[3]{
+  \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi\relax
 }
 
 % 正文小四号宋体
@@ -215,8 +242,7 @@
     \vspace{\fill}
 
     {
-    \def\twodigits##1{\ifnum##1<10 0\fi\the##1}
-    \fangsong\bfseries\the\year 年\twodigits\month 月
+      \fangsong\bfseries\swufe@date@format{\swufe@date}{\swufe@date@zh@digit@short}
     }
   \end{center}
 }
@@ -251,6 +277,6 @@
 
     作者学号：\hspace*{4em}
 
-    \today
+    \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}
   \end{flushright}
 }
