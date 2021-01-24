@@ -4,22 +4,6 @@
 
 % 用户接口设置
 \RequirePackage{kvoptions}
-\SetupKeyvalOptions{%
-  family = swufe,
-  prefix = swufe@
-}
-% 第多少届，默认值根据当前年月设定
-% 例如2020年9月（含）至2021年9月（不含）设定为2017届
-\DeclareStringOption[\the\numexpr\year - 4 \ifnum\month>8 + 1\fi\relax]{index} % 第多少届
-\DeclareStringOption{title} % 论文题目
-\DeclareStringOption{author} % 学生姓名
-\DeclareStringOption{school} % 学院
-\DeclareStringOption{discipline} % 专业
-\DeclareStringOption{studentid} % 学号
-\DeclareStringOption{supervisor} % 指导教师
-\DeclareStringOption{keywords} % 中文关键词
-\DeclareStringOption{keywords*} % 英文关键词
-\ProcessKeyvalOptions* % 解析用户传递过来的选项
 
 \newcommand\swufesetup[1]{%
   \kvsetkeys{swufe}{#1}%
@@ -36,23 +20,23 @@
   \fi
 }
 % 这个内部命令用于设置用户接口
-% 现支持设置alias, choices
+% 现支持设置name, choices
 \newcommand{\swufe@define@key}[1]{%
   \kvsetkeys{swufe@key}{#1}
 }
 % 为每一个key设置handler
 \kv@set@family@handler{swufe@key}{%
-  \@namedef{swufe@#1@alias}{#1} % alias默认为key
-  \kv@define@key{swufe@value}{alias}{%
-    % 用\swufe@<key>@alias存储别名的值
-    \@namedef{swufe@#1@alias}{##1}
+  \@namedef{swufe@#1@name}{#1} % name默认为key
+  \kv@define@key{swufe@value}{name}{%
+    % 用\swufe@<key>@name存储name的值
+    \@namedef{swufe@#1@name}{##1}
   }
 
   \expandafter\newif\csname ifswufe@#1@choicesenabled\endcsname
   \kv@set@family@handler{swufe@choices}{%
     \@nameuse{ifswufe@#1@choicesenabled}\else%
     % 将第一个choice设为default
-    \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}%
+    \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}%
     \@nameuse{swufe@#1@choicesenabledtrue}%
     \fi
     % 为该choice设置一个if变量\ifswufe@<key>@<choice>
@@ -64,32 +48,42 @@
   }
 
   \kv@define@key{swufe@value}{default}{%
-    \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}%
+    \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}%
   }
 
   % 执行上面的handler
   \kvsetkeys{swufe@value}{#2}
 
-  % 设定别名可以调用用户传入的值
+  % 为外部用户使用的swufesetup设置handler
   \kv@define@key{swufe}{#1}{%
-    \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}
+    \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}
     \swufe@@check{#1}{##1}
   }
 }
 \swufe@define@key{
-  student-id = {
-      alias = student@id
+  % 第多少届，默认值根据当前年月设定
+  % 例如2020年9月（含）至2021年9月（不含）设定为2017届
+  index = {
+      default = \the\numexpr\year - 4 \ifnum\month>8 + 1\fi\relax
     },
-  keywords* = {
-      alias = keywords@en
-    },
+  title,
+  author,
   school = {
       choices = {
           % 目前仅仅是作为choices的例子
           经济信息工程学院,
           经济数学学院,
         }
-    }
+    },
+  discipline,
+  student-id = {
+      name = student@id
+    },
+  supervisor,
+  keywords,
+  keywords* = {
+      name = keywords@en
+    },
 }
 
 % 将逗号分隔列表转为特定分隔符间隔的字串
