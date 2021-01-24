@@ -50,13 +50,21 @@
 
   \expandafter\newif\csname ifswufe@#1@choicesenabled\endcsname
   \kv@set@family@handler{swufe@choices}{%
-    \@nameuse{swufe@#1@choicesenabledtrue}
+    \@nameuse{ifswufe@#1@choicesenabled}\else%
+    % 将第一个choice设为default
+    \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}%
+    \@nameuse{swufe@#1@choicesenabledtrue}%
+    \fi
     % 为该choice设置一个if变量\ifswufe@<key>@<choice>
     % 用于后续的一些基于choices的设定
     \expandafter\newif\csname ifswufe@#1@##1\endcsname
   }
   \kv@define@key{swufe@value}{choices}{%
     \kvsetkeys{swufe@choices}{##1}
+  }
+
+  \kv@define@key{swufe@value}{default}{%
+    \@namedef{swufe@\@nameuse{swufe@#1@alias}}{##1}%
   }
 
   % 执行上面的handler
