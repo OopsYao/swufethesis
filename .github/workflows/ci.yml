@@ -38,7 +38,7 @@ jobs:
         run: |
           tlmgr install $(cat .github/workflows/texlive-packages)
       - name: Setup Perl environment
-        uses: shogo82148/actions-setup-perl@v1.9.5
+        uses: shogo82148/actions-setup-perl@v1.9.6
       - name: Install some other perl dependencies
         run: cpanm $(cat .github/workflows/perl-modules)
       - name: Check format
