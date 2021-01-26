@@ -1,6 +1,6 @@
 % vim: set ft=latex:
 \NeedsTeXFormat{LaTeX2e}
-\LoadClass{article}
+\LoadClass[scheme=plain,zihao=-4]{ctexbook}
 
 % 用户接口设置
 \RequirePackage{kvoptions}
@@ -124,10 +124,6 @@
   \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi\relax
 }
 
-% 正文小四号宋体
-% 一级标题居中
-\RequirePackage[zihao=-4,heading]{ctex}
-
 \RequirePackage{geometry}
 \geometry{
   a4paper,
@@ -146,10 +142,40 @@
 % 用于封面制作
 \RequirePackage{xeCJKfntef}
 
-% 标题
-\RequirePackage{titlesec}
-\titleformat*{\subsection}{\zihao{-3}\heiti} % 小三号黑体
-\titleformat*{\subsubsection}{\zihao{-4}\heiti} % 小四号黑体
+\ctexset{
+  autoindent = true,
+  contentsname = 目录,
+  listfigurename = 插图,
+  listtablename = 表格,
+  figurename = 图,
+  tablename = 表,
+  indexname = 索引,
+  appendixname = 附录,
+  bibname = 参考文献,
+  chapter = {
+    name = {,.},
+    afterindent = true,
+    aftername = \quad,
+    format = \fontsize{22bp}{33bp}\bfseries\centering\selectfont,
+    titleformat = {},
+    beforeskip = 3\baselineskip,
+    afterskip = 2\baselineskip,
+   },
+  section = {
+    name = {,.},
+    afterindent = true,
+    format = \sffamily\fontsize{15bp}{22.5bp}\selectfont,
+    beforeskip = \baselineskip,
+    afterskip = \baselineskip,
+   },
+  subsection = {
+      name = {,.},
+      afterindent = true,
+      format = \sffamily\fontsize{12bp}{18bp}\selectfont,
+      beforeskip = \baselineskip,
+      afterskip = \baselineskip,
+    }
+}
 
 % 目录
 \RequirePackage{tocloft}
@@ -170,7 +196,7 @@
 % 关键词和摘要
 \newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
 \newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: \swufe@join@clist{#1}{; }}}
-\renewenvironment{abstract}[1]{%
+\newenvironment{abstract}[1]{%
   \newpage
   \setcounter{page}{1}
   \zihao{-4}
