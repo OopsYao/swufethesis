@@ -188,10 +188,21 @@
 \renewcommand{\baselinestretch}{1.5}
 
 % 表格五号字体 单倍行距
-\let\oldtable\table
-\let\oldendtable\endtable
-\def\table[#1]{\oldtable[#1]\zihao{5}\renewcommand{\baselinestretch}{1}}
-\def\endtable{\oldendtable}
+\RequirePackage{caption}
+\captionsetup{
+  font={sf,bf,small}, % small在ctex zihao=-4下对应五号字 事实上并未规定表格标题字号
+  justification=centering,
+  labelsep=quad, % 标题编号与标题文字间隔一个quad
+  aboveskip=0.5\baselineskip,
+  belowskip=0.5\baselineskip,
+  parskip=0.5\baselineskip, % 段落间距
+}
+% 修改图表编号格式为X-X
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
+% 表格内容五号字单倍行距（字体未作规定）
+\let\swufe@oldtable\table
+\def\table[#1]{\swufe@oldtable[#1]\fontsize{10.5bp}{10.5bp}}
 
 % 关键词和摘要
 \newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
