@@ -178,11 +178,11 @@
 }
 
 % 目录
-\RequirePackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\vspace{3\baselineskip}\hfill\centering\bfseries\zihao{2}} % 段前3行，二号华文中宋加粗
-\renewcommand{\cftaftertoctitle}{\hfill\vspace{2\baselineskip}} % 段后2行
-\renewcommand{\cftsecfont}{\bfseries\zihao{-4}\songti}
-\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
+\RequirePackage[titles]{tocloft} % 启用titles选项使其采用ctex对章节标题的设定来设置最上层标题
+\renewcommand{\cftchapfont}{\bfseries} % 字号字体与正文相同故不再设置
+% 目录单独成页
+\let\swufe@tableofcontents\tableofcontents
+\def\tableofcontents{\newpage\setcounter{page}{1}\swufe@tableofcontents\clearpage}
 
 % 正文1.5倍行距
 \renewcommand{\baselinestretch}{1.5}
