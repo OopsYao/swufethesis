@@ -184,6 +184,19 @@
 \let\swufe@tableofcontents\tableofcontents
 \def\tableofcontents{\newpage\setcounter{page}{1}\swufe@tableofcontents\clearpage}
 
+\RequirePackage{xparse}
+% \swufe@chapter*[tocline]{title}
+% 该命令是\chapter*的拓展，可将未编号的章节纳入目录
+% 参数tocline表示该章节在目录中的条目，默认与title相同，留空表示不纳入目录
+\NewDocumentCommand\swufe@chapter{s o m}{%
+  \chapter*{#3}%
+  \IfValueTF{#2}{%
+    \ifthenelse{\equal{#2}{}}{}{%
+      \addcontentsline{toc}{chapter}{#2}%
+    }%
+  }{\addcontentsline{toc}{chapter}{#3}}%
+}
+
 % 正文1.5倍行距
 \renewcommand{\baselinestretch}{1.5}
 
@@ -210,8 +223,7 @@
 \newenvironment{abstract}[1]{%
   \newpage
   \setcounter{page}{1}
-  \zihao{-4}
-  {\centering\bfseries\zihao{2}摘要\par\vspace{1ex}} % 二号华文中宋
+  \swufe@chapter*{摘要}
   \newcommand{\swufe@keywords}{#1}
 }{%
 
@@ -221,8 +233,7 @@
 \newenvironment{abstract*}[1]{%
   \newpage
   \setcounter{page}{1}
-  \zihao{-4}
-  {\centering\bfseries\zihao{2}Abstract\par\vspace{1ex}} % 二号Time New Roman
+  \swufe@chapter*{Abstract}
   \newcommand{\swufe@keywords@en}{#1}
 }{%
 
