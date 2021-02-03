@@ -182,7 +182,7 @@
 \renewcommand{\cftchapfont}{\bfseries} % 字号字体与正文相同故不再设置
 % 目录单独成页
 \let\swufe@tableofcontents\tableofcontents
-\def\tableofcontents{\newpage\setcounter{page}{1}\swufe@tableofcontents\clearpage}
+\def\tableofcontents{\cleardoublepage\swufe@tableofcontents\pagenumbering{arabic}}
 
 \RequirePackage{xparse}
 % \swufe@chapter*[tocline]{title}
@@ -217,12 +217,14 @@
 \let\swufe@oldtable\table
 \def\table[#1]{\swufe@oldtable[#1]\fontsize{10.5bp}{10.5bp}}
 
+\RequirePackage{emptypage} % 使cleardoublepage添加的页面不含页码
+
 % 关键词和摘要
 \newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
 \newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: \swufe@join@clist{#1}{; }}}
 \newenvironment{abstract}[1]{%
-  \newpage
-  \setcounter{page}{1}
+  \cleardoublepage
+  \pagenumbering{arabic}
   \swufe@chapter*{摘要}
   \newcommand{\swufe@keywords}{#1}
 }{%
@@ -231,8 +233,8 @@
 }
 
 \newenvironment{abstract*}[1]{%
-  \newpage
-  \setcounter{page}{1}
+  \cleardoublepage
+  \pagenumbering{arabic}
   \swufe@chapter*{Abstract}
   \newcommand{\swufe@keywords@en}{#1}
 }{%
@@ -252,6 +254,7 @@
 % 封面
 \RequirePackage{graphicx}
 \renewcommand{\maketitle}{%
+  \cleardoublepage
   \thispagestyle{empty} % 取消页码
   \noindent
   \includegraphics[scale=0.75]{logo-Swufe.png} % 貌似png图片不包含分辨率信息，需要手动指定 https://tex.stackexchange.com/questions/1625/how-to-make-images-appear-at-their-actual-size
@@ -295,7 +298,7 @@
 
 % 版权申明
 \newcommand{\statement}{
-  \newpage
+  \cleardoublepage
   \thispagestyle{empty} % 取消页码
   \begin{center}
     % 华文中宋 小二加粗
