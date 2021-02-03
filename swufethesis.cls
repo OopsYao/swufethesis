@@ -242,6 +242,11 @@
   \@@keywords{\swufe@keywords@en}
 }
 
+% 致谢
+\newenvironment{acknowledgments}{%
+  \swufe@chapter*{致谢}%
+}{}
+
 % 页码居中
 \RequirePackage{fancyhdr}
 \fancypagestyle{plain}{%
