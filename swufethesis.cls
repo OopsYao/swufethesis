@@ -329,3 +329,11 @@
     \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}
   \end{flushright}
 }
+
+\RequirePackage{pdfpages}
+\RequirePackage{filehook} % file hooks已可以由LaTeX core (2020/10/01)原生支持，这个宏包可提供兼容性
+\AtEndDocument{%
+  \cleardoublepage%
+  \null\thispagestyle{empty}\newpage% 封底前面插入空白页保证封底在下
+  \includepdf{backcover.pdf}%
+}
