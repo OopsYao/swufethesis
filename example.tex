@@ -20,8 +20,9 @@
 \begin{document}
 \maketitle % 封面
 \statement % 版权申明
+
 \begin{abstract}{毕业论文, 毕业设计, 西南财经大学}
-  \zhlipsum[1]
+  \zhlipsum[1-4]
 \end{abstract}
 
 \begin{abstract*}{Dissertation, Graduation project, Swufe}
@@ -30,7 +31,7 @@
 
 \tableofcontents
 
-\setcounter{page}{1}
+\mainmatter % \mainmatter会重置页码样式为阿拉伯数字，并使\chapter被编号
 \chapter{背景介绍}
 \zhlipsum
 \chapter{主体内容}
@@ -68,7 +69,6 @@
 \printbibliography
 \appendix
 \chapter{XX代码}
-\newpage
 \chapter{致谢}
 
 \end{document}
