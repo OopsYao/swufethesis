@@ -535,3 +535,61 @@
 }
 
 \swufesetup{ cjk-font = auto }
+
+% 英文字体
+\swufe@define@key{%
+  font = {
+      choices = {
+          auto,
+          times,
+          termes,
+        }
+    }
+}
+\newcommand{\swufe@set@font@times}{%
+  \setmainfont{Times New Roman}%
+  \setsansfont{Arial}%
+  \ifswufe@system@mac%
+    \setmonofont{Menlo}%
+  \else%
+    \setmonofont{Courier New}%
+  \fi
+}
+\newcommand{\swufe@set@font@termes}{%
+  \setmainfont{texgyretermes}[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setsansfont{texgyreheros}[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setsansfont{texgyrecursor}[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+}
+
+\swufe@option@hook{font}{%
+  \@nameuse{swufe@set@font@\@nameuse{swufe@font}}%
+}
+\newcommand{\swufe@set@font@auto}{%
+  \ifswufe@system@unix%
+    \IfFontExistsTF{texgyretermes-regular.otf}{%
+      \swufesetup{ font = termes }%
+    }{}%
+  \else%
+    % Windoes与mac采用times方案
+    \swufesetup{ font = times }%
+  \fi
+}
+\swufesetup{ font = auto }
