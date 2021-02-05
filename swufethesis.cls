@@ -1,6 +1,6 @@
 % vim: set ft=latex:
 \NeedsTeXFormat{LaTeX2e}
-\LoadClass[scheme=plain,zihao=-4]{ctexbook}
+\LoadClass[scheme=plain,zihao=-4,fontset=none]{ctexbook}
 
 % 用户接口设置
 \RequirePackage{kvoptions}
@@ -12,11 +12,11 @@
 \RequirePackage{kvdefinekeys}
 \newcommand{\swufe@@check}[2]{
   \@nameuse{ifswufe@#1@choicesenabled}%
-  \@ifundefined{ifswufe@#1@#2}{\ClassError{swufethesis}{%
+  \@ifundefined{ifswufe@\@nameuse{swufe@#1@name}@#2}{\ClassError{swufethesis}{%
       Invalid value #2 for option #1%
     }{}}%
   % 将\ifswufe@<key>@<choice>置为true
-  \@nameuse{swufe@#1@#2true}%
+  \@nameuse{swufe@\@nameuse{swufe@#1@name}@#2true}%
   \fi
 }
 % 这个内部命令用于设置用户接口
@@ -39,9 +39,9 @@
     \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}%
     \@nameuse{swufe@#1@choicesenabledtrue}%
     \fi
-    % 为该choice设置一个if变量\ifswufe@<key>@<choice>
+    % 为该choice设置一个if变量\ifswufe@<name>@<choice>
     % 用于后续的一些基于choices的设定
-    \expandafter\newif\csname ifswufe@#1@##1\endcsname
+    \expandafter\newif\csname ifswufe@\@nameuse{swufe@#1@name}@##1\endcsname
   }
   \kv@define@key{swufe@value}{choices}{%
     \kvsetkeys{swufe@choices}{##1}
@@ -51,6 +51,9 @@
     \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}%
   }
 
+  % 一些命令需要等用户通过swufesetup设置后运行才有效
+  \@ifundefined{swufe@@#1@code}{\@namedef{swufe@@#1@code}{}}{}
+
   % 执行上面的handler
   \kvsetkeys{swufe@value}{#2}
 
@@ -58,7 +61,11 @@
   \kv@define@key{swufe}{#1}{%
     \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}
     \swufe@@check{#1}{##1}
+    \@nameuse{swufe@@#1@code}
   }
+}
+\newcommand{\swufe@option@hook}[2]{%
+  \expandafter\g@addto@macro\csname swufe@@#1@code\endcsname{#2}%
 }
 
 % 将\month和\day转为两位数
@@ -342,3 +349,189 @@
   \null\thispagestyle{empty}\newpage% 封底前面插入空白页保证封底在下
   \includepdf{backcover.pdf}%
 }
+
+\swufe@define@key{
+  cjk-font = {
+      name = cjk@font,
+      choices = {
+          auto,
+          windows,
+          mac,
+          noto,
+          fandol,
+          none,
+        }
+    }
+}
+
+
+% 判断操作系统，这是判断字体方案自动选取的依据之一
+\newif\ifswufe@system@windows
+\newif\ifswufe@system@mac
+\newif\ifswufe@system@unix
+\IfFileExists{/System/Library/Fonts/Menlo.ttc}{%
+  \swufe@system@mactrue%
+}{%
+  \IfFileExists{/dev/null}{%
+    \IfFileExists{null:}{%
+      \swufe@system@windowstrue%
+    }{%
+      \swufe@system@unixtrue%
+    }
+  }{%
+    \swufe@system@windowstrue%
+  }%
+}
+
+\xeCJKsetup{%
+  AutoFakeBold = true
+}
+
+% fandol方案
+\newcommand{\swufe@set@cjk@font@fandol}{%
+  \setCJKmainfont{FandolSong}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = FandolKai-Regular,
+  ]%
+  \setCJKsansfont{FandolHei}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+  ]%
+  \setCJKmonofont{FandolFang}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhsong}{FandolSong}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{FandolHei}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+
+% Noto方案
+\newcommand{\swufe@set@cjk@font@noto}{%
+  \setCJKmainfont{Noto Serif CJK SC}[
+    UprightFont = * Light,
+    BoldFont = * Bold,
+    ItalicFont = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
+  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont = * Medium,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}%
+  \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
+    UprightFont = * Light,
+    UprightFont = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+
+% mac方案
+\newcommand{\swufe@set@cjk@font@mac}{%
+  \setCJKmainfont{Songti SC}[
+    UprightFont = * Light,
+    BoldFont = * Bold,
+    ItalicFont = Kaiti SC,
+    BoldItalicFont = Kaiti SC Bold,
+  ]%
+  \setCJKsansfont{Heiti SC}[
+    BoldFont= * Medium
+  ]%
+  \setCJKmonofont{STFangsong}
+  \setCJKfamilyfont{zhsong}{Songti SC}[
+    UprightFont = * Light,
+    BoldFont = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Heiti SC}[
+    UprightFont = * Light,
+    BoldFont = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{STFangsong}%
+  \setCJKfamilyfont{zhkai}{Kaiti SC}[
+    BoldFont = * Bold
+  ]%
+}
+
+% windows方案
+\newcommand{\swufe@set@cjk@font@windows}{%
+  \xeCJKsetup{EmboldenFactor=3}%
+  \setCJKmainfont{SimSun}[
+    ItalicFont = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}%
+  \setCJKmonofont{FangSong}%
+  \setCJKfamilyfont{zhsong}{SimSun}%
+  \setCJKfamilyfont{zhhei}{SimHei}%
+  \setCJKfamilyfont{zhkai}{KaiTi}%
+  \setCJKfamilyfont{zhfs}{FangSong}%
+}
+
+
+\swufe@option@hook{cjk-font}{%
+  \@nameuse{swufe@set@cjk@font@\@nameuse{swufe@cjk@font}}%
+  \ifswufe@cjk@font@none\else%
+    \providecommand{\heiti}{\CJKfamily{zhhei}}
+    \providecommand{\fangsong}{\CJKfamily{zhfs}}
+    \providecommand{\songti}{\CJKfamily{zhsong}}
+    \providecommand{\kaishu}{\CJKfamily{zhkai}}
+  \fi
+}
+
+% auto方案 根据一些条件从上述方案中自动选取
+\newcommand{\swufe@set@cjk@font@auto}{%
+  \newif\ifswufe@@font@setted% TODO: 多次使用swufesetup重置同一key时，其他的choice的真伪并未重置
+  \ifswufe@system@mac%
+    \IfFontExistsTF{Kaiti SC}{%
+      \swufesetup{ cjk-font = mac }%
+      \swufe@@font@settedtrue
+    }{}%
+  \fi
+  \ifswufe@system@windows%
+    \IfFontExistsTF{KaiTi}{%
+      \swufesetup{ cjk-font = windows }%
+      \swufe@@font@settedtrue
+    }{}%
+  \fi
+  \ifswufe@system@unix%
+    \IfFontExistsTF{Noto Serif CJK SC}{%
+      \IfFontExistsTF{Noto Sans CJK SC}{%
+        \swufesetup{ cjk-font = noto }%
+        \swufe@@font@settedtrue
+      }{}%
+    }{}%
+  \fi
+
+  \ifswufe@@font@setted\else%
+    % 以上方案均未设置，采用fandol方案
+    \swufesetup{ cjk-font = fandol }%
+  \fi
+}
+
+\swufesetup{ cjk-font = auto }
