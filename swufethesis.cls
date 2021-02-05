@@ -275,14 +275,15 @@
     {
       % 黑体小初加粗
       \zihao{-0}
-      \heiti
+      \CJKfamily+{zhhei}
       \bfseries
-      \swufe@index 届\break
-      本科毕业论文（设计）
+      \swufe@index 届\\
+      本科毕业论文（设计）\par
     }
 
     \vspace{64pt}
     \zihao{3}
+    \CJKfamily+{zhfs}
     {
     % 三号 华文仿宋
     % 左侧加粗，右侧下划线
@@ -303,7 +304,7 @@
     \vspace{\fill}
 
     {
-      \fangsong\bfseries\swufe@date@format{\swufe@date}{\swufe@date@zh@digit@short}
+      \bfseries\swufe@date@format{\swufe@date}{\swufe@date@zh@digit@short}
     }
   \end{center}
 }
@@ -438,7 +439,7 @@
   \setCJKmonofont{Noto Sans Mono CJK SC}%
   \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
     UprightFont = * Light,
-    UprightFont = * Bold,
+    BoldFont = * Bold,
   ]%
   \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
     BoldFont = * Medium,
