@@ -163,7 +163,7 @@
     name = {,.},
     afterindent = true,
     aftername = \quad,
-    format = \fontsize{22bp}{33bp}\bfseries\centering\selectfont,
+    format = \CJKfamily{hwzs}\fontsize{22bp}{33bp}\bfseries\centering\selectfont,
     titleformat = {},
     beforeskip = 3\baselineskip,
     afterskip = 2\baselineskip,
@@ -290,7 +290,7 @@
     \let\ep\expandafter
     % `\CJKunderline*`将不会跳过中文标点
     % `*`与`{`前那个`\ep`是为了消除`*`与`{`带来的位置影响
-    \def\entry##1:##2 {{\bfseries ##1：}&{\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
+    \def\entry##1:##2 {{\bfseries ##1：}&{\CJKfamily+{hwfs}\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
     \begin{tabular}{lp{15em}}
       \entry 论文题目:\swufe@title{}
       \entry 学生姓名:\swufe@author{}
@@ -317,6 +317,7 @@
     % 华文中宋 小二加粗
     \bfseries
     \zihao{-2}
+    \CJKfamily{hwzs}
     西南财经大学\break
     本科毕业论文原创性及知识产权声明
   \end{center}
@@ -423,6 +424,20 @@
     Extension = .otf,
     UprightFont = *-Regular,
   ]%
+  % 为华文中宋与华文仿宋设置找不到字体时的fallback
+  \def\swufe@hwfs@fallback{%
+    \setCJKfamilyfont{hwfs}{FandolFang}[
+      Extension = .otf,
+      UprightFont = *-Regular,
+    ]%
+  }
+  \def\swufe@hwzs@fallback{%
+    \setCJKfamilyfont{hwzs}{FandolSong}[
+      Extension = .otf,
+      UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ]%
+  }
 }
 
 % Noto方案
@@ -452,6 +467,19 @@
     Extension = .otf,
     UprightFont = *-Regular,
   ]%
+  \def\swufe@hwfs@fallback{%
+    \setCJKfamilyfont{hwfs}{FandolFang}[
+      Extension = .otf,
+      UprightFont = *-Regular,
+    ]%
+  }
+  \def\swufe@hwzs@fallback{%
+    \setCJKfamilyfont{hwzs}{FandolSong}[
+      Extension = .otf,
+      UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ]%
+  }
 }
 
 % mac方案
@@ -478,6 +506,12 @@
   \setCJKfamilyfont{zhkai}{Kaiti SC}[
     BoldFont = * Bold
   ]%
+  \def\swufe@hwzs@fallback{%
+    \setCJKfamilyfont{hwzs}{Songti SC}[
+      UprightFont = * Light,
+      BoldFont = * Bold,
+    ]%
+  }
 }
 
 % windows方案
@@ -492,6 +526,12 @@
   \setCJKfamilyfont{zhhei}{SimHei}%
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
+  \def\swufe@hwfs@fallback{%
+    \setCJKfamilyfont{hwfs}{FangSong}%
+  }
+  \def\swufe@hwzs@fallback{%
+    \setCJKfamilyfont{hwzs}{SimSun}%
+  }
 }
 
 
@@ -536,6 +576,16 @@
 }
 
 \swufesetup{ cjk-font = auto }
+
+% 一级标题中的华文中宋与封面的华文仿宋属于硬性规定，独立于前面的cjk-font设定
+% 如果找不到相应的字体会fallback至前面cjk-font
+\IfFontExistsTF{STZhongsong}{%
+  \setCJKfamilyfont{hwzs}{STZhongsong}%
+}{\swufe@hwzs@fallback}
+
+\IfFontExistsTF{STFangsong}{%
+  \setCJKfamilyfont{hwfs}{STFangsong}%
+}{\swufe@hwfs@fallback}
 
 % 英文字体
 \swufe@define@key{%
