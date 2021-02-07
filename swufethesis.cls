@@ -127,8 +127,8 @@
   #1年#2月
 }
 % 将日期转化为相应的届数
-\newcommand{\swufe@index@formatter}[3]{
-  \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi\relax
+\newcommand{\swufe@index@formatter}[3]{%
+  \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi % 若在这里使用\relax会使封面的届数数字后面多些空白（尚不清楚原理）
 }
 
 \RequirePackage{geometry}
@@ -205,7 +205,7 @@
 }
 
 % 正文1.5倍行距
-\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\normalsize}{\fontsize{12bp}{1.5\dimexpr 15.6pt}\selectfont}
 
 % 表格五号字体 单倍行距
 \RequirePackage{caption}
@@ -267,23 +267,32 @@
 \RequirePackage{graphicx}
 \renewcommand{\maketitle}{%
   \cleardoublepage
+  % 虽然规范上要求上下左右页边距为3cm，但实际给出的封面与申明页模板采用的Word默认页边距
+  % 为达到一致的视觉效果，对封面页和申明页使用特别的页边距，并在其他页面重置
+  \newgeometry{
+    vmargin=2.54cm,
+    hmargin=3.18cm,
+  }
   \thispagestyle{empty} % 取消页码
+  \vspace*{-8pt}
   \noindent
-  \includegraphics[scale=0.75]{logo-Swufe.png} % 貌似png图片不包含分辨率信息，需要手动指定 https://tex.stackexchange.com/questions/1625/how-to-make-images-appear-at-their-actual-size
-  \vspace{46pt}
+  \includegraphics[width=10.35cm,height=2.88cm]{logo-Swufe.png}
+  \vspace{64pt} % 根据视觉效果调整
   \begin{center}
     {
       % 黑体小初加粗
-      \zihao{-0}
-      \CJKfamily+{zhhei}
       \bfseries
+      \xeCJKsetup{ CJKecglue = {\hskip 10pt} } % 届数数字与届之间的间距相较于Word来说过大，特别调整。Word的空格宽度应该是英文字体宽度
+      \fontsize{36bp}{3\dimexpr 15.6pt}\selectfont
+      \CJKfamily+{zhhei}
       \swufe@index 届\\
       本科毕业论文（设计）\par
+      \xeCJKsetup{ CJKecglue = { ~ } } % 还原成默认设置，见xeCJK文档的初始化设置（代码实现部分）
     }
-
-    \vspace{64pt}
-    \zihao{3}
+    \vspace{66.5pt} % 根据视觉效果调整
     \CJKfamily+{zhfs}
+    \noindent
+    \fontsize{16bp}{2\dimexpr 15.6pt}\selectfont
     {
     % 三号 华文仿宋
     % 左侧加粗，右侧下划线
@@ -291,7 +300,7 @@
     % `\CJKunderline*`将不会跳过中文标点
     % `*`与`{`前那个`\ep`是为了消除`*`与`{`带来的位置影响
     \def\entry##1:##2 {{\bfseries ##1：}&{\CJKfamily+{hwfs}\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
-    \begin{tabular}{lp{15em}}
+    \begin{tabular}{lp{252.1pt}}
       \entry 论文题目:\swufe@title{}
       \entry 学生姓名:\swufe@author{}
       \entry {所在学院}:\swufe@school{}
@@ -313,23 +322,27 @@
 \newcommand{\statement}{
   \cleardoublepage
   \thispagestyle{empty} % 取消页码
+  % 这里不设置vspace时第一行字将紧挨着页面的body部分（可设置geometry的showframe选项查看）
+  % 没搞清原理
+  % 这个数值是根据视觉效果调出来的
+  \vspace*{-34pt}
   \begin{center}
     % 华文中宋 小二加粗
     \bfseries
-    \zihao{-2}
     \CJKfamily{hwzs}
-    西南财经大学\break
-    本科毕业论文原创性及知识产权声明
+    \fontsize{18bp}{2\dimexpr 15.6pt}\selectfont
+    西南财经大学\\
+    本科毕业论文原创性及知识产权声明\par
   \end{center}
+  \vspace{12.3pt} % 这个数值是根据视觉效果调出来的
 
-  \vspace{20pt}
-
+  \fontsize{12bp}{1.4\dimexpr 15.6pt}\selectfont
   本人郑重声明：所呈交的毕业论文是本人在导师的指导下取得的成果，论文
   写作严格遵循学术规范。对本论文的研究做出重要贡献的个人和集体，均已在文
   中以明确方式标明。因本毕业论文引起的法律结果完全由本人承担。
 
   本毕业论文成果归西南财经大学所有。
-  \vspace{\baselineskip}
+  \vspace{2\dimexpr 15.6pt}
 
   特此声明
   \vspace{\fill}
@@ -342,6 +355,7 @@
 
     \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}
   \end{flushright}
+  \restoregeometry
 }
 
 \RequirePackage{pdfpages}
