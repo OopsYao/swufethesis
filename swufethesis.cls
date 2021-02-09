@@ -163,24 +163,35 @@
     name = {,.},
     afterindent = true,
     aftername = \quad,
-    format = \CJKfamily{hwzs}\fontsize{22bp}{33bp}\bfseries\centering\selectfont,
+    format = \CJKfamily{hwzs}\fontsize{22bp}{1.5\dimexpr 15.6pt}\bfseries\centering\selectfont,
     titleformat = {},
-    beforeskip = 3\baselineskip,
-    afterskip = 2\baselineskip,
+    fixskip = true,
+    % 这里需要说明的是，与chapter不同，section与subsection的beforeskip
+    % 仅在前面为段落（非标题）时起作用
+    % 而Word的策略是取段前段后最大的距离作为间距，这里由于二三级标题的要求是
+    % 段前段后都为一行而恰好可以满足
+    % 第二点是section与subsection的beforeskip作为页面的起始也是不生效的，
+    % 这一点与Word相同，除非那个地方是一个新节（而一般仅在章这一层次使用分节符，
+    % 从而与LaTeX的chapter吻合）
+    % 下面chapter, section, subsection的beforeskip与afterskip皆是通过视觉效果调整
+    beforeskip = 48pt,
+    afterskip = 50pt,
    },
   section = {
     name = {,.},
     afterindent = true,
-    format = \sffamily\fontsize{15bp}{22.5bp}\selectfont,
-    beforeskip = \baselineskip,
-    afterskip = \baselineskip,
+    format = \sffamily\fontsize{15bp}{1.5\dimexpr 15.6pt }\selectfont,
+    fixskip = true,
+    beforeskip = 30pt,
+    afterskip = 30pt,
    },
   subsection = {
       name = {,.},
       afterindent = true,
-      format = \sffamily\fontsize{12bp}{18bp}\selectfont,
-      beforeskip = \baselineskip,
-      afterskip = \baselineskip,
+      format = \sffamily\fontsize{12bp}{1.5\dimexpr 15.6pt}\selectfont,
+      fixskip = true,
+      beforeskip = 28pt,
+      afterskip = 28pt,
     }
 }
 
