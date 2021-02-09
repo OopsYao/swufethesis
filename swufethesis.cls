@@ -635,7 +635,7 @@
     ItalicFont = *-italic,
     BoldItalicFont = *-bolditalic,
   ]%
-  \setsansfont{texgyrecursor}[
+  \setmonofont{texgyrecursor}[
     Extension = .otf,
     UprightFont = *-regular,
     BoldFont = *-bold,
