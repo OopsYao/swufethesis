@@ -236,6 +236,12 @@
   \newcommand{\swufe@keywords}{#1}
 }{%
 
+  % 对于比较长的摘要，这里禁止断页后，LaTeX会优先调整段落间距来使关键词与最后一页摘要在同一页，
+  % 可能会出现某一段落间距比普通的长一行的高度
+  % （但一般是一页仅有两个段落时才会出现这种情况，多个段落会分摊这些间距）
+  % TODO: 也许有方法可以让前一页提前断页，即这一行空白出现在前一页末尾而不是被段落间距分摊，这样也许会好看一点
+  \nopagebreak
+  \vspace{\baselineskip}
   \@keywords{\swufe@keywords}
 }
 
@@ -246,6 +252,8 @@
   \newcommand{\swufe@keywords@en}{#1}
 }{%
 
+  \nopagebreak
+  \vspace{\baselineskip}
   \@@keywords{\swufe@keywords@en}
 }
 
