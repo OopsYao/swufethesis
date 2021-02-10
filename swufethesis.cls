@@ -50,6 +50,7 @@
   \kv@define@key{swufe@value}{choices}{%
     \@namedef{swufe@#1@choices}{##1}
     \kvsetkeys{swufe@choices}{##1}
+    \@namedef{swufe@#1@choices}{##1}
   }
 
   % 一些命令需要等用户通过swufesetup设置后运行才有效
@@ -78,6 +79,9 @@
   index, % 第多少届
   date,
   title,
+  title* = {
+      name = title@en,
+    },
   author,
   school,
   discipline,
@@ -85,6 +89,29 @@
       name = student@id
     },
   supervisor,
+  degree = {
+      choices = {
+          bachelor,
+          master,
+          doctor,
+        }
+    },
+  degree-type = {
+      name = degree@type,
+      choices = {
+          academic, % 学术型
+          professional, % 专业型
+          equivalent, % 同等学力
+        }
+    },
+  secret-level = {
+      name = secret@level,
+    },
+  secret-year = {
+      name = secret@year,
+    },
+  clc, % 分类号
+  udc,
 }
 
 % 将逗号分隔列表转为特定分隔符间隔的字串
@@ -104,15 +131,15 @@
 
 % 第一个参数是日期
 % 第二个参数是一个宏（非宏的定义），接受年月日三个参数
-\newcommand{\swufe@date@format}[2]{
+\newcommand{\swufe@date@format}[2]{%
   % 这里`\@nil`是参数表达式的一部分（一个常见的写法，本身无意义），
   % 用于标识参数的结束，否则最后的日期将只有一位数被纳入参数
-  \def\swufe@@date@format@processor##1-##2-##3\@nil{
+  \def\swufe@@date@format@processor##1-##2-##3\@nil{%
     #2{##1}{##2}{##3}
-  }
+  }%
   \expandafter\swufe@@date@format@processor#1\@nil
 }
-\newcommand{\swufe@date@zh@digit}[3]{
+\newcommand{\swufe@date@zh@digit}[3]{%
   #1年\number#2月\number#3日
 }
 \newcommand{\swufe@date@zh@digit@short}[3]{
@@ -124,12 +151,24 @@
 }
 
 \RequirePackage{geometry}
-\geometry{
-  a4paper,
-  left=3cm,
-  top=3cm,
-  right=3cm,
-  bottom=3cm
+\AtBeginDocument{%
+  \ifswufe@degree@bachelor%
+    \geometry{
+      a4paper,
+      left=3cm,
+      top=3cm,
+      right=3cm,
+      bottom=3cm,
+    }
+  \else%
+    \geometry{
+      a4paper,
+      top=3.9cm,
+      bottom=3.4cm,
+      left=3.45cm,
+      right=3.45cm,
+    }
+  \fi
 }
 
 % 文献引用，基于biblatex
@@ -208,7 +247,13 @@
 }
 
 % 正文1.5倍行距
-\renewcommand{\normalsize}{\fontsize{12bp}{1.5\dimexpr 15.6pt}\selectfont}
+\swufe@option@hook{degree}{%
+  \ifswufe@degree@bachelor%
+    \renewcommand{\normalsize}{\fontsize{12bp}{1.5\dimexpr 15.6pt}\selectfont}
+  \else%
+    \renewcommand{\normalsize}{\fontsize{12bp}{1.37\dimexpr 15.6pt}\selectfont}
+  \fi%
+}
 
 % 表格五号字体 单倍行距
 \RequirePackage{caption}
@@ -285,6 +330,14 @@
     hmargin=3.18cm,
   }
   \thispagestyle{empty} % 取消页码
+  \ifswufe@degree@bachelor%
+    \swufe@make@bachelor@cover%
+  \else%
+    \swufe@make@postgraduate@titlepage%
+  \fi%
+}
+
+\newcommand{\swufe@make@bachelor@cover}{
   \vspace*{-8pt}
   \noindent
   \includegraphics[width=10.35cm,height=2.88cm]{logo-Swufe.png}
@@ -329,10 +382,78 @@
   \end{center}
 }
 
+% 研究生扉页
+\newcommand{\swufe@make@postgraduate@titlepage}{%
+  \begingroup
+  \setlength{\parindent}{0pt}
+  \setlength{\tabcolsep}{0pt}
+  \CJKfamily{zhhei}
+  \fontsize{16bp}{32pt}\selectfont
+  \begin{tabular}{p{.5\textwidth}p{.5\textwidth}}
+    分类号\CJKunderline{\hfill\swufe@clc\hfill} & 密级\CJKunderline{\hfill\swufe@secret@level\hfill} \\
+    \multicolumn{2}{l}{U.D.C\hspace{6pt}\CJKunderline{\hfill\swufe@udc\hfill}}
+  \end{tabular}
+
+  \begin{center}
+    \fontsize{18bp}{2\dimexpr 15.6pt}\selectfont
+    \CJKfamily{hwzs}
+    \ifswufe@degree@type@equivalent%
+      \vspace{24pt}
+      \textbf{具有研究生毕业同等学力人员申请硕士学位学位论文}
+    \fi
+
+    \vspace{52pt}
+    \textbf{\swufe@title}
+
+    \vspace{23pt}
+    \fontsize{12bp}{15.6pt}\selectfont
+    \textbf{\swufe@title@en}
+
+    \vfill
+    \def\swufe@@item##1:##2{%
+    \makebox[5em][s]{##1} & \CJKunderline*{##2\hfill}\\
+    }
+    \ifswufe@degree@type@equivalent%
+      \fontsize{15bp}{37pt}\selectfont
+    \else%
+      \fontsize{15bp}{35pt}\selectfont
+    \fi%
+    \CJKfamily+{zhhei}
+    \def\swufe@@issue@date{%
+      \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}%
+    }
+    \begin{tabular}{c@{：}p{235pt}}
+      \swufe@@item 学位申请人:\swufe@author
+      \ifswufe@degree@type@equivalent\else%
+        \swufe@@item 学\hfil 号:\swufe@student@id
+      \fi%
+      \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline
+      \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@author
+      \swufe@@item 指\hfil 导\hfil 教\hfil 师:\swufe@supervisor
+      \swufe@@item 定\hfil 稿\hfil 时\hfil 间:\swufe@@issue@date
+    \end{tabular}
+    \ifswufe@degree@type@equivalent%
+      \vspace{140pt}
+    \else%
+      \vspace{220pt}
+    \fi
+  \end{center}
+  \endgroup
+}
+
 % 版权申明
 \newcommand{\statement}{
   \cleardoublepage
   \thispagestyle{empty} % 取消页码
+  \ifswufe@degree@bachelor%
+    \swufe@make@bachelor@statement%
+  \else%
+    \swufe@make@postgraduate@statement%
+  \fi%
+  \restoregeometry
+}
+
+\newcommand{\swufe@make@bachelor@statement}{
   % 这里不设置vspace时第一行字将紧挨着页面的body部分（可设置geometry的showframe选项查看）
   % 没搞清原理
   % 这个数值是根据视觉效果调出来的
@@ -366,7 +487,85 @@
 
     \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}
   \end{flushright}
-  \restoregeometry
+}
+
+\RequirePackage{unicode-math}
+\newcommand{\swufe@make@postgraduate@statement}{
+  \vspace*{-18pt}
+  \begin{center}
+    \fontsize{18bp}{2\dimexpr 15.6pt}\selectfont
+    \CJKfamily{zhsong}\bfseries
+    西南财经大学学位论文原创性及知识产权声明
+  \end{center}
+
+  \vspace{2pt}
+  \begingroup
+  \CJKfamily+{zhfs}
+  \bfseries
+  \fontsize{16bp}{28pt}\selectfont
+  本人郑重声明：所呈交的学位论文，是本人在导师的指
+  导下独立进行研究工作所取得的成果。除文中已经注明引用
+  的内容外，本论文不含任何其他个人或集体已经发表或撰写
+  过的作品成果。对本文的研究做出重要贡献的个人和集体，
+  均已在文中以明确方式标明，因本学位论文引起的法律结果
+  完全由本人承担。
+
+  \vspace{16pt}
+  \fontsize{16bp}{25pt}\selectfont
+  本人同意在校攻读学位期间论文工作的知识产权单位
+  属西南财经大学。本人完全了解西南财经大学有关保留、使
+  用学位论文的规定，即学校有权保留并向国家有关部门或机
+  构送交论文的复印件和电子版，允许论文被查阅和借阅。本
+  人授权西南财经大学可以将本学位论文的全部或部分内容
+  编入有关数据库进行检索，可以采用影印、缩印、数字化或
+  其他复制手段保存和汇编本学位论文。
+
+  \vspace{14pt}
+  \noindent 本学位论文属于
+
+  % 勾选框
+  \setlength{\fboxrule}{1.2pt}%
+  \setlength{\fboxsep}{0pt}%
+  \def\swufe@@checkbox{%
+    \makebox[11pt][l]{% 最外层的盒子将勾选框包起来作为一个整体方便外部调整间距
+      \makebox[0pt][l]{\framebox[13pt]{\parbox{0pt}{\vspace{10pt}}}}%
+      $\checkmark$%
+    }
+  }
+  \def\swufe@@emptybox{%
+    \makebox[11pt][l]{%
+      \framebox[13pt]{\parbox{0pt}{\vspace{10pt}}}%
+    }
+  }
+
+  \def\swufe@@secret@year{%
+    \underline{\raisebox{-1pt}{\makebox[41pt]{\hfil\swufe@secret@year\hfil}}}%
+  }
+  % 根据\swufe@secret@year是否为空来判断是否是公开的
+  \newif\ifswufe@@secret@level@public
+  \ifx\swufe@secret@year\@empty%
+    \swufe@@secret@level@publictrue
+  \fi%
+
+  \vspace{14pt}
+  \xeCJKsetup{ CJKecglue = {} } % 取消CJK与英文字符间距，这个影响是局部的
+  \noindent 1、\ifswufe@@secret@level@public\swufe@@emptybox\else\swufe@@checkbox\fi
+  保密，在\swufe@@secret@year 年解密后适用本授权书。
+
+  \vspace{14pt}
+  \noindent 2、\ifswufe@@secret@level@public\swufe@@checkbox\else\swufe@@emptybox\fi 不保密
+  \xeCJKsetup{ CJKecglue = {~} } % 下面的日期之间还是需要间距
+
+  \vspace{14pt}
+  \noindent 特此声明。
+
+  \begin{flushright}
+    学位申请人：\hspace{4em}
+
+    \vspace{14pt}
+    \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}
+  \end{flushright}
+  \endgroup
 }
 
 \RequirePackage{pdfpages}
@@ -674,4 +873,8 @@
   date = {\the\year-\swufe@twodigits\month-\swufe@twodigits\day},
   font = auto,
   cjk-font = auto,
+  secret-year = {},
+  secret-level = {},
+  degree = bachelor,
+  degree-type = academic,
 }
