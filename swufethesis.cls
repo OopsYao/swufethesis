@@ -10,14 +10,22 @@
 }
 
 \RequirePackage{kvdefinekeys}
+% 这个foreach不能和其他的kvdefinekeys的handler嵌套（没有想象中的好用）
+\newcommand{\swufe@foreach}[2]{
+  \def\swufe@@foreach@family{swufe@foreach}%
+  \kv@set@family@handler{\swufe@@foreach@family}{#2}%
+  \expandafter\kvsetkeys\expandafter{\expandafter\swufe@@foreach@family\expandafter}\expandafter{#1}%
+}
 \newcommand{\swufe@@check}[2]{
-  \@nameuse{ifswufe@#1@choicesenabled}%
   \@ifundefined{ifswufe@\@nameuse{swufe@#1@name}@#2}{\ClassError{swufethesis}{%
       Invalid value #2 for option #1%
     }{}}%
-  % 将\ifswufe@<key>@<choice>置为true
+  % 重置所有\ifswufe@<name>@...为false，再将\ifswufe@<name>@<choice>置为true
+  \edef\swufe@@choices{\@nameuse{swufe@#1@choices}}
+  \swufe@foreach{\swufe@@choices}{%
+    \@nameuse{swufe@\@nameuse{swufe@#1@name}@##1false}%
+  }
   \@nameuse{swufe@\@nameuse{swufe@#1@name}@#2true}%
-  \fi
 }
 % 这个内部命令用于设置用户接口
 % 现支持设置name, choices
@@ -27,28 +35,21 @@
 % 为每一个key设置handler
 \kv@set@family@handler{swufe@key}{%
   \@namedef{swufe@#1@name}{#1} % name默认为key
+  \@namedef{swufe@#1@choices}{} % choices默认为空
+
   \kv@define@key{swufe@value}{name}{%
     % 用\swufe@<key>@name存储name的值
     \@namedef{swufe@#1@name}{##1}
   }
 
-  \expandafter\newif\csname ifswufe@#1@choicesenabled\endcsname
   \kv@set@family@handler{swufe@choices}{%
-    \@nameuse{ifswufe@#1@choicesenabled}\else%
-    % 将第一个choice设为default
-    \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}%
-    \@nameuse{swufe@#1@choicesenabledtrue}%
-    \fi
     % 为该choice设置一个if变量\ifswufe@<name>@<choice>
     % 用于后续的一些基于choices的设定
     \expandafter\newif\csname ifswufe@\@nameuse{swufe@#1@name}@##1\endcsname
   }
   \kv@define@key{swufe@value}{choices}{%
+    \@namedef{swufe@#1@choices}{##1}
     \kvsetkeys{swufe@choices}{##1}
-  }
-
-  \kv@define@key{swufe@value}{default}{%
-    \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}%
   }
 
   % 一些命令需要等用户通过swufesetup设置后运行才有效
@@ -56,11 +57,14 @@
 
   % 执行上面的handler
   \kvsetkeys{swufe@value}{#2}
-
+  % 为\swufe@<name>定义空值，增加后面的容错性
+  \@namedef{swufe@\@nameuse{swufe@#1@name}}{}
   % 为外部用户使用的swufesetup设置handler
   \kv@define@key{swufe}{#1}{%
     \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}
-    \swufe@@check{#1}{##1}
+    \expandafter\ifx\csname swufe@#1@choices\endcsname\@empty\else%
+      \swufe@@check{#1}{##1}%
+    \fi%
     \@nameuse{swufe@@#1@code}
   }
 }
@@ -71,23 +75,11 @@
 % 将\month和\day转为两位数
 \def\swufe@twodigits#1{\ifnum#1<10 0\fi\the#1}
 \swufe@define@key{
-  % 第多少届，默认值根据date选项设定
-  % 例如2020年9月（含）至2021年9月（不含）设定为2017届
-  index = {
-      default = \swufe@date@format{\swufe@date}{\swufe@index@formatter}
-    },
-  date = {
-      default = \the\year-\swufe@twodigits\month-\swufe@twodigits\day
-    },
+  index, % 第多少届
+  date,
   title,
   author,
-  school = {
-      choices = {
-          % 目前仅仅是作为choices的例子
-          经济信息工程学院,
-          经济数学学院,
-        }
-    },
+  school,
   discipline,
   student-id = {
       name = student@id
@@ -580,7 +572,6 @@
 
 % auto方案 根据一些条件从上述方案中自动选取
 \newcommand{\swufe@set@cjk@font@auto}{%
-  \newif\ifswufe@@font@setted% TODO: 多次使用swufesetup重置同一key时，其他的choice的真伪并未重置
   \ifswufe@system@mac%
     \IfFontExistsTF{Kaiti SC}{%
       \swufesetup{ cjk-font = mac }%
@@ -590,35 +581,34 @@
   \ifswufe@system@windows%
     \IfFontExistsTF{KaiTi}{%
       \swufesetup{ cjk-font = windows }%
-      \swufe@@font@settedtrue
     }{}%
   \fi
   \ifswufe@system@unix%
     \IfFontExistsTF{Noto Serif CJK SC}{%
       \IfFontExistsTF{Noto Sans CJK SC}{%
         \swufesetup{ cjk-font = noto }%
-        \swufe@@font@settedtrue
       }{}%
     }{}%
   \fi
 
-  \ifswufe@@font@setted\else%
+  \ifswufe@cjk@font@auto%
     % 以上方案均未设置，采用fandol方案
     \swufesetup{ cjk-font = fandol }%
   \fi
 }
 
-\swufesetup{ cjk-font = auto }
 
 % 一级标题中的华文中宋与封面的华文仿宋属于硬性规定，独立于前面的cjk-font设定
 % 如果找不到相应的字体会fallback至前面cjk-font
-\IfFontExistsTF{STZhongsong}{%
-  \setCJKfamilyfont{hwzs}{STZhongsong}%
-}{\swufe@hwzs@fallback}
+\AtBeginDocument{%
+  \IfFontExistsTF{STZhongsong}{%
+    \setCJKfamilyfont{hwzs}{STZhongsong}%
+  }{\swufe@hwzs@fallback}
 
-\IfFontExistsTF{STFangsong}{%
-  \setCJKfamilyfont{hwfs}{STFangsong}%
-}{\swufe@hwfs@fallback}
+  \IfFontExistsTF{STFangsong}{%
+    \setCJKfamilyfont{hwfs}{STFangsong}%
+  }{\swufe@hwfs@fallback}
+}
 
 % 英文字体
 \swufe@define@key{%
@@ -676,4 +666,12 @@
     \swufesetup{ font = times }%
   \fi
 }
-\swufesetup{ font = auto }
+
+% 一组默认值设置
+\swufesetup{
+  % 例如2020年9月（含）至2021年9月（不含）设定为2017届
+  index = \swufe@date@format{\swufe@date}{\swufe@index@formatter},
+  date = {\the\year-\swufe@twodigits\month-\swufe@twodigits\day},
+  font = auto,
+  cjk-font = auto,
+}
