@@ -25,6 +25,7 @@ kvoptions
 kvdefinekeys
 hyperref
 booktabs
+unicode-math
 xstring
 everysel
 pdflscape
