@@ -151,7 +151,7 @@
 }
 
 \RequirePackage{geometry}
-\AtBeginDocument{%
+\swufe@option@hook{degree}{%
   \ifswufe@degree@bachelor%
     \geometry{
       a4paper,
