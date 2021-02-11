@@ -226,6 +226,36 @@
     }
 }
 
+% Three matters
+\renewcommand{\frontmatter}{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{arabic}%
+}
+\renewcommand{\mainmatter}{%
+  \cleardoublepage
+  \@mainmattertrue
+  \pagenumbering{arabic}%
+}
+\renewcommand{\backmatter}{%
+  \ifswufe@output@check\end{document}\fi % 检测版直接结束
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \@mainmatterfalse%
+}
+
+\swufe@define@key{
+  output = {
+      choices = {
+          print,
+          check, % 检测版
+        }
+    }
+}
+
 % 目录
 \RequirePackage[titles]{tocloft} % 启用titles选项使其采用ctex对章节标题的设定来设置最上层标题
 \renewcommand{\cftchapfont}{\bfseries} % 字号字体与正文相同故不再设置
@@ -322,18 +352,20 @@
 % 封面
 \RequirePackage{graphicx}
 \renewcommand{\maketitle}{%
-  \cleardoublepage
-  % 虽然规范上要求上下左右页边距为3cm，但实际给出的封面与申明页模板采用的Word默认页边距
-  % 为达到一致的视觉效果，对封面页和申明页使用特别的页边距，并在其他页面重置
-  \newgeometry{
-    vmargin=2.54cm,
-    hmargin=3.18cm,
-  }
-  \thispagestyle{empty} % 取消页码
-  \ifswufe@degree@bachelor%
-    \swufe@make@bachelor@cover%
-  \else%
-    \swufe@make@postgraduate@titlepage%
+  \ifswufe@output@check\else%
+    \cleardoublepage
+    % 虽然规范上要求上下左右页边距为3cm，但实际给出的封面与申明页模板采用的Word默认页边距
+    % 为达到一致的视觉效果，对封面页和申明页使用特别的页边距，并在其他页面重置
+    \newgeometry{
+      vmargin=2.54cm,
+      hmargin=3.18cm,
+    }
+    \thispagestyle{empty} % 取消页码
+    \ifswufe@degree@bachelor%
+      \swufe@make@bachelor@cover%
+    \else%
+      \swufe@make@postgraduate@titlepage%
+    \fi%
   \fi%
 }
 
@@ -443,14 +475,16 @@
 
 % 版权申明
 \newcommand{\statement}{
-  \cleardoublepage
-  \thispagestyle{empty} % 取消页码
-  \ifswufe@degree@bachelor%
-    \swufe@make@bachelor@statement%
-  \else%
-    \swufe@make@postgraduate@statement%
-  \fi%
-  \restoregeometry
+  \ifswufe@output@check\else%
+    \cleardoublepage
+    \thispagestyle{empty} % 取消页码
+    \ifswufe@degree@bachelor%
+      \swufe@make@bachelor@statement%
+    \else%
+      \swufe@make@postgraduate@statement%
+    \fi%
+    \restoregeometry
+  \fi
 }
 
 \newcommand{\swufe@make@bachelor@statement}{
@@ -571,9 +605,13 @@
 \RequirePackage{pdfpages}
 \RequirePackage{filehook} % file hooks已可以由LaTeX core (2020/10/01)原生支持，这个宏包可提供兼容性
 \AtEndDocument{%
-  \cleardoublepage%
-  \null\thispagestyle{empty}\newpage% 封底前面插入空白页保证封底在下
-  \includepdf{backcover.pdf}%
+  \ifswufe@output@check\else%
+    \ifswufe@degree@bachelor%
+      \cleardoublepage%
+      \null\thispagestyle{empty}\newpage% 封底前面插入空白页保证封底在下
+      \includepdf{backcover.pdf}%
+    \fi
+  \fi
 }
 
 \swufe@define@key{

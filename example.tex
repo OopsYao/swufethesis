@@ -1,4 +1,4 @@
-\documentclass[openany]{swufethesis}
+\documentclass{swufethesis}
 
 \usepackage{booktabs}
 \usepackage{hyperref}
@@ -20,6 +20,7 @@
 \maketitle % 封面
 \statement % 版权申明
 
+\frontmatter % \frontmatter重置页码，取消后续章节的编号
 \begin{abstract}{毕业论文, 毕业设计, 西南财经大学}
   摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、
   内容、方法、成果和结论。语言力求精练、准确，摘要字数300字左右。
@@ -39,7 +40,7 @@
 
 \tableofcontents
 
-\mainmatter % \mainmatter会重置页码样式为阿拉伯数字，并使\chapter被编号
+\mainmatter % \mainmatter重置页码，并开始为后续章节编号
 \chapter{毕业论文的撰写规范}
 本科生毕业论文写作是反映学生毕业论文工作成效的重要途经，是考核学生
 掌握和运用所学基础理论、基本知识、基本技能从事科学研究和解决实际问题能
@@ -115,6 +116,7 @@
 \begin{verbatim}
 Some mono font
 \end{verbatim}
+\backmatter % \backmatter标记附录结束，取消后续章节的编号
 \begin{acknowledgments}
   谢辞应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员
   （例如指导教师、答疑教师及其他人员）表示对自己的谢意，这不仅是一种礼
