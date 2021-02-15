@@ -167,6 +167,8 @@
       bottom=3.4cm,
       left=3.45cm,
       right=3.45cm,
+      headsep=20pt,
+      foot=21pt,
     }
   \fi
 }
@@ -310,7 +312,7 @@
 \newenvironment{abstract}[1]{%
   \cleardoublepage
   \pagenumbering{arabic}
-  \swufe@chapter*{摘要}
+  \chapter{摘要}
   \newcommand{\swufe@keywords}{#1}
 }{%
 
@@ -326,7 +328,7 @@
 \newenvironment{abstract*}[1]{%
   \cleardoublepage
   \pagenumbering{arabic}
-  \swufe@chapter*{Abstract}
+  \chapter{Abstract}
   \newcommand{\swufe@keywords@en}{#1}
 }{%
 
@@ -337,17 +339,34 @@
 
 % 致谢
 \newenvironment{acknowledgments}{%
-  \swufe@chapter*{致谢}%
+  \chapter{致谢}
 }{}
 
 % 页码居中
 \RequirePackage{fancyhdr}
-\fancypagestyle{plain}{%
-  \fancyhf{}
-  \fancyfoot[C]{\zihao{-5}\thepage} % 小五号阿拉伯数字
-  \renewcommand{\headrulewidth}{0pt} % 取消页眉横线
+\newcommand{\swufe@set@fancyhf}{%
+  \fancyhf{} % 重置
+  \fancyfoot[C]{\zihao{-5}\thepage}
+  \ifswufe@degree@bachelor
+    \renewcommand{\headrulewidth}{0pt}
+  \else
+    \fancyhead[CO]{\zihao{-5}\leftmark}
+    \fancyhead[CE]{\zihao{-5}\rightmark}
+    \renewcommand{\headrulewidth}{1pt}
+  \fi
+  \fancypagestyle{plain}{} % 使plain应用fancy的样式，每章的第一页会使用plain样式
+  \pagestyle{fancy}
+  \renewcommand\chaptermark[1]{%
+    % 这里\CTEXifname表示标题不被编号时则不显示，见ctex宏包文档
+    \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}{\CTEXifname{\CTEXthechapter\quad}{}##1}
+  }
+  \renewcommand\sectionmark[1]{%
+    \markright{\CTEXthesection\quad ##1}
+  }
 }
-\pagestyle{plain}
+\AtBeginDocument{%
+  \swufe@set@fancyhf
+}
 
 % 封面
 \RequirePackage{graphicx}
