@@ -12,3 +12,6 @@ example.pdf
 *.bcf
 *.blg
 *.run.xml
+
+swufethesis.cls
+swufethesis.pdf
