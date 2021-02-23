@@ -45,8 +45,7 @@ jobs:
       - name: Check format
         run: |
           set -e
-          for f in $(find -name '*.dtx' \
-                          -or -name '*.tex' \
+          for f in $(find -name '*.tex' \
                           -or -name '*.cls' \
                           -or -name '*.bib'); do
             latexindent -l "$f" | diff "$f" -
@@ -84,7 +83,10 @@ jobs:
           tlmgr update --self
           tlmgr install $(cat .github/workflows/texlive-packages | grep '^[^#]')
       - name: Run latexmk
-        run: latexmk example.tex
+        run: |
+          latex swufethesis.ins
+          latexmk example.tex
+          latexmk swufethesis.dtx
 
   windows-texlive:
     name: Windows TeX Live
@@ -122,4 +124,6 @@ jobs:
           tlmgr install $(cat .github\workflows\texlive-packages | Where-Object { $_ -NotMatch '^#' })
       - name: Run latexmk
         shell: powershell
-        run: latexmk example.tex
+        run: |
+          latex swufethesis.ins
+          latexmk example.tex
