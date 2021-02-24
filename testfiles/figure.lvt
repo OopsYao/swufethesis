@@ -1,0 +1,20 @@
+% vim: set ft=latex:
+\input{regression-test.tex}
+\documentclass{swufethesis}
+
+\swufesetup{
+  cjk-font = fandol,
+  font = termes,
+}
+
+\begin{document}
+\START
+\showoutput
+\frontmatter
+\chapter{背景介绍}
+\section{图片}
+\begin{table}[htb]
+  \centering
+  \caption{图片示例}
+\end{table}
+\end{document}

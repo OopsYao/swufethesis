@@ -1,0 +1,30 @@
+% vim: set ft=latex:
+\input{regression-test.tex}
+\documentclass{swufethesis}
+\usepackage{booktabs}
+
+\swufesetup{
+  cjk-font = fandol,
+  font = termes,
+}
+
+\begin{document}
+\START
+\showoutput
+\frontmatter
+\chapter{背景介绍}
+\section{三线表}
+\begin{table}[htb]
+  \caption{表格示例}
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    项目 & 指标  \\
+    \midrule
+    A    & 1.7   \\
+    B    & 1.2   \\
+    C    & -12.6 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{document}

@@ -854,16 +854,9 @@
 }
 
 
-% 一级标题中的华文中宋与封面的华文仿宋属于硬性规定，独立于前面的cjk-font设定
-% 如果找不到相应的字体会fallback至前面cjk-font
 \AtBeginDocument{%
-  \IfFontExistsTF{STZhongsong}{%
-    \setCJKfamilyfont{hwzs}{STZhongsong}%
-  }{\swufe@hwzs@fallback}
-
-  \IfFontExistsTF{STFangsong}{%
-    \setCJKfamilyfont{hwfs}{STFangsong}%
-  }{\swufe@hwfs@fallback}
+  \swufe@hwzs@fallback
+  \swufe@hwfs@fallback
 }
 
 % 英文字体

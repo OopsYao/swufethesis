@@ -1,0 +1,19 @@
+% vim: set ft=latex:
+\input{regression-test.tex}
+\documentclass{swufethesis}
+
+\swufesetup{
+  date = 2021-01-04,
+  degree = master,
+  cjk-font = fandol,
+  font = termes,
+  secret-level = 保密,
+  secret-year = 10,
+}
+
+\begin{document}
+\START
+\showoutput
+\statement
+\END
+\end{document}

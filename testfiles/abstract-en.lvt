@@ -1,0 +1,23 @@
+% vim: set ft=latex:
+\input{regression-test.tex}
+\documentclass{swufethesis}
+
+\swufesetup{
+  cjk-font = fandol,
+  font = termes,
+}
+
+\begin{document}
+\START
+\showoutput
+\frontmatter
+\begin{abstract*}{Dissertation, Graduation project, Swufe}
+  An abstract of a dissertation should reflect the main content in a general way,
+  mainly stating the research objective, content, methodology, results and conclusions
+  of the dissertation. The language should be concise and accurate, and the abstract
+  should be about 250--400 words.
+
+  Keywords are subject entries for indexing. The abstract and keywords should be
+  on the same page. And an abstract generally contains 3--5 keywords.
+\end{abstract*}
+\end{document}

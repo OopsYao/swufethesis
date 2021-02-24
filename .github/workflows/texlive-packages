@@ -6,6 +6,8 @@ latex-bin
 
 # 开发用
 latexmk
+l3build
+tex-gyre
 
 # 依赖
 ctex

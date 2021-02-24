@@ -1,0 +1,562 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+! LaTeX Error: Environment acknowledgements undefined.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...\begin{acknowledgements}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+! LaTeX Error: \begin{document} ended by \end{acknowledgements}.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...\end{acknowledgements}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+Completed box being shipped out [1]
+\vbox(717.4186+3.25217)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -18.78552
+.\vbox(736.20412+3.25217)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+.....\hbox(0.0+0.0)x426.79135
+......\vbox(0.0+0.0)x426.79135
+.......\hbox(0.0+0.0)x426.79135
+........\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+.........\vbox(0.0+0.0)x426.79135
+..........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
+...........\hbox(0.0+0.0)x0.0
+...........\penalty 10000
+...........\glue(\parfillskip) 0.0 plus 1.0fil
+...........\glue(\rightskip) 0.0 plus 1.0fil
+.........\glue 0.0 plus 1.0fil minus 1.0fil
+........\glue 0.0 plus 1.0fill
+........\vbox(0.0+0.0)x426.79135
+.........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
+..........\glue(\leftskip) 0.0 plus 1.0fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fill
+........\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+.........\glue 0.0 plus 1.0fil minus 1.0fil
+.........\vbox(0.0+0.0)x426.79135
+..........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
+...........\glue(\leftskip) 0.0 plus 1.0fil
+...........\hbox(0.0+0.0)x0.0
+...........\penalty 10000
+...........\glue(\parfillskip) 0.0
+...........\glue(\rightskip) 0.0
+.......\rule(0.0+0.0)x426.79135
+.......\glue 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x426.79135, glue set 615.5303fil
+...\write-{}
+...\special{color push gray 0}
+...\write-{}
+...\glue(\topskip) 2.56877
+...\hbox(9.43123+2.31262)x426.79135, glue set 1.06451
+....\hbox(0.0+0.0)x24.09
+....\TU/FandolSong(0)/m/n/12.045 谢
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 辞
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 应
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 以
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 简
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 短
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 的
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 文
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 字
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 对
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 课
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 题
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 研
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 究
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 与
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 论
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 文
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 撰
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 写
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 过
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 程
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 中
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 曾
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 直
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 接
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 给
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 予
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 帮
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 助
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 的
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 人
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 员
+....\glue(\rightskip) 0.0
+...\penalty 150
+...\glue(\baselineskip) 11.45139
+...\hbox(9.636+2.40898)x426.79135, glue set 0.58266
+....\rule(0.0+0.0)x-7.63654
+....\TU/FandolSong(0)/m/n/12.045 （例
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 如
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 指
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 导
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 教
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 师
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 、
+....\rule(0.0+0.0)x-7.85333
+....\glue 7.85333 minus 6.02249
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 答
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 疑
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 教
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 师
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 及
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 其
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 他
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 人
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 员
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 ）
+....\rule(0.0+0.0)x-7.63654
+....\glue 7.63654 minus 6.0225
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 表
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 示
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 对
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 自
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 己
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 的
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 谢
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 意
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 ，
+....\rule(0.0+0.0)x-8.33514
+....\glue 8.33514 minus 6.0225
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 这
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 不
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 仅
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 是
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 一
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 种
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 礼
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 貌
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 ，
+....\rule(0.0+0.0)x-8.33514
+....\glue(\rightskip) 0.0
+...\penalty 150
+...\glue(\baselineskip) 11.5357
+...\hbox(9.45532+2.32468)x426.79135, glue set 53.39641fil
+....\TU/FandolSong(0)/m/n/12.045 也
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 是
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 对
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 他
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 人
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 劳
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 动
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 的
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 尊
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 重
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 ，
+....\rule(0.0+0.0)x-8.33514
+....\glue 8.33514 minus 6.0225
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 是
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 治
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 学
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 者
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 应
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 当
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 遵
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 循
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 的
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 学
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 术
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 规
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 范
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 。
+....\rule(0.0+0.0)x-7.75697
+....\glue 7.75697 minus 6.02249
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 内
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 容
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 限
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 一
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 页
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 。
+....\rule(0.0+0.0)x-7.75697
+....\kern 0.00047
+....\kern -0.00047
+....\kern -0.18753
+....\kern 0.18753
+....\glue 7.75697 minus 6.02249
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue -2.32468
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 15.39163
+..\hbox(14.60837+3.25217)x426.79135
+...\special{color push gray 0}
+...\hbox(14.60837+3.25217)x426.79135
+....\hbox(14.60837+3.25217)x426.79135
+.....\vbox(14.60837+3.25217)x426.79135
+......\rule(0.0+0.0)x426.79135
+......\glue 7.02007
+......\hbox(7.5883+3.25217)x426.79135
+.......\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+........\vbox(0.0+0.0)x426.79135
+.........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0 plus 1.0fil
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fill
+.......\vbox(7.5883+3.25217)x426.79135
+........\hbox(7.5883+3.25217)x426.79135, glue set 211.13724fil
+.........\glue(\leftskip) 0.0 plus 1.0fil
+.........\hbox(0.0+0.0)x0.0
+.........\TU/texgyretermes(0)/m/n/9.03374 1
+.........\kern -0.0002
+.........\kern 0.0002
+.........\rule(7.5883+3.25217)x0.0
+.........\penalty 10000
+.........\glue(\parfillskip) 0.0
+.........\glue(\rightskip) 0.0 plus 1.0fil
+.......\glue 0.0 plus 1.0fill
+.......\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+........\glue 0.0 plus 1.0fil minus 1.0fil
+........\vbox(0.0+0.0)x426.79135
+.........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
+..........\glue(\leftskip) 0.0 plus 1.0fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0
+..........\glue(\rightskip) 0.0
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\special{color pop}
+.\kern -720.67076
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 720.67076
+.\kern 0.0
+Completed box being shipped out [2]
+\vbox(717.4186+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -18.78552
+.\vbox(736.20412+0.0)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x0.0, glue set 662.33032fil
+...\write-{}
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 30.0
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -717.4186
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 717.4186
+.\kern 0.0
+Completed box being shipped out [3]
+\vbox(717.4186+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -18.78552
+.\vbox(736.20412+0.0)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x0.0, glue set 662.33032fil
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 30.0
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -717.4186
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 717.4186
+.\kern 0.0
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+Completed box being shipped out [4]
+\vbox(717.4186+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(845.08034+0.0335)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\hbox(845.11383+0.0)x0.0, glue set - 597.54309fil, shifted 0.0335
+......\kern -0.03522
+......\hbox(845.11383+0.0)x597.57831
+.......\hbox(845.11383+0.0)x597.57831
+........\hbox(0.0+0.0)x0.0, shifted -845.11383
+........\hbox(845.11383+0.0)x597.57831
+.........\hbox(845.11383+0.0)x597.57831
+..........\kern 0.0
+..........\hbox(845.11383+0.0)x597.57831
+...........\special{pdf:btrans rotate 0}
+...........\hbox(845.11383+0.0)x597.57831
+............\hbox(845.11383+0.0)x597.57831
+.............\hbox(845.11383+0.0)x597.57831
+..............\kern 0.0
+..............\hbox(845.11383+0.0)x597.57831
+...............\special{pdf:btrans rotate 0}
+...............\hbox(845.11383+0.0)x597.57831
+................\hbox(845.11383+0.0)x597.57831
+.................\hbox(845.11383+0.0)x597.57831
+..................\hbox(845.11383+0.0)x0.0
+...................\special{pdf:btrans}
+...................\special{x:scale 1 1}
+...................\hbox(845.11383+0.0)x0.0, glue set - 597.57831fil
+....................\hbox(845.11383+0.0)x597.57831
+.....................\hbox(845.11383+0.0)x597.57831
+......................\hbox(845.11589+0.0)x597.57977
+.......................\hbox(845.11589+0.0)x597.57977
+........................\hbox(845.11589+0.0)x0.0
+.........................\special{pdf:btrans}
+.........................\special{x:scale 1.00005 1.00005}
+.........................\hbox(845.07721+0.0)x0.0, glue set - 597.55243fil
+..........................\hbox(845.07721+0.0)x597.55243
+...........................\XeTeXpdffile "./backcover.pdf"
+..........................\glue 0.0 plus 1.0fil minus 1.0fil
+.........................\special{pdf:etrans}
+........................\kern 597.57977
+........................\glue 0.0 plus 1.0fil minus 1.0fil
+....................\glue 0.0 plus 1.0fil minus 1.0fil
+...................\special{pdf:etrans}
+..................\kern 597.57831
+..................\glue 0.0 plus 1.0fil minus 1.0fil
+...............\special{pdf:etrans}
+...........\special{pdf:etrans}
+......\glue 0.0 plus 1.0fil minus 1.0fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -18.78552
+.\vbox(736.20412+0.0)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x426.79135, glue set 662.33032fil
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x426.79135, glue set 402.70135fil
+....\hbox(0.0+0.0)x24.09
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 30.0
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -717.4186
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 717.4186
+.\kern 0.0
+(acknowledgements.aux)
+LaTeX Warning: There were undefined references.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                acknowledgements
+(biblatex)                and rerun LaTeX afterwards.
+Package logreq Info: Writing requests to 'acknowledgements.run.xml'.
