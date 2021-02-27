@@ -1,0 +1,54 @@
+% vim: set ft=tex:
+\input{regression-test}
+\documentclass{swufethesis}
+
+\swufesetup{
+  cjk-font=fandol,
+  font=termes,
+  date = 2021-01-04,
+  title = 西南财经大学学位论文\LaTeX 模板示例文档,
+  author = 韭菜盒子想毕业,
+  school = 经济信息工程学院,
+  discipline = 计算机科学与技术（金融信息化方向）,
+  student-id = 41799999,
+  supervisor = XX教授,
+  degree = bachelor,
+}
+
+\begin{document}
+\START
+\loggingoutput
+\maketitle % 封面
+\statement % 版权申明
+
+\frontmatter % \frontmatter重置页码，取消后续章节的编号
+\begin{abstract}{毕业论文, 毕业设计, 西南财经大学}
+  摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、
+  内容、方法、成果和结论。语言力求精练、准确，摘要字数300字左右。
+
+  关键词是供检索用的主题词条。摘要与关键词应在同一页。关键词一般3--5个。
+\end{abstract}
+
+\begin{abstract*}{Dissertation, Graduation project, Swufe}
+  An abstract of a dissertation should reflect the main content in a general way,
+  mainly stating the research objective, content, methodology, results and conclusions
+  of the dissertation. The language should be concise and accurate, and the abstract
+  should be about 250--400 words.
+
+  Keywords are subject entries for indexing. The abstract and keywords should be
+  on the same page. And an abstract generally contains 3--5 keywords.
+\end{abstract*}
+
+\tableofcontents
+
+\mainmatter
+\chapter{背景介绍}
+摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、
+内容、方法、成果和结论。语言力求精练、准确，摘要字数300字左右。
+\backmatter
+\begin{acknowledgments}
+一些感谢的话。
+\end{acknowledgments}
+\clearpage
+\END
+\end{document}

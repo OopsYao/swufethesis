@@ -15,3 +15,6 @@ example.pdf
 
 swufethesis.cls
 swufethesis.pdf
+
+#l3build
+build/

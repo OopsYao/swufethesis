@@ -428,7 +428,7 @@
 % \subsection{页眉页脚}
 %    \begin{macrocode}
 \newcommand{\swufe@set@fancyhf}{%
-  \fancyhf{} % 重置
+  \pagestyle{fancy}
   \fancyfoot[C]{\zihao{-5}\thepage}
   \ifswufe@degree@bachelor
     \renewcommand{\headrulewidth}{0pt}
@@ -438,7 +438,6 @@
     \renewcommand{\headrulewidth}{1pt}
   \fi
   \fancypagestyle{plain}{} % 使plain应用fancy的样式，每章的第一页会使用plain样式
-  \pagestyle{fancy}
   \renewcommand\chaptermark[1]{%
     % 这里\CTEXifname表示标题不被编号时则不显示，见ctex宏包文档
     \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}{\CTEXifname{\CTEXthechapter\quad}{}##1}
@@ -919,18 +918,20 @@
   \ifswufe@system@mac%
     \IfFontExistsTF{Kaiti SC}{%
       \swufesetup{ cjk-font = mac }%
-      \swufe@@font@settedtrue
+      \swufe@set@cjk@font@mac
     }{}%
   \fi
   \ifswufe@system@windows%
     \IfFontExistsTF{KaiTi}{%
       \swufesetup{ cjk-font = windows }%
+      \swufe@set@cjk@font@windows
     }{}%
   \fi
   \ifswufe@system@unix%
     \IfFontExistsTF{Noto Serif CJK SC}{%
       \IfFontExistsTF{Noto Sans CJK SC}{%
         \swufesetup{ cjk-font = noto }%
+        \swufe@set@cjk@font@noto
       }{}%
     }{}%
   \fi
@@ -940,9 +941,10 @@
 % 以上方案均未设置，采用fandol方案
 %    \begin{macrocode}
     \swufesetup{ cjk-font = fandol }%
+    \swufe@set@cjk@font@fandol
   \fi
 }
-\swufe@option@hook{cjk-font}{%
+\AtEndPreamble{%
   \@nameuse{swufe@set@cjk@font@\@nameuse{swufe@cjk@font}}%
   \ifswufe@cjk@font@none\else%
     \providecommand{\heiti}{\CJKfamily{zhhei}}
@@ -956,13 +958,8 @@
 % 如果找不到相应的字体会fallback至前面cjk-font
 %    \begin{macrocode}
 \AtBeginDocument{%
-  \IfFontExistsTF{STZhongsong}{%
-    \setCJKfamilyfont{hwzs}{STZhongsong}%
-  }{\swufe@hwzs@fallback}
-
-  \IfFontExistsTF{STFangsong}{%
-    \setCJKfamilyfont{hwfs}{STFangsong}%
-  }{\swufe@hwfs@fallback}
+  \swufe@hwzs@fallback
+  \swufe@hwfs@fallback
 }
 %    \end{macrocode}
 % \subsubsection{英文字体}
