@@ -1,0 +1,11 @@
+# Netlify部署的配置文件
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+[build]
+  publish = "lambda/dist/"
+  functions = "lambda/"
+[[redirects]]
+  # 将所有的请求重定向到Netlify functions
+  from = "/*"
+  to = "/.netlify/functions/:splat"
+  status = 200 # 200将不会改写URL
+

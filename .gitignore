@@ -20,3 +20,6 @@ swufedoc.pdf
 #l3build
 build/
 *.zip
+
+# Local Netlify folder
+.netlify
