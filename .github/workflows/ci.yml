@@ -4,6 +4,7 @@ on:
     branches: main
   pull_request:
     branches: main
+
 jobs:
   lint:
     name: Lint
@@ -51,12 +52,24 @@ jobs:
             latexindent -l "$f" | diff "$f" -
           done
 
-  linux-texlive:
-    name: Linux TeX Live
-    runs-on: ubuntu-18.04
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    env:
-      cache-version: v20210104
+  # CTAN没有一个提供像npm那样的依赖管理机制，
+  # 个人觉得这样宽松的依赖下进行l3build严格的对比机制不是太合理的
+  # 也许前一天能通过的测试，第二天由于依赖的包更新就无法通过了
+  # 开发环境的包的版本与CI上的很难一致
+  # 也许需要把环境做成容器固定下来，这样CI与开发就能一致
+  test:
+    name: Test
+    strategy:
+      fail-fast: false
+      matrix:
+        cache-version: [v20210301.3]
+        os:
+          - ubuntu-18.04
+          - macos-10.15
+          # Windows上生成的tlg与linux、macos平台下总是有细微区别
+          # 暂时没找到办法，决定不测了
+          # - windows-2019
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -64,66 +77,26 @@ jobs:
         id: cache
         uses: actions/cache@v2.1.4
         with:
-          path: /tmp/texlive
-          key: ${{ env.cache-version }}-${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
+          path: tl
+          key: tl-${{ runner.os }}-${{ hashFiles('ci/texlive-packages') }}-${{ matrix.cache-version }}
       - name: Set up PATH
-        run: echo "/tmp/texlive/bin/x86_64-linux" >> $GITHUB_PATH
-      - name: Download install-tl.zip
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+            echo "${{ github.workspace }}/tl/bin/x86_64-linux" >> $GITHUB_PATH
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+            echo "${{ github.workspace }}/tl/bin/x86_64-darwin" >> $GITHUB_PATH
+          else
+            echo "${{ github.workspace }}\tl\bin\win32" >> $GITHUB_PATH
+          fi
+      - name: Install TeX Live
         if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          curl -s -O -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
-          unzip -q install-tl.zip
-          mv install-tl-2* install-tl-dir
-      - name: Run install-tl
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: install-tl-dir/install-tl --profile .github/workflows/texlive-linux.profile
-      - name: Run tlmgr install
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          tlmgr update --self
-          tlmgr install $(cat .github/workflows/texlive-packages | grep '^[^#]')
-      - name: Run latexmk
-        run: |
-          latex swufethesis.ins
-          latexmk example.tex
-          latexmk swufethesis.dtx
-
-  windows-texlive:
-    name: Windows TeX Live
-    runs-on: windows-2019
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    env:
-      cache-version: v20210205.1
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-      - name: Set up PATH
-        run: |
-          echo "C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "D:\texlive\bin\win32" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-      - name: Cache TeX Live
-        id: cache
-        uses: actions/cache@v2.1.4
-        with:
-          path: D:\texlive
-          key: ${{ env.cache-version }}-${{ runner.os }}-texlive-${{ hashFiles('.github/workflows/texlive-packages') }}
-      - name: Download install-tl.zip
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          curl -sOL http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
-          unzip -q install-tl.zip
-          mv install-tl-2* install-tl-dir
-      - name: Run install-tl-windows.bat
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: install-tl-dir\install-tl-windows.bat --profile .github\workflows\texlive-windows.profile
-        shell: cmd
-      - name: Run tlmgr install
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          tlmgr update --self
-          tlmgr install $(cat .github\workflows\texlive-packages | Where-Object { $_ -NotMatch '^#' })
-      - name: Run latexmk
-        shell: powershell
-        run: |
-          latex swufethesis.ins
-          latexmk example.tex
+        shell: bash
+        run: source ci/texlive-install.sh "${{ github.workspace }}/tl"
+      - name: l3build
+        shell: bash
+        run: l3build check -q
+      - name: Check failure
+        if: ${{ failure() }}
+        shell: bash
+        run: cat build/test/*.diff || cat build/test/*.fc
