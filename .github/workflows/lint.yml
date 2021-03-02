@@ -1,0 +1,31 @@
+name: Lint
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  lint:
+    name: Lint code
+    runs-on: ubuntu-18.04
+    env:
+      cache-version: v20210203.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Cache
+        id: cache
+        uses: actions/cache@v2.1.4
+        with:
+          path: |
+            latexindent
+            /opt/hostedtoolcache/perl
+          key: lint-${{ runner.os }}-${{ env.cache-version }}
+      - name: Install latexindent
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: source ci/latexindent-install.sh
+      - name: Setup Perl environment (for cpanm)
+        uses: shogo82148/actions-setup-perl@v1.10.0
+      - name: Install Perl dependencies
+        run: source ci/latexindent-deps-install.sh
+      - name: Check format
+        run: source ci/latexindent.sh
