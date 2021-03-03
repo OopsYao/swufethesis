@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cache-version: [v20210301.3]
+        cache-version: [v20210303.1]
         os:
           - ubuntu-18.04
           - macos-10.15
@@ -31,22 +31,15 @@ jobs:
         id: cache
         uses: actions/cache@v2.1.4
         with:
-          path: tl
+          path: .ci-dock
           key: tl-${{ runner.os }}-${{ hashFiles('ci/texlive-packages') }}-${{ matrix.cache-version }}
       - name: Set up PATH
         shell: bash
-        run: |
-          if [ "$RUNNER_OS" == "Linux" ]; then
-            echo "${{ github.workspace }}/tl/bin/x86_64-linux" >> $GITHUB_PATH
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-            echo "${{ github.workspace }}/tl/bin/x86_64-darwin" >> $GITHUB_PATH
-          else
-            echo "${{ github.workspace }}\tl\bin\win32" >> $GITHUB_PATH
-          fi
+        run: source ci/texlive-path.sh >> $GITHUB_PATH
       - name: Install TeX Live
         if: steps.cache.outputs.cache-hit != 'true'
         shell: bash
-        run: source ci/texlive-install.sh "${{ github.workspace }}/tl"
+        run: source ci/texlive-install.sh
       - name: l3build
         shell: bash
         run: l3build check -q
