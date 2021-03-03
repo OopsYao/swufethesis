@@ -2,4 +2,4 @@
 
 set -ev
 
-echo Y | latexindent/latexindent-module-installer.pl
+echo Y | .ci-dock/indent/latexindent-module-installer.pl

@@ -8,7 +8,7 @@ jobs:
     name: Lint code
     runs-on: ubuntu-18.04
     env:
-      cache-version: v20210203.1
+      cache-version: v20210303.1
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache@v2.1.4
         with:
           path: |
-            latexindent
+            .ci-dock
             /opt/hostedtoolcache/perl
           key: lint-${{ runner.os }}-${{ env.cache-version }}
       - name: Install latexindent
