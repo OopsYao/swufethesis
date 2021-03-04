@@ -1,0 +1,31 @@
+% vim: set ft=tex:
+\input{regression-test}
+\documentclass{swufethesis}
+
+\swufesetup{
+  cjk-font = fandol,
+  font = termes,
+  degree = master,
+  degree-type = equivalent,
+  date = 2021-01-04,
+  title = 西南财经大学学位论文\LaTeX 模板示例文档,
+  title* = \LaTeX\ Thesis Template for Southwestern University of Finance and Economics,
+  author = 韭菜盒子想毕业,
+  school = 经济信息工程学院,
+  discipline = 计算机科学与技术（金融信息化方向）,
+  supervisor = XX教授,
+  udc = 004.02,
+  clc = TP301.6,
+  secret-level = 保密,
+  secret-year = 10,
+}
+
+\begin{document}
+\START
+\loggingoutput
+\TEST{Titlepage Master}{
+  \maketitle
+  \clearpage
+}
+\END
+\end{document}
