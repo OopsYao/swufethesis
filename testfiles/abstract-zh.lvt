@@ -1,0 +1,24 @@
+% vim: set ft=tex:
+\input{regression-test}
+\documentclass{swufethesis}
+
+\swufesetup{
+  font = termes,
+  cjk-font = fandol,
+}
+
+\begin{document}
+\START
+\loggingoutput
+\TEST{Abstract ZH}{
+  \frontmatter
+  \begin{abstract}{毕业论文, 毕业设计, 西南财经大学}
+    摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、
+    内容、方法、成果和结论。语言力求精练、准确，摘要字数300字左右。
+
+    关键词是供检索用的主题词条。摘要与关键词应在同一页。关键词一般3--5个。
+  \end{abstract}
+  \clearpage
+}
+\END
+\end{document}

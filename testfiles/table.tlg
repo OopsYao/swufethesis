@@ -1,0 +1,394 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Table
+============================================================
+Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
+(fontspec)                Script "CJK".
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
+(fontspec)             with options
+(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+Completed box being shipped out [1]
+\vbox(717.4186+3.25217)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -30.78552
+.\vbox(748.20412+3.25217)x426.79135, shifted 13.08827
+..\vbox(24.0+0.0)x426.79135, glue set 24.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+.....\hbox(0.0+0.0)x426.79135
+......\vbox(0.0+0.0)x426.79135
+.......\hbox(0.0+0.0)x426.79135
+........\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+.........\vbox(0.0+0.0)x426.79135
+..........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
+...........\hbox(0.0+0.0)x0.0
+...........\penalty 10000
+...........\glue(\parfillskip) 0.0 plus 1.0fil
+...........\glue(\rightskip) 0.0 plus 1.0fil
+.........\glue 0.0 plus 1.0fil minus 1.0fil
+........\glue 0.0 plus 1.0fill
+........\vbox(0.0+0.0)x426.79135
+.........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
+..........\glue(\leftskip) 0.0 plus 1.0fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fill
+........\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+.........\glue 0.0 plus 1.0fil minus 1.0fil
+.........\vbox(0.0+0.0)x426.79135
+..........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
+...........\glue(\leftskip) 0.0 plus 1.0fil
+...........\hbox(0.0+0.0)x0.0
+...........\penalty 10000
+...........\glue(\parfillskip) 0.0
+...........\glue(\rightskip) 0.0
+.......\glue 0.0
+.......\rule(0.0+0.0)x426.79135
+.......\glue 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x426.79135, glue set 633.22911fil
+...\write-{}
+...\special{color push gray 0}
+...\write-{}
+...\glue(\topskip) 0.0
+...\vbox(27.10121+0.0)x426.79135
+....\special{color push gray 0}
+....\vbox(27.10121+0.0)x426.79135
+.....\write1{\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\ETC.}
+.....\special{color push gray 0}
+.....\glue 7.22699
+.....\glue(\parskip) 0.0
+.....\hbox(8.85303+3.7942)x426.79135
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\vbox(8.85303+3.7942)x426.79135
+.......\hbox(8.85303+3.7942)x426.79135, glue set 172.6979fil
+........\glue(\leftskip) 0.0 plus 1.0fil
+........\hbox(0.0+0.0)x0.0
+........\TU/FandolHei(0)/b/n/10.53937 表
+........\kern -0.00017
+........\kern 0.00017
+........\penalty 10000
+........\glue 2.92995 plus 1.46497 minus 0.97664
+........\TU/texgyreheros(0)/b/n/10.53937 0-1
+........\kern -0.0002
+........\kern 0.0002
+........\glue 10.53937
+........\rule(8.85303+*)x0.0
+........\penalty 10000
+........\glue 0.0
+........\TU/FandolHei(0)/b/n/10.53937 表
+........\glue 0.0 plus 0.41463
+........\TU/FandolHei(0)/b/n/10.53937 格
+........\glue 0.0 plus 0.41463
+........\TU/FandolHei(0)/b/n/10.53937 示
+........\glue 0.0 plus 0.41463
+........\TU/FandolHei(0)/b/n/10.53937 例
+........\kern -0.00017
+........\kern 0.00017
+........\penalty 10000
+........\rule(0.0+3.7942)x0.0
+........\penalty 10000
+........\glue(\parfillskip) 0.0
+........\glue(\rightskip) 0.0 plus 1.0fil
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\glue 7.22699
+.....\rule(0.0+0.0)x*
+.....\special{color pop}
+.....\glue 0.0
+....\special{color pop}
+...\penalty 0
+...\glue 14.0 plus 4.0 minus 4.0
+...\glue 0.0 plus -1.0
+...\penalty 10000
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 15.39163
+..\hbox(14.60837+3.25217)x426.79135
+...\special{color push gray 0}
+...\hbox(14.60837+3.25217)x426.79135
+....\hbox(14.60837+3.25217)x426.79135
+.....\vbox(14.60837+3.25217)x426.79135
+......\rule(0.0+0.0)x426.79135
+......\glue 7.02007
+......\hbox(7.5883+3.25217)x426.79135
+.......\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+........\vbox(0.0+0.0)x426.79135
+.........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0 plus 1.0fil
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fill
+.......\vbox(7.5883+3.25217)x426.79135
+........\hbox(7.5883+3.25217)x426.79135, glue set 211.13724fil
+.........\glue(\leftskip) 0.0 plus 1.0fil
+.........\hbox(0.0+0.0)x0.0
+.........\TU/texgyretermes(0)/m/n/9.03374 1
+.........\kern -0.0002
+.........\kern 0.0002
+.........\rule(7.5883+3.25217)x0.0
+.........\penalty 10000
+.........\glue(\parfillskip) 0.0
+.........\glue(\rightskip) 0.0 plus 1.0fil
+.......\glue 0.0 plus 1.0fill
+.......\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
+........\glue 0.0 plus 1.0fil minus 1.0fil
+........\vbox(0.0+0.0)x426.79135
+.........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
+..........\glue(\leftskip) 0.0 plus 1.0fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0
+..........\glue(\rightskip) 0.0
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\special{color pop}
+.\kern -720.67076
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 720.67076
+.\kern 0.0
+============================================================
+Completed box being shipped out [2]
+\vbox(717.4186+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -30.78552
+.\vbox(748.20412+0.0)x426.79135, shifted 13.08827
+..\vbox(24.0+0.0)x426.79135, glue set 24.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x0.0, glue set 662.33032fil
+...\write-{}
+...\write-{}
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 30.0
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -717.4186
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 717.4186
+.\kern 0.0
+Completed box being shipped out [3]
+\vbox(717.4186+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -30.78552
+.\vbox(748.20412+0.0)x426.79135, shifted 13.08827
+..\vbox(24.0+0.0)x426.79135, glue set 24.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x0.0, glue set 662.33032fil
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 30.0
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -717.4186
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 717.4186
+.\kern 0.0
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+File: backcover.pdf Graphic file (type pdf)
+<use backcover.pdf, page 1>
+Completed box being shipped out [4]
+\vbox(717.4186+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(845.08034+0.0335)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\hbox(845.11383+0.0)x0.0, glue set - 597.54309fil, shifted 0.0335
+......\kern -0.03522
+......\hbox(845.11383+0.0)x597.57831
+.......\hbox(845.11383+0.0)x597.57831
+........\hbox(0.0+0.0)x0.0, shifted -845.11383
+........\hbox(845.11383+0.0)x597.57831
+.........\hbox(845.11383+0.0)x597.57831
+..........\kern 0.0
+..........\hbox(845.11383+0.0)x597.57831
+...........\special{pdf:btrans rotate 0}
+...........\hbox(845.11383+0.0)x597.57831
+............\hbox(845.11383+0.0)x597.57831
+.............\hbox(845.11383+0.0)x597.57831
+..............\kern 0.0
+..............\hbox(845.11383+0.0)x597.57831
+...............\special{pdf:btrans rotate 0}
+...............\hbox(845.11383+0.0)x597.57831
+................\hbox(845.11383+0.0)x597.57831
+.................\hbox(845.11383+0.0)x597.57831
+..................\hbox(845.11383+0.0)x0.0
+...................\special{pdf:btrans}
+...................\special{x:scale 1 1}
+...................\hbox(845.11383+0.0)x0.0, glue set - 597.57831fil
+....................\hbox(845.11383+0.0)x597.57831
+.....................\hbox(845.11383+0.0)x597.57831
+......................\hbox(845.11589+0.0)x597.57977
+.......................\hbox(845.11589+0.0)x597.57977
+........................\hbox(845.11589+0.0)x0.0
+.........................\special{pdf:btrans}
+.........................\special{x:scale 1.00005 1.00005}
+.........................\hbox(845.07721+0.0)x0.0, glue set - 597.55243fil
+..........................\hbox(845.07721+0.0)x597.55243
+...........................\XeTeXpdffile "./backcover.pdf"
+..........................\glue 0.0 plus 1.0fil minus 1.0fil
+.........................\special{pdf:etrans}
+........................\kern 597.57977
+........................\glue 0.0 plus 1.0fil minus 1.0fil
+....................\glue 0.0 plus 1.0fil minus 1.0fil
+...................\special{pdf:etrans}
+..................\kern 597.57831
+..................\glue 0.0 plus 1.0fil minus 1.0fil
+...............\special{pdf:etrans}
+...........\special{pdf:etrans}
+......\glue 0.0 plus 1.0fil minus 1.0fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -30.78552
+.\vbox(748.20412+0.0)x426.79135, shifted 13.08827
+..\vbox(24.0+0.0)x426.79135, glue set 24.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 19.8738
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x426.79135, glue set 662.33032fil
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x426.79135, glue set 402.70135fil
+....\hbox(0.0+0.0)x24.09
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+..\glue(\baselineskip) 30.0
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -717.4186
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 717.4186
+.\kern 0.0
+(table.aux)
+LaTeX Warning: There were undefined references.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                table
+(biblatex)                and rerun LaTeX afterwards.
+Package logreq Info: Writing requests to 'table.run.xml'.

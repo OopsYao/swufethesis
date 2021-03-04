@@ -8,5 +8,3 @@ stdengine = "xetex"
 
 -- 生成doc所用程序
 typesetexe = "xelatex"
-
-checkruns = 2
