@@ -1,0 +1,106 @@
+% \iffalse
+%<*driver>
+\ProvidesFile{swufedoc.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesClass{swufedoc}
+[2020/02/22 1.0.0-alpha.1 SwufeThesis Doc Template]
+%
+%<*driver>
+\documentclass{swufedoc}
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+% \title{swufedoc}
+% \maketitle
+% \begin{abstract}
+%   \cls{swufedoc}是\pkg{swufethesis}撰写文档时内部使用的文档类。
+% \end{abstract}
+% \tableofcontents
+% \section{简介}
+% \cls{swufedoc}用于\pkg{swufethesis}文档编写，主要进行了一些格式上的设定。
+% \DescribeMacro{\SwufeThesis}
+% 同时提供有宏\cs{SwufeThesis}可以打印这个项目的标识\SwufeThesis{}。
+% \section{实现细节}
+% \subsection{装载类与宏包}
+% \cls{swufedoc}基于\textsf{l3doc}文档类，
+% 目前的问题是\env{macrocode}环境中的中文字体不遵循\cs{setCJKmonofont}的设定。
+% 现在只能尽量减少\env{macrocode}中的中文注释。
+% 如果使用\cls{ltxdoc}文档类，甚至连\env{verbatim}环境也会出现上面的问题。
+%
+% 值得一提的是随\pkg{ctex}宏集一起发行的\cls{ctxdoc}文档类，
+% 该类中\env{macrocode}环境的中文字体设定表现正常，但是并没有正式文档（或许是旨在
+% 对内使用？），从而也不方便进行更进一步的定制。
+% \footnote{事实上\cls{l3doc}也是实验性的，也没有正式发布文档，但提供了 |dtx|文档可供编译。}
+%    \begin{macrocode}
+\LoadClass{l3doc}
+\RequirePackage[fontset=none]{ctex}
+\RequirePackage{fontspec}
+%    \end{macrocode}
+% \subsection{文档信息相关}
+% 提供一些关于描述\SwufeThesis{}本身的命令。
+% \begin{macro}{\SwufeThesis}
+% \cs{SwufeThesis}会打印“\SwufeThesis”，可以作为本项目的标识。
+%    \begin{macrocode}
+\def\SwufeThesis{\textsc{Swufe\-Thesis}}
+%    \end{macrocode}
+% \end{macro}
+% \subsection{字体设定}
+% 中文使用思源字体系列，西文使用\TeX\ Gyre系列中的Pagella和Heros。
+% 如果没有安装思源字体，则会使用\pkg{fandol}字体代替。
+%    \begin{macrocode}
+\newcommand{\swufe@set@font@pagella}{%
+  \setmainfont{texgyrepagella}[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setsansfont{texgyreheros}[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setmonofont{inconsolata}
+}
+\newcommand{\swufe@set@cjk@noto}{
+  \setCJKmainfont{Noto Serif CJK SC}[
+    UprightFont = * Light,
+    BoldFont = * Bold,
+    ItalicFont = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
+  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont = * Medium,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}%
+}
+\newcommand{\swufe@set@cjk@fandol}{%
+  \setCJKmainfont{FandolSong}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = FandolKai-Regular,
+  ]%
+  \setCJKsansfont{FandolHei}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+  ]%
+  \setCJKmonofont{FandolFang}[
+    Extension = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+\swufe@set@font@pagella
+\IfFontExistsTF{Noto Serif CJK SC}{%
+  \IfFontExistsTF{Noto Sans CJK SC}{%
+    \swufe@set@cjk@noto
+  }{\swufe@set@cjk@fandol}%
+}{\swufe@set@cjk@fandol}%
+%    \end{macrocode}
