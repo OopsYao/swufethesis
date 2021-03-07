@@ -13,7 +13,7 @@
 \end{document}
 %</driver>
 % \fi
-% \title{swufedoc}
+% \title{\cls{swufedoc}文档类}
 % \maketitle
 % \begin{abstract}
 %   \cls{swufedoc}是\pkg{swufethesis}撰写文档时内部使用的文档类。
@@ -23,6 +23,33 @@
 % \cls{swufedoc}用于\pkg{swufethesis}文档编写，主要进行了一些格式上的设定。
 % \DescribeMacro{\SwufeThesis}
 % 同时提供有宏\cs{SwufeThesis}可以打印这个项目的标识\SwufeThesis{}。
+% \subsection{颜色}
+% \cls{swufedoc}提供了如\autoref{tab:colors}所示的一些颜色。
+% \newcommand\colorentry[2]{%
+%   |#1| & \color{#1}|#2| \\
+% }
+% \begin{table}[htb]
+% \centering
+% \begin{tabular}{cc}
+%   \toprule
+%   颜色名 & 代码 \\
+%   \midrule
+%   \colorentry{swufe0}{0080FF}
+%   \colorentry{swufe1}{71A9F7}
+%   \colorentry{swufe2}{0582CA}
+%   \colorentry{swufe3}{83BE6C}
+%   \colorentry{swufe4}{C8CED9}
+%   \colorentry{swufe5}{FAFAFD}
+% \bottomrule
+% \end{tabular}
+% \caption{提供的颜色}
+% \label{tab:colors}
+% \end{table}
+%
+% \subsection{代码环境}
+% \DescribeEnv{shell}
+% \DescribeEnv{latex}
+% 提供了\env{shell}与\env{latex}分别作为Shell和\LaTeX{}的代码环境。
 % \section{实现细节}
 % \subsection{装载类与宏包}
 % \cls{swufedoc}基于\textsf{l3doc}文档类，
@@ -37,7 +64,15 @@
 %    \begin{macrocode}
 \LoadClass{l3doc}
 \RequirePackage[fontset=none]{ctex}
-\RequirePackage{fontspec}
+\RequirePackage{
+  fontspec,
+  listings,
+  xcolor,
+  hyperref,
+  booktabs,
+  caption,
+  etoolbox,
+}
 %    \end{macrocode}
 % \subsection{文档信息相关}
 % 提供一些关于描述\SwufeThesis{}本身的命令。
@@ -103,4 +138,80 @@
     \swufe@set@cjk@noto
   }{\swufe@set@cjk@fandol}%
 }{\swufe@set@cjk@fandol}%
+%    \end{macrocode}
+% \subsection{颜色设定}
+% 设定有主题色西财蓝，并增加了其他的看上去比较协调的颜色。
+%    \begin{macrocode}
+\definecolor{swufe0}{HTML}{0080FF}
+\definecolor{swufe1}{HTML}{71A9F7}
+\definecolor{swufe2}{HTML}{0582CA}
+\definecolor{swufe3}{HTML}{83BE6C}
+\definecolor{swufe4}{HTML}{C8CED9}
+\definecolor{swufe5}{HTML}{FAFAFD}
+\colorlet{SwufeBlue}{swufe0}
+%    \end{macrocode}
+% \subsection{代码环境}
+% 通过\pkg{listings}定义一些代码环境\env{latex}、\env{shell}。
+%    \begin{macrocode}
+\lstdefinestyle{lstStyleBase}{%
+  basicstyle=\small\ttfamily,
+  linewidth=\linewidth,
+  gobble=2,
+  tabsize=2,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakindent=0pt,
+  columns=flexible,
+  frame=l,
+  framerule=1pt,
+  rulesep=1pt,
+  backgroundcolor=\color{swufe5},
+  stringstyle=\color{swufe3},
+  keywordstyle=\bfseries\color{swufe1},
+  commentstyle=\slshape\color{swufe4},
+  rulecolor=\color{swufe0},
+}
+%    \end{macrocode}
+% \begin{environment}{latex}
+% \env{latex}环境。
+%    \begin{macrocode}
+\lstnewenvironment{latex}{\lstset{style=lstStyleBase, language=[LaTeX]TeX}}{}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{shell}
+% \env{shell}环境。
+%    \begin{macrocode}
+\lstnewenvironment{shell}{\lstset{style=lstStyleBase, language=bash}}{}
+%    \end{macrocode}
+% \end{environment}
+% \subsection{超链接样式}
+% 通过\pkg{hyperref}进行一些超链接的设定，包括文档内部跳转的链接、
+% 外部的URL。
+%    \begin{macrocode}
+\hypersetup{
+  linkcolor = swufe2,
+  urlcolor = swufe1,
+}
+%    \end{macrocode}
+%
+% \subsection{图表设定}
+% 小号的图表字体，无衬线的图表标题。表格字体是通过修改\env{tabular}
+% 环境实现的，所以其他地方若以\env{tabular}作其他用途时需要注意。
+%    \begin{macrocode}
+\AtBeginEnvironment{tabular}{\small}
+\captionsetup{
+  font = {sf, small},
+  labelfont = {bf},
+}
+%    \end{macrocode}
+%
+% \subsection{交叉引用}
+% 利用\pkg{hyperref}提供的\cs{autoref}进行交叉引用，这里进行一些
+% 相应的汉化。但是\cs{autoref}并不支持同时引用多条，或许可以考虑
+% \pkg{cleveref}等宏包。
+%    \begin{macrocode}
+\renewcommand{\tableautorefname}{表}
+\renewcommand{\figureautorefname}{图}
+\renewcommand{\equationautorefname}{式}
 %    \end{macrocode}

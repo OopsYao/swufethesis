@@ -1,7 +1,7 @@
 %^^A 由于User Manual的内容较多，将其与swufethesis.dtx分离
 %^^A 由于这个文件实际上是被以`\DocInput`的方式引入，所以其注释格式遵循dtx
 \GetFileInfo{swufethesis.dtx}
-\title{\SwufeThesis{}：西南财经大学学位论文模板\thanks{对应
+\title{\color{SwufeBlue}\SwufeThesis{}：西南财经大学学位论文模板\thanks{对应
     版本\fileversion，发布日期~\filedate。}}
 \date{}
 \maketitle
@@ -29,12 +29,12 @@ of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
 \cs{swufesetup}命令是最主要的控制文档选项的方式，按如下键值对的方式使用。
 每个键值中由半角等号（|=|）分隔键值，同时用半角逗号（|,|）分隔不同的键值对。
 但注意到\cs{swufesetup}命令中不要包含空行。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     key1 = value1,
     key2 = {a value, with comma}
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{输出格式}
 \DescribeOption{output}
@@ -42,128 +42,128 @@ of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
 打印版会输出封面、承诺页、封底等页面，且保证章节页面都是右开的，从而
 会产生一些必要的对打印友好的空白页；
 检测版将去除封面、承诺页和封底。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     output = print
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{学位}
 \DescribeOption{degree}
 设置论文的学位，可选值有 |bachelor|、|master|、|doctor|，分别对应学士、硕士和博士
 学位论文，默认为 |bachelor|。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     degree = bachelor
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{学位类型}
 \DescribeOption{degree-type}
 研究生学位类型，可选值有 |academic|、|professional|、|equivalent|，分别对应学术型、
 专业型和同等学力学位，默认为 |academic|。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     degree-type = academic
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{标题}
 \DescribeOption{title}
 \DescribeOption{title*}
 中英文标题，本科生只需设置中文标题 |title|即可。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     title = 中文标题,
     title* = English
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{专业}
 \DescribeOption{discipline}
 设置本科生封面专业和研究生学科专业字段。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     discipline = 计算机科学与技术（金融信息化方向）,
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{学号}
 \DescribeOption{student-id}
 对于同等学力研究生论文此项不生效。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     student-id = 41799999
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{作者姓名}
 \DescribeOption{author}
 姓名。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     author = 我能写完的
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{指导老师}
 \DescribeOption{supervisor}
 指导老师。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     supervisor = XX教授
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{成文日期}
 \DescribeOption{date}
 成文日期，需为 |YYYY-MM-DD|格式，同时也用于承诺页上的签署日期。默认是当前日期。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     date = 2021-01-04
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{学院}
 \DescribeOption{school}
 本科生毕业论文的学院。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     school = 经济信息工程学院
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{届数}
 \DescribeOption{index}
 本科生毕业论文的届数。默认根据成文日期设定，成文日期当年的9月（含）至次年的9月
 （不含）视为同一届，如成文日期为 |2021-01-04|时则对应届数为2017。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     index = 2017
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{密级}
 \DescribeOption{secret-level}
 \DescribeOption{secret-year}
 研究生学位论文的密级与保密年限。对于不保密的论文可以不用设置 |secret-year|。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     secret-level = 保密,
     secret-year = 10
   }
-\end{verbatim}
+\end{latex}
 
 \subsubsection{分类号}
 \DescribeOption{udc}
 \DescribeOption{clc}
 研究生论文的分类号，|udc|和 |clc|分别指UDC分类号和中图分类号。
-\begin{verbatim}
+\begin{latex}
   \swufesetup{
     udc = 004.02,
     clc = TP301.6
   }
-\end{verbatim}
+\end{latex}
 
 \subsection{封面与学术申明}
 \DescribeMacro{\maketitle}
@@ -182,7 +182,7 @@ of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
 \begin{center}
 |\begin{abstract}|\marg{keywords}, |\begin{abstract*}|\marg{keywords}
 \end{center}
-\begin{verbatim}
+\begin{latex}
   \begin{abstract}{关键词1, 关键词2, 关键词3}
     简短的摘要。
   \end{abstract}
@@ -190,7 +190,7 @@ of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
   \begin{abstract*}{keyword1, keyword2, keyword3}
     Brief abstract.
   \end{abstract*}
-\end{verbatim}
+\end{latex}
 
 \subsubsection{目录}
 \DescribeMacro{\tableofcontents}
@@ -217,12 +217,12 @@ of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
 \subsubsection{致谢}
 \DescribeEnv{acknowledgments}
 直接在\env{acknowledgments}环境里写感谢的话就好了。
-\begin{verbatim}
+\begin{latex}
   \begin{acknowledgments}
     ……
     还要感谢\SwufeThesis{}节省了论文的排版时间！
   \end{acknowledgments}
-\end{verbatim}
+\end{latex}
 
 \section{致谢}
 这个项目在开发的过程借鉴了许多 \href{https://github.com/tuna/thuthesis}{tuna/thuthesis}

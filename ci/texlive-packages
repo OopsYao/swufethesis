@@ -7,6 +7,8 @@ l3build
 tex-gyre
 inconsolata
 makeindex
+listings
+xcolor
 # 摘自l3doc
 # https://github.com/latex3/latex3/blob/main/l3kernel/l3doc.dtx
 alphalph
