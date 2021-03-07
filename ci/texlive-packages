@@ -1,6 +1,3 @@
-# 一行一个，否则powershell会把同一行识别为一项
-# 行末也不要有空格
-
 # Base
 latex-bin
 
@@ -8,6 +5,21 @@ latex-bin
 latexmk
 l3build
 tex-gyre
+inconsolata
+makeindex
+# 摘自l3doc
+# https://github.com/latex3/latex3/blob/main/l3kernel/l3doc.dtx
+alphalph
+amsmath
+booktabs
+colortbl
+hologo
+enumitem
+psnfss
+csquotes
+fancyvrb
+underscore
+tools
 
 # 依赖
 ctex

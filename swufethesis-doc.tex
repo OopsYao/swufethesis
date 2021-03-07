@@ -1,0 +1,231 @@
+%^^A 由于User Manual的内容较多，将其与swufethesis.dtx分离
+%^^A 由于这个文件实际上是被以`\DocInput`的方式引入，所以其注释格式遵循dtx
+\GetFileInfo{swufethesis.dtx}
+\title{\SwufeThesis{}：西南财经大学学位论文模板\thanks{对应
+    版本\fileversion，发布日期~\filedate。}}
+\date{}
+\maketitle
+
+\begin{abstract}
+  该文档是西南财经大学学位论文\LaTeX{}模板（非官方）\SwufeThesis{}的使用说明文档，
+  用户可以根据自己的需求来查阅该手册。
+\end{abstract}
+
+\clearpage
+\tableofcontents
+
+\clearpage
+\section{模板介绍}
+\SwufeThesis\ (\textbf{S}outh\textbf{w}estern \textbf{U}niversity
+of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
+是为帮助西南财经大学毕业生更简易高效地撰写毕业论文而编写的\LaTeX{}论文模板。
+
+\section{使用说明}
+文档类\cls{swufethesis}提供了\cs{swufesetup}进行相关的信息设定，同时也提供了
+其他的一些宏和环境，将在下面一一介绍。
+
+\subsection{论文选项}
+\DescribeMacro{\swufesetup}
+\cs{swufesetup}命令是最主要的控制文档选项的方式，按如下键值对的方式使用。
+每个键值中由半角等号（|=|）分隔键值，同时用半角逗号（|,|）分隔不同的键值对。
+但注意到\cs{swufesetup}命令中不要包含空行。
+\begin{verbatim}
+  \swufesetup{
+    key1 = value1,
+    key2 = {a value, with comma}
+  }
+\end{verbatim}
+
+\subsubsection{输出格式}
+\DescribeOption{output}
+可选项有 |print|与 |check|，分别表示打印版和检测版，默认为 |print|。
+打印版会输出封面、承诺页、封底等页面，且保证章节页面都是右开的，从而
+会产生一些必要的对打印友好的空白页；
+检测版将去除封面、承诺页和封底。
+\begin{verbatim}
+  \swufesetup{
+    output = print
+  }
+\end{verbatim}
+
+\subsubsection{学位}
+\DescribeOption{degree}
+设置论文的学位，可选值有 |bachelor|、|master|、|doctor|，分别对应学士、硕士和博士
+学位论文，默认为 |bachelor|。
+\begin{verbatim}
+  \swufesetup{
+    degree = bachelor
+  }
+\end{verbatim}
+
+\subsubsection{学位类型}
+\DescribeOption{degree-type}
+研究生学位类型，可选值有 |academic|、|professional|、|equivalent|，分别对应学术型、
+专业型和同等学力学位，默认为 |academic|。
+\begin{verbatim}
+  \swufesetup{
+    degree-type = academic
+  }
+\end{verbatim}
+
+\subsubsection{标题}
+\DescribeOption{title}
+\DescribeOption{title*}
+中英文标题，本科生只需设置中文标题 |title|即可。
+\begin{verbatim}
+  \swufesetup{
+    title = 中文标题,
+    title* = English
+  }
+\end{verbatim}
+
+\subsubsection{专业}
+\DescribeOption{discipline}
+设置本科生封面专业和研究生学科专业字段。
+\begin{verbatim}
+  \swufesetup{
+    discipline = 计算机科学与技术（金融信息化方向）,
+  }
+\end{verbatim}
+
+\subsubsection{学号}
+\DescribeOption{student-id}
+对于同等学力研究生论文此项不生效。
+\begin{verbatim}
+  \swufesetup{
+    student-id = 41799999
+  }
+\end{verbatim}
+
+\subsubsection{作者姓名}
+\DescribeOption{author}
+姓名。
+\begin{verbatim}
+  \swufesetup{
+    author = 我能写完的
+  }
+\end{verbatim}
+
+\subsubsection{指导老师}
+\DescribeOption{supervisor}
+指导老师。
+\begin{verbatim}
+  \swufesetup{
+    supervisor = XX教授
+  }
+\end{verbatim}
+
+\subsubsection{成文日期}
+\DescribeOption{date}
+成文日期，需为 |YYYY-MM-DD|格式，同时也用于承诺页上的签署日期。默认是当前日期。
+\begin{verbatim}
+  \swufesetup{
+    date = 2021-01-04
+  }
+\end{verbatim}
+
+\subsubsection{学院}
+\DescribeOption{school}
+本科生毕业论文的学院。
+\begin{verbatim}
+  \swufesetup{
+    school = 经济信息工程学院
+  }
+\end{verbatim}
+
+\subsubsection{届数}
+\DescribeOption{index}
+本科生毕业论文的届数。默认根据成文日期设定，成文日期当年的9月（含）至次年的9月
+（不含）视为同一届，如成文日期为 |2021-01-04|时则对应届数为2017。
+\begin{verbatim}
+  \swufesetup{
+    index = 2017
+  }
+\end{verbatim}
+
+\subsubsection{密级}
+\DescribeOption{secret-level}
+\DescribeOption{secret-year}
+研究生学位论文的密级与保密年限。对于不保密的论文可以不用设置 |secret-year|。
+\begin{verbatim}
+  \swufesetup{
+    secret-level = 保密,
+    secret-year = 10
+  }
+\end{verbatim}
+
+\subsubsection{分类号}
+\DescribeOption{udc}
+\DescribeOption{clc}
+研究生论文的分类号，|udc|和 |clc|分别指UDC分类号和中图分类号。
+\begin{verbatim}
+  \swufesetup{
+    udc = 004.02,
+    clc = TP301.6
+  }
+\end{verbatim}
+
+\subsection{封面与学术申明}
+\DescribeMacro{\maketitle}
+\DescribeMacro{\statement}
+封面与学术申明分别由\cs{maketitle}和\cs{statement}生成。
+
+\subsection{前言部分}
+\DescribeMacro{\frontmatter}
+前言部分由\cs{frontmatter}开启，这部分应该包括中英文摘要和目录。
+
+\subsubsection{摘要}
+\DescribeEnv{abstract}
+\DescribeEnv{abstract*}
+\env{abstract}和\env{abstract*}环境分别表示中英文摘要，同时接受一个必选参数，
+里面是对应的中英文关键词，不同的关键词之间用半角逗号（|,|）分隔。
+\begin{center}
+|\begin{abstract}|\marg{keywords}, |\begin{abstract*}|\marg{keywords}
+\end{center}
+\begin{verbatim}
+  \begin{abstract}{关键词1, 关键词2, 关键词3}
+    简短的摘要。
+  \end{abstract}
+
+  \begin{abstract*}{keyword1, keyword2, keyword3}
+    Brief abstract.
+  \end{abstract*}
+\end{verbatim}
+
+\subsubsection{目录}
+\DescribeMacro{\tableofcontents}
+目录由\cs{tableofcontents}生成。
+
+\subsection{正文部分}
+\DescribeMacro{\mainmatter}
+正文部分由\cs{mainmatter}开启，每一章应由\cs{chapter}设定。
+
+\subsection{参考文献}
+目前\cls{swufethesis}仅支持通过\pkg{biblatex}设置参考文献。
+所以应先通过\cs{addbibiresource}\marg{bib file}设置
+引用文献库，并在文中通过\cs{cite}\marg{entry}来引用，最后通过
+\cs{printbibliography}打印参考文献。
+
+\subsection{附录}
+\DescribeMacro{\appendix}
+附录由\cs{appendix}开启。
+
+\subsection{其他章节}
+\DescribeMacro{\backmatter}
+\cs{backmatter}标记附录的结束。这之后的\cs{chapter}命令将不会被编号，但会被纳入到目录中。
+
+\subsubsection{致谢}
+\DescribeEnv{acknowledgments}
+直接在\env{acknowledgments}环境里写感谢的话就好了。
+\begin{verbatim}
+  \begin{acknowledgments}
+    ……
+    还要感谢\SwufeThesis{}节省了论文的排版时间！
+  \end{acknowledgments}
+\end{verbatim}
+
+\section{致谢}
+这个项目在开发的过程借鉴了许多 \href{https://github.com/tuna/thuthesis}{tuna/thuthesis}
+的设计，也参考了 \href{https://github.com/stone-zeng/fduthesis}{stone-zeng/fduthesis}、
+\href{https://github.com/sukanka/LaTeX-SWUFE-Bachelor-Thesis}{sukanka/LaTeX-SWUFE-Bachelor-Thesis}
+等项目，在这里感谢他们的工作！
