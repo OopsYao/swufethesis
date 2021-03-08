@@ -8,7 +8,6 @@
 %
 %<*driver>
 \documentclass{swufedoc}
-\OnlyDescription
 \begin{document}
   \DocInput{\jobname.dtx}
 \end{document}
@@ -17,77 +16,100 @@
 % \input{\jobname-doc}
 % \StopEventually{}
 % \section{实现细节}
-% 这里是文档类\textsf{swufethesis}的具体实现细节。
+% 这里是文档类\textsf{swufethesis}的具体实现细节。对于文档的正常使用来说，是不需要查询这里的内容的。
 % \subsection{宏包和类文件的加载}
-% 文档类swufethesis基于ctexbook。
+% 文档类\cls{swufethesis}基于\cls{ctexbook}。对于\pkg{tocloft}宏包，启用 |titles|选项
+% 使其采用\pkg{ctex}的章节标题设定。\pkg{emptypage}宏包的作用是使\cs{cleardoublepage}等命令添加
+% 的页面不含页码。
 %    \begin{macrocode}
 \LoadClass[scheme=plain,zihao=-4,fontset=none]{ctexbook}
 \RequirePackage{kvoptions}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{xparse}
-%    \end{macrocode}
-% file hooks已可以由\LaTeX\ core (2020/10/01)原生支持，这个宏包可提供兼容性
-%    \begin{macrocode}
 \RequirePackage{filehook}
 \RequirePackage{xeCJKfntef}
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
-\RequirePackage[titles]{tocloft} % 启用titles选项使其采用ctex对章节标题的设定来设置最上层标题
+\RequirePackage[titles]{tocloft}
 \RequirePackage{caption}
 \RequirePackage{graphicx}
 \RequirePackage[style=gb7714-2015,sorting=gb7714-2015]{biblatex}
 \RequirePackage{unicode-math}
-\RequirePackage{emptypage} % 使cleardoublepage添加的页面不含页码
+\RequirePackage{emptypage}
 \RequirePackage{pdfpages}
 %    \end{macrocode}
 % \subsection{用户接口设置}
+% \begin{macro}{\swufesetup}
+% 通过键值对的方式来传入用户的设置是一种比较常见的方式，
+% 用户选项传递的标准方式是宏包的选项机制，但是对于较多的选项设置，
+% 我们更希望提供一个专用的宏\cs{swufesetup}给用户，使得用户能够方便地用这个宏通过键值对的方式
+% 来设置\cls{swufethesis}的选项，这也是现在用的比较多的一种机制。
+% \pkg{kvsetkeys}宏包提供了相关的宏来解析一组键值对列表，所以\cs{swufesetup}本质上是
+% 对宏\cs{kvsetkeys}的一个包装。我们只需要对每一个选项设置相应的handler即可，具体的handler
+% 设定是在\cs{swufe@define@key}里实现的。
 %    \begin{macrocode}
 \newcommand\swufesetup[1]{%
   \kvsetkeys{swufe}{#1}%
 }
 %    \end{macrocode}
-% 这个foreach不能和其他的kvdefinekeys的handler嵌套（没有想象中的好用）
+% \end{macro}
+% \begin{macro}{\swufe@foreach}
+% \pkg{kvsetkeys}提供的遍历键值对列表加handler的机制可以看作是一种forEach，所以
+% 可以借此实现一个，但是这不能和其他的handler嵌套。（没有想象中的好用，考虑移除）。
+% \cs{swufe@foreach}接受两个参数，第一个是键值对列表，第二个是handler的定义，
+% 定义中可以使用 |#1|和 |#2|分别作为遍历时键与值。
 %    \begin{macrocode}
 \newcommand{\swufe@foreach}[2]{
   \def\swufe@@foreach@family{swufe@foreach}%
   \kv@set@family@handler{\swufe@@foreach@family}{#2}%
-  \expandafter\kvsetkeys\expandafter{\expandafter\swufe@@foreach@family\expandafter}\expandafter{#1}%
-}
-\newcommand{\swufe@@check}[2]{
-  \@ifundefined{ifswufe@\@nameuse{swufe@#1@name}@#2}{\ClassError{swufethesis}{%
-      Invalid value #2 for option #1%
-    }{}}%
-%    \end{macrocode}
-% 重置所有\cs{ifswufe@<name>@...}为false，再将\cs{ifswufe@<name>@<choice>}置为true
-%    \begin{macrocode}
-  \edef\swufe@@choices{\@nameuse{swufe@#1@choices}}
-  \swufe@foreach{\swufe@@choices}{%
-    \@nameuse{swufe@\@nameuse{swufe@#1@name}@##1false}%
-  }
-  \@nameuse{swufe@\@nameuse{swufe@#1@name}@#2true}%
+  \expandafter\kvsetkeys\expandafter{%
+  \expandafter\swufe@@foreach@family\expandafter}\expandafter{#1}%
 }
 %    \end{macrocode}
-% 这个内部命令用于设置用户接口
-% 现支持设置name, choices
+% \end{macro}
+%
+% \begin{macro}{\swufe@define@key}
+% 下面提供一个命令\cs{swufe@define@key}，可以按下面的方式定义一组用户选项。
+% 为了可读性，用户选项名可能含有一些特殊字符如“*”、“-”等，所以可通过\meta{name}来指定别名，
+% 方便内部宏名的设定。而\meta{choices}则可为这个选项设定可选值。
+% \begin{latex}
+% \swufe@define@key{
+%   <key> = {
+%     name = <name>,
+%     choices = { <value1>, <value2> },
+%   }
+% }
+% \end{latex}
+% 按以上的方式使用之后，当用户按下面的方式调用\cs{swufesetup}时，则会根据\meta{choices}（如果有设置的话）
+% 检查\meta{input}是否是合理的，并设置相应的\cs{ifswufe@\meta{name}@\meta{choice}}，
+% 同时将\meta{input}存储到\cs{swufe@\meta{name}}中。
+% \begin{latex}
+% \swufesetup{
+%   <name> = <input>
+% }
+% \end{latex}
 %    \begin{macrocode}
 \newcommand{\swufe@define@key}[1]{%
   \kvsetkeys{swufe@key}{#1}
 }
 %    \end{macrocode}
-% 为每一个key设置handler
+% \end{macro}
+% 下面即是 |swufe@key|的handler。对于每一个\meta{key}，我们需要处理\meta{name}和\meta{choices}。 
 %    \begin{macrocode}
 \kv@set@family@handler{swufe@key}{%
-  \@namedef{swufe@#1@name}{#1} % name默认为key
-  \@namedef{swufe@#1@choices}{} % choices默认为空
-
+%    \end{macrocode}
+% 定义\cs{swufe@\meta{key}@name}存储别名。
+%    \begin{macrocode}
+  \@namedef{swufe@#1@name}{#1}
   \kv@define@key{swufe@value}{name}{%
-    % 用\swufe@<key>@name存储name的值
     \@namedef{swufe@#1@name}{##1}
   }
-
+%    \end{macrocode}
+% 对\meta{choices}里的每个\meta{choice}定义\cs{ifswufe@\meta{name}@\meta{choice}}来存储
+% 枚举类型。
+%    \begin{macrocode}
+  \@namedef{swufe@#1@choices}{}
   \kv@set@family@handler{swufe@choices}{%
-    % 为该choice设置一个if变量\ifswufe@<name>@<choice>
-    % 用于后续的一些基于choices的设定
     \expandafter\newif\csname ifswufe@\@nameuse{swufe@#1@name}@##1\endcsname
   }
   \kv@define@key{swufe@value}{choices}{%
@@ -95,15 +117,24 @@
     \kvsetkeys{swufe@choices}{##1}
     \@namedef{swufe@#1@choices}{##1}
   }
-
-  % 一些命令需要等用户通过swufesetup设置后运行才有效
+%    \end{macrocode}
+% 为这个选项定义一个钩子宏\cs{swufe@@\meta{key}@code}，它将在\cs{swufesetup}被调用时调用。我们待会可以通过
+% \cs{g@addto@macro}这种方式来修改它的定义。
+%    \begin{macrocode}
   \@ifundefined{swufe@@#1@code}{\@namedef{swufe@@#1@code}{}}{}
-
-  % 执行上面的handler
+%    \end{macrocode}
+% 执行上面定义的handler来处理\meta{name}和\meta{choices}。
+% 并为\cs{swufe@\meta{name}}定义空值，增加后面的容错性。
+%    \begin{macrocode}
   \kvsetkeys{swufe@value}{#2}
-  % 为\swufe@<name>定义空值，增加后面的容错性
   \@namedef{swufe@\@nameuse{swufe@#1@name}}{}
-  % 为外部用户使用的swufesetup设置handler
+%    \end{macrocode}
+%
+% 为\cs{swufesetup}设置handler，这里才是\cs{swufesetup}的真正实现部分。
+% 即为相应的选项设置\cs{swufe@\meta{name}}的值存储用户的输入，并调用
+% \cs{swufe@@check}来检查用户传入的值，最后调用这个选项的钩子宏\cs{swufe@@\meta{key}@code}。
+%
+%    \begin{macrocode}
   \kv@define@key{swufe}{#1}{%
     \@namedef{swufe@\@nameuse{swufe@#1@name}}{##1}
     \expandafter\ifx\csname swufe@#1@choices\endcsname\@empty\else%
@@ -112,11 +143,38 @@
     \@nameuse{swufe@@#1@code}
   }
 }
+%    \end{macrocode}
+%
+% \begin{macro}{\swufe@@check}
+% \cs{swufe@@check}接受第一个参数为选项名，第二个参数为待检测的选项值，
+% 根据该选项预设的可选值来决定是否报错。如果传入值合理，则将相应的条件宏
+% \cs{ifswufe@\meta{name}@{choice}}置为真，其他的置为假。
+%    \begin{macrocode}
+\newcommand{\swufe@@check}[2]{
+  \@ifundefined{ifswufe@\@nameuse{swufe@#1@name}@#2}{\ClassError{swufethesis}{%
+      Invalid value #2 for option #1%
+    }{}}%
+  \edef\swufe@@choices{\@nameuse{swufe@#1@choices}}
+  \swufe@foreach{\swufe@@choices}{%
+    \@nameuse{swufe@\@nameuse{swufe@#1@name}@##1false}%
+  }
+  \@nameuse{swufe@\@nameuse{swufe@#1@name}@#2true}%
+}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\swufe@option@hook}
+% 定义\cs{swufe@option@hook}\marg{key}\marg{macro}来修改相应选项的钩子\cs{swufe@@\meta{key}@code}。
+% 第一个参数是该选项的\meta{key}，第二个参数是要追加的宏。
+%    \begin{macrocode}
 \newcommand{\swufe@option@hook}[2]{%
   \expandafter\g@addto@macro\csname swufe@@#1@code\endcsname{#2}%
 }
 %    \end{macrocode}
+% \end{macro}
+%
 % \subsubsection{定义用户接口}
+% 用上面的\cs{swufe@define@key}定义我们需要的用户接口。包括届数、日期、题目、格式类型等。
 %    \begin{macrocode}
 \swufe@define@key{
 %    \end{macrocode}
@@ -145,11 +203,11 @@
   output = {
       choices = {
           print,
-          check, % 检测版
+          check,
         }
     },
 %    \end{macrocode}
-% 硕士学位类型，分别为学术型、专业型和同等学力
+% 硕士学位类型，分别为学术型、专业型和同等学力。
 %    \begin{macrocode}
   degree-type = {
       name = degree@type,
@@ -166,7 +224,7 @@
       name = secret@year,
     },
 %    \end{macrocode}
-% 分类号
+% 分类号。
 %    \begin{macrocode}
   clc,
   udc,
@@ -191,19 +249,18 @@
 }
 %    \end{macrocode}
 % \subsubsection{一些工具宏设定}
-% \DescribeMacro{\swufe@twodigits}
+% 这里是一些内部用到工具宏，包括日期格式的转换和逗号分隔列表转字符串。
+% \begin{macro}{\swufe@twodigits}
 % 将\cs{month}和\cs{day}转为两位数
 %    \begin{macrocode}
 \def\swufe@twodigits#1{\ifnum#1<10 0\fi\the#1}
 %    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\swufe@join@clist}
-% 将逗号分隔列表转为特定分隔符间隔的字串
+% 将逗号分隔列表转为特定分隔符间隔的字串。
 %    \begin{macrocode}
 \newcommand{\swufe@join@clist}[2]{%
   \def\swufe@tmp{}%
-%    \end{macrocode}
-% 列表的第二项开始将附带分隔符
-%    \begin{macrocode}
   \newcommand{\swufe@clist@processor}[1]{%
     \ifx\swufe@tmp\@empty
       \def\swufe@tmp{#2}%
@@ -216,31 +273,53 @@
 }
 %    \end{macrocode}
 %\end{macro}
-% \DescribeMacro{\swufe@date@format}
-% 第一个参数是日期
-% 第二个参数是一个宏（非宏的定义），接受年月日三个参数
+% \begin{macro}{\swufe@date@format}
+% 这个宏接受一个 |YYYY-MM-DD|的日期和一个宏，然后会把年月日作为3个参数传递给那个宏。
+% 定义里面的|\@nil|是参数表达式的一部分（一个常见的写法，本身无意义），
+% 用于标识参数的结束，否则最后的日期将只有一位数被纳入参数。
 %    \begin{macrocode}
 \newcommand{\swufe@date@format}[2]{%
-  % 这里`\@nil`是参数表达式的一部分（一个常见的写法，本身无意义），
-  % 用于标识参数的结束，否则最后的日期将只有一位数被纳入参数
   \def\swufe@@date@format@processor##1-##2-##3\@nil{%
     #2{##1}{##2}{##3}
   }%
   \expandafter\swufe@@date@format@processor#1\@nil
 }
+%    \end{macrocode}
+% \end{macro}
+% 下面的宏则是具体的日期格式转换器，它们接收年月日3个参数并输出特定日期格式。
+% \begin{macro}{\swufe@date@zh@digit}
+% 转化为 |YYYY年MM月DD日|。
+%    \begin{macrocode}
 \newcommand{\swufe@date@zh@digit}[3]{%
   #1年\number#2月\number#3日
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\swufe@date@zh@digit@short}
+% 与上面的相同，但是不包含日期。
+%    \begin{macrocode}
 \newcommand{\swufe@date@zh@digit@short}[3]{
   #1年#2月
 }
-% 将日期转化为相应的届数
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\swufe@index@formatter}
+% 根据日期的年月转化为相应的届数。
+%^^A 若在\fi后面使用\relax会使封面的届数数字后面多些空白（尚不清楚原理）
+%    \begin{macrocode}
 \newcommand{\swufe@index@formatter}[3]{%
-  \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi % 若在这里使用\relax会使封面的届数数字后面多些空白（尚不清楚原理）
+  \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi
 }
-% \swufe@chapter*[tocline]{title}
-% 该命令是\chapter*的拓展，可将未编号的章节纳入目录
-% 参数tocline表示该章节在目录中的条目，默认与title相同，留空表示不纳入目录
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\swufe@chapter*}
+% 该命令是\cs{chapter*}的拓展，可将未编号的章节纳入目录。
+% \begin{center}
+% \cs{swufe@chapter*}\oarg{tocline}\marg{title}
+% \end{center}
+% 参数 |tocline|表示该章节在目录中的条目，默认与 |title|相同，留空表示不纳入目录。
+%    \begin{macrocode}
 \NewDocumentCommand\swufe@chapter{s o m}{%
   \chapter*{#3}%
   \IfValueTF{#2}{%
@@ -250,8 +329,15 @@
   }{\addcontentsline{toc}{chapter}{#3}}%
 }
 %    \end{macrocode}
+% \end{macro}
+%
 % \subsection{行距字号设定}
-% 正文1.5倍行距
+% 正文1.5倍行距。实际上使用的是单倍行距，对于MS Word来说，在开启到对齐到网格情况下，
+% 1.5倍行距指是行距为行跨度的1.5倍，而行跨度与基础字号有关，但是由于未知原因，\footnote{可能是feature吧。}
+% 即使修改了基础字号，如果不去修改页面布局的设定（包括调整后又调回来再点确定），
+% 行跨度是不会变化的。所以正文小四号字体下的行跨度与默认的正文五号字相同---为15.6磅。
+%
+% 本科生毕业论文的格式规范是1.5倍行距，研究生是1.37倍行距。
 %    \begin{macrocode}
 \swufe@option@hook{degree}{%
   \ifswufe@degree@bachelor%
@@ -262,6 +348,8 @@
 }
 %    \end{macrocode}
 % \subsection{页面设置}
+% 本科生页边距上下左右都为3厘米，研究生上3.9厘米，下3.4厘米，左右3.45厘米。
+% 同时研究生要求页眉2.8厘米，页脚2.5厘米，这里的实际距离是根据MS Word的样式调整的。
 %    \begin{macrocode}
 \swufe@option@hook{degree}{%
   \setlength{\headheight}{24pt}
@@ -287,6 +375,7 @@
 }
 %    \end{macrocode}
 % \subsection{章节标题}
+% 对章节标题进行汉化和格式调整。
 %    \begin{macrocode}
 \ctexset{
   autoindent = true,
@@ -302,18 +391,19 @@
     name = {,.},
     afterindent = true,
     aftername = \quad,
-    format = \CJKfamily{hwzs}\fontsize{22bp}{1.5\dimexpr 15.6pt}\bfseries\centering\selectfont,
+    format = \CJKfamily{hwzs}\fontsize{22bp}{1.5\dimexpr 15.6pt}%
+    \bfseries\centering\selectfont,
     titleformat = {},
     fixskip = true,
 %    \end{macrocode}
-% 这里需要说明的是，与chapter不同，section与subsection的beforeskip
-% 仅在前面为段落（非标题）时起作用
+% 这里需要说明的是，与chapter不同，section与subsection的 |beforeskip|
+% 仅在前面为段落（非标题）时起作用。
 % 而Word的策略是取段前段后最大的距离作为间距，这里由于二三级标题的要求是
-% 段前段后都为一行而恰好可以满足
-% 第二点是section与subsection的beforeskip作为页面的起始也是不生效的，
+% 段前段后都为一行而恰好可以满足。
+% 第二点是section与subsection的 |beforeskip|作为页面的起始也是不生效的，
 % 这一点与Word相同，除非那个地方是一个新节（而一般仅在章这一层次使用分节符，
-% 从而与\LaTeX 的chapter吻合）
-% 下面chapter, section, subsection的beforeskip与afterskip皆是通过视觉效果调整
+% 从而与\LaTeX 的chapter吻合）。
+% 下面chapter, section, subsection的 |beforeskip|与 |afterskip|皆是通过视觉效果调整。
 %    \begin{macrocode}
     beforeskip = 48pt,
     afterskip = 50pt,
@@ -337,17 +427,31 @@
 }
 %    \end{macrocode}
 % \subsection{Three matters}
+% 重新定义\cs{frontmatter}、\cs{mainmatter}与\cs{backmatter}。
+% \begin{macro}{\frontmatter}
+% \cs{frontmatter}标记摘要与目录章节的开始。
 %    \begin{macrocode}
 \renewcommand{\frontmatter}{%
   \cleardoublepage
   \@mainmatterfalse
   \pagenumbering{arabic}%
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\mainmatter}
+% \cs{mainmatter}标记正文的开始。
+%    \begin{macrocode}
 \renewcommand{\mainmatter}{%
   \cleardoublepage
   \@mainmattertrue
   \pagenumbering{arabic}%
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\backmatter}
+% \cs{backmatter}标记附录的结束。同时如果开启检测版的选项，则\cs{backmatter}
+% 之后的内容不再输出。
+%    \begin{macrocode}
 \renewcommand{\backmatter}{%
   \ifswufe@output@check\end{document}\fi % 检测版直接结束
   \if@openright
@@ -358,38 +462,52 @@
   \@mainmatterfalse%
 }
 %    \end{macrocode}
+% \end{macro}
 % \subsection{目录}
+% \begin{macro}{\tableofcontents}
+% 目录的相关设定。目录的字号字体与正文相同，同时大标题与章节标题相同。
+% 这里为了让目录重新开始编号并右开，重新定义了一下\cs{tableofcontents}。
 %    \begin{macrocode}
-\renewcommand{\cftchapfont}{\bfseries} % 字号字体与正文相同故不再设置
+\renewcommand{\cftchapfont}{\bfseries}
 \let\swufe@tableofcontents\tableofcontents
 \def\tableofcontents{\cleardoublepage\swufe@tableofcontents\pagenumbering{arabic}}
 %    \end{macrocode}
+% \end{macro}
 % \subsection{图表标题}
-% 表格五号字体 单倍行距
+% 使用\pkg{caption}设置图表标题样式为五号字体单倍行距。
+%^^A TODO: 五号字体采用的是\cs{small}指代，可能不是很合适。
 %    \begin{macrocode}
 \captionsetup{
-  font={sf,bf,small}, % small在ctex zihao=-4下对应五号字 事实上并未规定表格标题字号
+  font={sf,bf,small},
   justification=centering,
-  labelsep=quad, % 标题编号与标题文字间隔一个quad
+  labelsep=quad,
   aboveskip=0.5\baselineskip,
   belowskip=0.5\baselineskip,
-  parskip=0.5\baselineskip, % 段落间距
+  parskip=0.5\baselineskip,
 }
 %    \end{macrocode}
-% 修改图表编号格式为X-X
+% 修改图表编号格式为X-X。
 %    \begin{macrocode}
 \renewcommand{\thetable}{\thechapter-\arabic{table}}
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 %    \end{macrocode}
-% 表格内容五号字单倍行距（字体未作规定）
+% 重新定义\env{table}环境以实现表格内容五号字单倍行距（字体未作规定）。
+% \begin{environment}{table}
 %    \begin{macrocode}
 \let\swufe@oldtable\table
 \def\table[#1]{\swufe@oldtable[#1]\fontsize{10.5bp}{10.5bp}}
 %    \end{macrocode}
+%\end{environment}
+%
 % \subsection{摘要与关键词}
+% 定义\env{abstract}与\env{abstract*}环境。
 %    \begin{macrocode}
 \newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
 \newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: \swufe@join@clist{#1}{; }}}
+%    \end{macrocode}
+% \begin{environment}{abstract}
+% 中文摘要\env{abstract}。
+%    \begin{macrocode}
 \newenvironment{abstract}[1]{%
   \cleardoublepage
   \pagenumbering{arabic}
@@ -399,15 +517,19 @@
 %    \end{macrocode}
 % 对于比较长的摘要，这里禁止断页后，\LaTeX 会优先调整段落间距来使关键词与最后一页摘要在同一页，
 % 可能会出现某一段落间距比普通的长一行的高度
-% （但一般是一页仅有两个段落时才会出现这种情况，多个段落会分摊这些间距）
-% TODO: 也许有方法可以让前一页提前断页，即这一行空白出现在前一页末尾而不是被段落间距分摊，这样也许会好看一点
+% （但一般是一页仅有两个段落时才会出现这种情况，多个段落会分摊这些间距）。
+%^^A TODO: 也许有方法可以让前一页提前断页，即这一行空白出现在前一页末尾而不是被段落间距分摊，这样也许会好看一点
 %    \begin{macrocode}
 
   \nopagebreak
   \vspace{\baselineskip}
   \@keywords{\swufe@keywords}
 }
-
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{abstract*}
+% 英文摘要\env{abstract*}。
+%    \begin{macrocode}
 \newenvironment{abstract*}[1]{%
   \cleardoublepage
   \pagenumbering{arabic}
@@ -420,7 +542,13 @@
   \@@keywords{\swufe@keywords@en}
 }
 %    \end{macrocode}
+% \end{environment}
+%
 % \subsection{页眉页脚}
+% 通过\pkg{fancyhdr}设置页眉页脚样式。由于章节页面默认使用\textsf{plain}样式。
+% 我们将\textsf{plain}的样式也置为\textsf{fancy}。
+% 为了设置中文的页眉，使用了\pkg{ctex}中的\cs{CTEXifname}与\cs{CTEXthechapter}等命令，
+% 其中\cs{CTEXifname}表示标题不被编号时则不显示，详见其文档。
 %    \begin{macrocode}
 \newcommand{\swufe@set@fancyhf}{%
   \pagestyle{fancy}
@@ -433,10 +561,10 @@
     \fancyhead[CE]{\zihao{-5}\rightmark}
     \renewcommand{\headrulewidth}{1pt}
   \fi
-  \fancypagestyle{plain}{} % 使plain应用fancy的样式，每章的第一页会使用plain样式
+  \fancypagestyle{plain}{}
   \renewcommand\chaptermark[1]{%
-    % 这里\CTEXifname表示标题不被编号时则不显示，见ctex宏包文档
-    \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}{\CTEXifname{\CTEXthechapter\quad}{}##1}
+    \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}%
+    {\CTEXifname{\CTEXthechapter\quad}{}##1}
   }
   \renewcommand\sectionmark[1]{%
     \markright{\CTEXthesection\quad ##1}
@@ -447,12 +575,18 @@
 }
 %    \end{macrocode}
 % \subsection{致谢}
+% \begin{environment}{acknowledgments}
+% 将“致谢”定义成一个环境比较方便使用。
 %    \begin{macrocode}
 \newenvironment{acknowledgments}{%
   \chapter{致谢}
 }{}
 %    \end{macrocode}
+% \end{environment}
 % \subsection{封面与扉页}
+% \begin{macro}{\maketitle}
+% 重新定义\cs{maketitle}来打印封面与扉页（如果有）。根据用户的设置
+% 来具体调用相应打印命令。
 %    \begin{macrocode}
 \renewcommand{\maketitle}{%
   \ifswufe@output@check\else%
@@ -474,35 +608,37 @@
   \fi%
 }
 %    \end{macrocode}
-% 本科生封面
+% \end{macro}
+% \begin{macro}{\swufe@make@bachelor@cover}
+% 本科生封面。由于“届数”与数字之间间距相较于MS Word来是过大，于是特别调整了\textsf{CJKecglue}，
+% 之后再还原成默认设置（参见\pkg{xeCJK}的文档的代码实现部分的初始化设置）。
 %    \begin{macrocode}
 \newcommand{\swufe@make@bachelor@cover}{
   \vspace*{-8pt}
   \noindent
   \includegraphics[width=10.35cm,height=2.88cm]{logo-Swufe.png}
-  \vspace{64pt} % 根据视觉效果调整
+  \vspace{64pt}
   \begin{center}
     {
-      % 黑体小初加粗
       \bfseries
-      \xeCJKsetup{ CJKecglue = {\hskip 10pt} } % 届数数字与届之间的间距相较于Word来说过大，特别调整。Word的空格宽度应该是英文字体宽度
+      \xeCJKsetup{ CJKecglue = {\hskip 10pt} }
       \fontsize{36bp}{3\dimexpr 15.6pt}\selectfont
       \CJKfamily+{zhhei}
       \swufe@index 届\\
       本科毕业论文（设计）\par
-      \xeCJKsetup{ CJKecglue = { ~ } } % 还原成默认设置，见xeCJK文档的初始化设置（代码实现部分）
+      \xeCJKsetup{ CJKecglue = { ~ } }
     }
-    \vspace{66.5pt} % 根据视觉效果调整
+    \vspace{66.5pt}
     \CJKfamily+{zhfs}
     \noindent
     \fontsize{16bp}{2\dimexpr 15.6pt}\selectfont
+%    \end{macrocode}
+% 下划线部分使用\pkg{xeCJKfntef}的\cs{CJKunderline*}实现（星号版本将不会跳过中文标点）。
+%    \begin{macrocode}
     {
-    % 三号 华文仿宋
-    % 左侧加粗，右侧下划线
     \let\ep\expandafter
-    % `\CJKunderline*`将不会跳过中文标点
-    % `*`与`{`前那个`\ep`是为了消除`*`与`{`带来的位置影响
-    \def\entry##1:##2 {{\bfseries ##1：}&{\CJKfamily+{hwfs}\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
+    \def\entry##1:##2 {%
+    {\bfseries ##1：}&{\CJKfamily+{hwfs}\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
     \begin{tabular}{lp{252.1pt}}
       \entry 论文题目:\swufe@title{}
       \entry 学生姓名:\swufe@author{}
@@ -521,7 +657,9 @@
   \end{center}
 }
 %    \end{macrocode}
-% 研究生扉页
+% \end{macro}
+% \begin{macro}{\swufe@make@postgraduate@titlepage}
+% 研究生扉页。
 %    \begin{macrocode}
 \newcommand{\swufe@make@postgraduate@titlepage}{%
   \begingroup
@@ -530,7 +668,8 @@
   \CJKfamily{zhhei}
   \fontsize{16bp}{32pt}\selectfont
   \begin{tabular}{p{.5\textwidth}p{.5\textwidth}}
-    分类号\CJKunderline{\hfill\swufe@clc\hfill} & 密级\CJKunderline{\hfill\swufe@secret@level\hfill} \\
+    分类号\CJKunderline{\hfill\swufe@clc\hfill} &
+    密级\CJKunderline{\hfill\swufe@secret@level\hfill} \\
     \multicolumn{2}{l}{U.D.C\hspace{6pt}\CJKunderline{\hfill\swufe@udc\hfill}}
   \end{tabular}
 
@@ -581,12 +720,15 @@
   \endgroup
 }
 %    \end{macrocode}
+% \end{macro}
 % \subsection{学术申明}
+% \begin{macro}{\statement}
+% 定义\cs{statement}命令打印学术申明页。
 %    \begin{macrocode}
 \newcommand{\statement}{
   \ifswufe@output@check\else%
     \cleardoublepage
-    \thispagestyle{empty} % 取消页码
+    \thispagestyle{empty}
     \ifswufe@degree@bachelor%
       \swufe@make@bachelor@statement%
     \else%
@@ -596,22 +738,22 @@
   \fi
 }
 %    \end{macrocode}
-% 本科生学术申明
+% \end{macro}
+% \begin{macro}{\swufe@make@bachelor@statement}
+% 本科生学术申明。
+%^^A 这里不设置vspace时第一行字将紧挨着页面的body部分（可设置geometry的showframe选项查看）
+%^^A 没搞清原理
 %    \begin{macrocode}
 \newcommand{\swufe@make@bachelor@statement}{
-  % 这里不设置vspace时第一行字将紧挨着页面的body部分（可设置geometry的showframe选项查看）
-  % 没搞清原理
-  % 这个数值是根据视觉效果调出来的
   \vspace*{-34pt}
   \begin{center}
-    % 华文中宋 小二加粗
     \bfseries
     \CJKfamily{hwzs}
     \fontsize{18bp}{2\dimexpr 15.6pt}\selectfont
     西南财经大学\\
     本科毕业论文原创性及知识产权声明\par
   \end{center}
-  \vspace{12.3pt} % 这个数值是根据视觉效果调出来的
+  \vspace{12.3pt}
 
   \fontsize{12bp}{1.4\dimexpr 15.6pt}\selectfont
   本人郑重声明：所呈交的毕业论文是本人在导师的指导下取得的成果，论文
@@ -634,6 +776,8 @@
   \end{flushright}
 }
 %    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\swufe@make@postgraduate@statement}
 % 研究生学术申明
 %    \begin{macrocode}
 \newcommand{\swufe@make@postgraduate@statement}{
@@ -675,7 +819,7 @@
   \setlength{\fboxrule}{1.2pt}%
   \setlength{\fboxsep}{0pt}%
   \def\swufe@@checkbox{%
-    \makebox[11pt][l]{% 最外层的盒子将勾选框包起来作为一个整体方便外部调整间距
+    \makebox[11pt][l]{%
       \makebox[0pt][l]{\framebox[13pt]{\parbox{0pt}{\vspace{10pt}}}}%
       $\checkmark$%
     }
@@ -708,7 +852,7 @@
   \vspace{14pt}
   \noindent 2、\ifswufe@@secret@level@public\swufe@@checkbox\else\swufe@@emptybox\fi 不保密
 %    \end{macrocode}
-% 下面的日期之间还是需要间距
+% 下面的日期之间还是需要间距。
 %    \begin{macrocode}
   \xeCJKsetup{ CJKecglue = {~} } 
 
@@ -723,18 +867,24 @@
   \end{flushright}
   \endgroup
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macrocode}
+% \subsection{封底}
+% 本科生专用。
 \AtEndDocument{%
   \ifswufe@output@check\else%
     \ifswufe@degree@bachelor%
       \cleardoublepage%
-      \null\thispagestyle{empty}\newpage% 封底前面插入空白页保证封底在下
+      \null\thispagestyle{empty}\newpage%
       \includepdf{backcover.pdf}%
     \fi
   \fi
 }
 %    \end{macrocode}
+%
 % \subsection{字体}
-% 判断操作系统，这是判断字体方案自动选取的依据之一
+% 判断操作系统，这是判断字体方案自动选取的依据之一。
 %    \begin{macrocode}
 \newif\ifswufe@system@windows
 \newif\ifswufe@system@mac
@@ -759,7 +909,8 @@
   AutoFakeBold = true
 }
 %    \end{macrocode}
-% fandol方案
+% \begin{macro}{\swufe@set@cjk@font@fandol}
+% \textsf{fandol}方案。
 %    \begin{macrocode}
 \newcommand{\swufe@set@cjk@font@fandol}{%
   \setCJKmainfont{FandolSong}[
@@ -795,7 +946,6 @@
     Extension = .otf,
     UprightFont = *-Regular,
   ]%
-  % 为华文中宋与华文仿宋设置找不到字体时的fallback
   \def\swufe@hwfs@fallback{%
     \setCJKfamilyfont{hwfs}{FandolFang}[
       Extension = .otf,
@@ -811,7 +961,9 @@
   }
 }
 %    \end{macrocode}
-% Noto方案
+% \end{macro}
+% \begin{macro}{\swufe@set@cjk@font@noto}
+% \textsc{noto}方案。
 %    \begin{macrocode}
 \newcommand{\swufe@set@cjk@font@noto}{%
   \setCJKmainfont{Noto Serif CJK SC}[
@@ -854,7 +1006,9 @@
   }
 }
 %    \end{macrocode}
-% mac方案
+% \end{macro}
+% \begin{macro}{\swufe@set@cjk@font@mac}
+% \textsf{mac}方案。
 %    \begin{macrocode}
 \newcommand{\swufe@set@cjk@font@mac}{%
   \setCJKmainfont{Songti SC}[
@@ -887,7 +1041,9 @@
   }
 }
 %    \end{macrocode}
-% windows方案
+% \end{macro}
+% \begin{macro}{\swufe@set@cjk@font@windows}
+% \textsf{windows}方案
 %    \begin{macrocode}
 \newcommand{\swufe@set@cjk@font@windows}{%
   \xeCJKsetup{EmboldenFactor=3}%
@@ -908,7 +1064,9 @@
   }
 }
 %    \end{macrocode}
-% auto方案 根据一些条件从上述方案中自动选取
+% \end{macro}
+% \begin{macro}{\swufe@set@cjk@font@auto}
+% \textsf{auto}方案，根据一些条件从上述方案中自动选取。
 %    \begin{macrocode}
 \newcommand{\swufe@set@cjk@font@auto}{%
   \ifswufe@system@mac%
@@ -940,6 +1098,10 @@
     \swufe@set@cjk@font@fandol
   \fi
 }
+%    \end{macrocode}
+% \end{macro}
+% Preamble结束前设置字体。
+%    \begin{macrocode}
 \AtEndPreamble{%
   \@nameuse{swufe@set@cjk@font@\@nameuse{swufe@cjk@font}}%
   \ifswufe@cjk@font@none\else%
@@ -958,7 +1120,10 @@
   \swufe@hwfs@fallback
 }
 %    \end{macrocode}
+%
 % \subsubsection{英文字体}
+% \begin{macro}{\swufe@set@font@times}
+% \textsf{times}方案。
 %    \begin{macrocode}
 \newcommand{\swufe@set@font@times}{%
   \setmainfont{Times New Roman}%
@@ -969,6 +1134,11 @@
     \setmonofont{Courier New}%
   \fi
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\swufe@set@font@termes}
+% \textsf{termes}方案。
+%    \begin{macrocode}
 \newcommand{\swufe@set@font@termes}{%
   \setmainfont{texgyretermes}[
     Extension = .otf,
@@ -992,9 +1162,16 @@
     BoldItalicFont = *-bolditalic,
   ]%
 }
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
 \swufe@option@hook{font}{%
   \@nameuse{swufe@set@font@\@nameuse{swufe@font}}%
 }
+%    \end{macrocode}
+% \begin{macro}{\swufe@set@font@auto}
+% \textsf{auto}方案。
+%    \begin{macrocode}
 \newcommand{\swufe@set@font@auto}{%
   \ifswufe@system@unix%
     \IfFontExistsTF{texgyretermes-regular.otf}{%
@@ -1002,13 +1179,16 @@
     }{}%
   \else%
 %    \end{macrocode}
-% Windoes与mac采用times方案
+% Windoes与Mac采用\textsf{times}方案
 %    \begin{macrocode}
     \swufesetup{ font = times }%
   \fi
 }
 %    \end{macrocode}
+% \end{macro}
+%
 % \subsection{默认值设置}
+% 直接调用\cs{swufesetup}设置一组默认值。
 %    \begin{macrocode}
 \swufesetup{
 %    \end{macrocode}
