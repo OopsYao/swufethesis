@@ -2,7 +2,7 @@
 *.fls
 *.fdb_latexmk
 *.log
-example.pdf
+main.pdf
 *.synctex.gz
 *.toc
 *.out
