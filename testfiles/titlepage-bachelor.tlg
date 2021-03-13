@@ -34,8 +34,8 @@ TEST 1: Titlepage Bachelor
 * \@mparswitchtrue
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
-File: logo-Swufe.png Graphic file (type bmp)
-<logo-Swufe.png>
+File: swufethesis-bachelor-logo.png Graphic file (type bmp)
+<swufethesis-bachelor-logo.png>
 Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
 (fontspec)                Script "CJK".
 Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
