@@ -9,8 +9,27 @@ branches:
 plugins:
   - - "@semantic-release/commit-analyzer"
     - preset: conventionalcommits
+      releaseRules:
+        - type: chg
+          release: minor
+        - type: rm
+          release: minor
   - - "@semantic-release/release-notes-generator"
     - preset: conventionalcommits
+      presetConfig:
+        types:
+          - type: feat
+            section: Added
+          - type: chg
+            section: Changed
+          - type: rm
+            section: Removed
+          - type: fix
+            section: Fixed
+          - type: depr
+            section: Deprecated
+          - type: sec
+            section: Security
   # 需要保证CHANGELOG在编译文档之前生成
   - "@semantic-release/changelog"
   - - "@semantic-release/exec"
