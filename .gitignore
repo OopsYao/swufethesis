@@ -19,3 +19,4 @@ swufedoc.pdf
 
 #l3build
 build/
+*.zip

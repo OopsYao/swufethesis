@@ -1,0 +1,35 @@
+branches:
+  - main
+  - name: rc
+    prerelease: true
+  - name: beta
+    prerelease: true
+  - name: alpha
+    prerelease: true
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - preset: conventionalcommits
+  - - "@semantic-release/release-notes-generator"
+    - preset: conventionalcommits
+  # 需要保证CHANGELOG在编译文档之前生成
+  - "@semantic-release/changelog"
+  - - "@semantic-release/exec"
+    - prepareCmd: "./ci/prepare-release.sh ${nextRelease.version}"
+  - - "@semantic-release/git"
+    - assets:
+        - "*.dtx"
+        - CHANGELOG.md
+  - - "@semantic-release/github"
+    - assets:
+        - label: SwufeThesis
+          path: swufethesis.zip
+          name: swufethesis-${nextRelease.gitTag}.zip
+        - label: TDS安装包
+          path: swufethesis.tds.zip
+          name: swufethesis-${nextRelease.gitTag}.tds.zip
+        - label: 免安装版本
+          path: swufethesis-portable.zip
+          name: swufethesis-portable-${nextRelease.gitTag}.zip
+        - label: 示例文件
+          path: swufethesis-demo.zip
+          name: swufethesis-demo-${nextRelease.gitTag}.zip

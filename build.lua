@@ -17,3 +17,13 @@ typesetsuppfiles = {"swufedoc.cls"}
 
 packtdszip = true
 
+-- l3build tag
+function update_tag(file, content, tagname, tagdate)
+  tagdate = string.gsub(tagdate, "%-", "/")
+  if string.match(file, "%.dtx$") then
+    return string.gsub(content,
+      "\n%[%d%d%d%d/%d%d/%d%d %d+%.%d+%.%d+[%w%-%.]* ([%w%s]+)%]\n",
+      "\n[" .. tagdate .. " " .. tagname .. " %1]\n")
+  end
+  return content
+end
