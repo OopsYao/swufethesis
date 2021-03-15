@@ -1200,4 +1200,22 @@
   degree-type = academic,
 }
 %    \end{macrocode}
+%
+% \subsection{其他}
+% 定义一些与项目本身有关的命令。
+% \begin{macro}{\SwufeThesis}
+% \cs{SwufeThesis}与\cs{swufethesis}打印\swufethesis{}，可以作为项目的标识。
+%    \begin{macrocode}
+\newcommand{\SwufeThesis}{\textsc{Swufe\-Thesis}}
+\let\swufethesis\SwufeThesis
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\swufeversion}
+% \cs{swufeversion}打印当前版本，\cs{swufedate}打印发布日期。
+%    \begin{macrocode}
+\newcommand{\swufeversion}{1.0.0-alpha.0}
+\newcommand{\swufedate}{2021/03/15}
+%    \end{macrocode}
+% \end{macro}
 % \Finale

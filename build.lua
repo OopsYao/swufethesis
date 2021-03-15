@@ -21,9 +21,18 @@ packtdszip = true
 function update_tag(file, content, tagname, tagdate)
   tagdate = string.gsub(tagdate, "%-", "/")
   if string.match(file, "%.dtx$") then
-    return string.gsub(content,
+    -- 替换ProvidesFile
+    content = string.gsub(content,
       "\n%[%d%d%d%d/%d%d/%d%d %d+%.%d+%.%d+[%w%-%.]* ([%w%s]+)%]\n",
       "\n[" .. tagdate .. " " .. tagname .. " %1]\n")
+    -- 替换\swufeversion
+    content = string.gsub(content,
+      "(\n\\newcommand{\\swufeversion}{)[%w%.%-]*(})",
+      "%1" .. tagname .. "%2")
+    -- 替换\swufeversion
+    return string.gsub(content,
+      "(\n\\newcommand{\\swufedate}{)%d%d%d%d/%d%d/%d%d(})",
+      "%1" .. tagdate .. "%2")
   end
   return content
 end
