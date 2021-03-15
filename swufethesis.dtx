@@ -501,10 +501,6 @@
 %
 % \subsection{摘要与关键词}
 % 定义\env{abstract}与\env{abstract*}环境。
-%    \begin{macrocode}
-\newcommand{\@keywords}[1]{\noindent\textbf{关键词：\swufe@join@clist{#1}{；}}}
-\newcommand{\@@keywords}[1]{\noindent\textbf{Keywords: \swufe@join@clist{#1}{; }}}
-%    \end{macrocode}
 % \begin{environment}{abstract}
 % 中文摘要\env{abstract}。
 %    \begin{macrocode}
@@ -523,7 +519,7 @@
 
   \nopagebreak
   \vspace{\baselineskip}
-  \@keywords{\swufe@keywords}
+  \noindent\textbf{关键词：\swufe@join@clist{\swufe@keywords}{；}}
 }
 %    \end{macrocode}
 % \end{environment}
@@ -539,7 +535,7 @@
 
   \nopagebreak
   \vspace{\baselineskip}
-  \@@keywords{\swufe@keywords@en}
+  \noindent\textbf{Keywords: \swufe@join@clist{\swufe@keywords@en}{; }}
 }
 %    \end{macrocode}
 % \end{environment}
@@ -637,16 +633,16 @@
 %    \begin{macrocode}
     {
     \let\ep\expandafter
-    \def\entry##1:##2 {%
+    \def\swufe@@item##1:##2 {%
     {\bfseries ##1：}&{\CJKfamily+{hwfs}\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
     \begin{tabular}{lp{252.1pt}}
-      \entry 论文题目:\swufe@title{}
-      \entry 学生姓名:\swufe@author{}
-      \entry {所在学院}:\swufe@school{}
-      \entry {专\hspace{2em}业}:\swufe@discipline{}
-      \entry {学\hspace{2em}号}:\swufe@student@id{}
-      \entry {指导教师}:\swufe@supervisor{}
-      \entry {成\hspace{2em}绩}:{}
+      \swufe@@item 论文题目:\swufe@title{}
+      \swufe@@item 学生姓名:\swufe@author{}
+      \swufe@@item {所在学院}:\swufe@school{}
+      \swufe@@item {专\hspace{2em}业}:\swufe@discipline{}
+      \swufe@@item {学\hspace{2em}号}:\swufe@student@id{}
+      \swufe@@item {指导教师}:\swufe@supervisor{}
+      \swufe@@item {成\hspace{2em}绩}:{}
     \end{tabular}
     }
     \vspace{\fill}
