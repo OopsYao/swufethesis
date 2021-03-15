@@ -20,6 +20,45 @@
 of \textbf{F}inance and \textbf{E}conomics \LaTeX\ \textbf{Thesis} Template)
 是为帮助西南财经大学毕业生更简易高效地撰写毕业论文而编写的\LaTeX{}论文模板。
 
+\section{安装}
+\SwufeThesis{}目前主要发布在\href{https://github.com/OopsYao/swufethesis/releases}{GitHub Release}
+\footnote{\url{https://github.com/OopsYao/swufethesis/releases}}上，包含
+TDS安装包、免安装版本和示例文件等，用户可以根据自己的需要下载。
+
+\subsection{手动安装}
+下载TDS安装包后解压至任意TDS目录，如\textsf{TEXMFHOME}或\textsf{TEXMFLOCAL}。
+以\textsf{TEXMFHOME}目录为例，该目录一般是用户目录下的\textsf{texmf}路径，
+Mac系统是个例外，是用户目录下的\textsf{Library/texmf}路径。
+如果目录不存在的话直接创建即可。
+具体的目录可以根据下面的命令查询。
+
+\begin{shell}
+  kpsewhich -var-value TEXMFHOME
+\end{shell}
+
+TDS安装包里直接含有\textsf{tex}、\textsf{doc}以及\textsf{source}等目录，
+并没有更顶层的目录，但有些压缩软件在解压时会自动地添加一层顶层目录，这会导致
+不正确的安装，总之要保证最终安装之后的\textsf{texmf}目录下直接是\textsf{tex}等目录。
+
+手动安装后如果需要更新，直接重新解压覆盖原来的文件即可。如果需要卸载，
+删除\textsf{texmf}目录下的\textsf{\meta{tdsroot}/latex/swufethesis}子目录即可（这里
+\meta{tdsroot}为\textsf{tex}、\textsf{doc}以及\textsf{source}）。注意不要直接删除\textsf{texmf}
+目录，可能有之前手动安装过的其他的宏包。
+
+如果是安装到\textsf{TEXMFLOCAL}目录，安装或卸载后可能都需要用 |mktexlsr|命令刷新缓存。
+
+\subsection{免安装版本}
+免安装版本里面包含有示例文件，
+除了\textsf{swufethesis}目录，其余皆属于示例文件，
+用户可以根据自己的需要删改。
+为了保持项目结构的清晰性，文档类\textsf{swufethesis.cls}及其支撑文件
+都放在了\textsf{swufethesis}目录，所以用户可能需要注意\TeX{}的路径查找问题。
+
+如果用户使用latexmk作为编译工具，那么只需在\textsf{main.tex}文件所在目录
+执行 |latexmk|命令即可编译示例文件，我们已在\textsf{latexmkrc}中进行了
+一些简单的配置。否则可能需要把\textsf{swufethesis}目录里的文件
+移出来使用，或是修改 |TEXINPUTS|等环境变量。
+
 \section{使用说明}
 文档类\cls{swufethesis}提供了\cs{swufesetup}进行相关的信息设定，同时也提供了
 其他的一些宏和环境，将在下面一一介绍。
