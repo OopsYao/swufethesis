@@ -2,25 +2,73 @@
 
 \usepackage{booktabs}
 \usepackage{hyperref}
+\usepackage{mwe} % 这个宏包提供了下面使用的示例图片，可以根据需要删除
 
+% 使用BibLaTeX生成参考文献，这里引入参考文献的数据
 \addbibresource{refs.bib}
 
 \swufesetup{
-  date = 2021-01-04,
-  title = 西南财经大学学位论文\LaTeX 模板示例文档,
-  author = 韭菜盒子想毕业,
-  school = 经济信息工程学院,
-  discipline = 计算机科学与技术（金融信息化方向）,
-  student-id = 41799999,
-  supervisor = XX教授,
-  degree = bachelor,
+  % ****************************
+  % 注意
+  % 1. \swufesetup命令内不要有空行
+  % 2. 不需要的配置可以删除
+  % ****************************
+  %
+  % 输出格式，可选值为print与check，分别表示打印版与检测版。默认为print。
+  output = {print},
+  %
+  % 成文日期，默认为当天
+  date = {2021-01-04},
+  %
+  % 标题，本科生只用中文标题
+  title = {西南财经大学学位论文\LaTeX 模板示例文档 v\swufeversion},
+  title* = {An Introduction to \LaTeX{} Thesis Template for Southwestern University of Finance and Economics
+      v\swufeversion},
+  %
+  % 作者
+  author = {韭菜盒子想毕业},
+  %
+  % 专业
+  discipline = {计算机科学与技术（金融信息化方向）},
+  %
+  % 学号，同等学力不需要填写
+  student-id = {41799999},
+  %
+  % 指导教师
+  supervisor = {XX教授},
+  %
+  % 学位，可选值为bachelor、master、doctor，分别对应本科、硕士和博士
+  degree = {bachelor},
+  %
+  % 本科生届数，默认根据date选项进行设定
+  index = {2017},
+  %
+  % 本科生学院
+  school = {经济信息工程学院},
+  %
+  % 研究生学位类型，可选值academic、professional、equivalent，分别对应学术、专业型和同等学力，默认academic
+  degree-type = {academic},
+  %
+  % 研究生论文的密级与保密年限
+  secret-level = {保密},
+  secret-year = {10},
+  %
+  % 研究生论文的分类号与中图号
+  udc = {004.02},
+  clc = {TP301.6},
 }
 
 \begin{document}
-\maketitle % 封面
-\statement % 版权申明
+% 打印封面
+\maketitle
 
-\frontmatter % \frontmatter重置页码，取消后续章节的编号
+% 打印学术声明
+\statement
+
+% \frontmatter标志摘要、目录的开始
+\frontmatter
+
+% 中文摘要，关键词写在参数里
 \begin{abstract}{毕业论文, 毕业设计, 西南财经大学}
   摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、
   内容、方法、成果和结论。语言力求精练、准确，摘要字数300字左右。
@@ -28,6 +76,7 @@
   关键词是供检索用的主题词条。摘要与关键词应在同一页。关键词一般3--5个。
 \end{abstract}
 
+% 英文摘要
 \begin{abstract*}{Dissertation, Graduation project, Swufe}
   An abstract of a dissertation should reflect the main content in a general way,
   mainly stating the research objective, content, methodology, results and conclusions
@@ -38,9 +87,11 @@
   on the same page. And an abstract generally contains 3--5 keywords.
 \end{abstract*}
 
+% 生成目录
 \tableofcontents
 
-\mainmatter % \mainmatter重置页码，并开始为后续章节编号
+% \mainmatter标志正文的开始
+\mainmatter
 \chapter{毕业论文的撰写规范}
 本科生毕业论文写作是反映学生毕业论文工作成效的重要途经，是考核学生
 掌握和运用所学基础理论、基本知识、基本技能从事科学研究和解决实际问题能
@@ -102,12 +153,16 @@
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/example-image-a.pdf}
-  \includegraphics[width=0.4\textwidth]{figures/example-image-b.pdf}
+  % 这里的图片来自于mwe宏包，仅作示例用
+  \includegraphics[width=0.4\textwidth]{example-image-a.pdf}
+  \includegraphics[width=0.4\textwidth]{example-image-b.pdf}
   \caption{图片示例}
 \end{figure}
 
+% BibLaTeX打印参考文献
 \printbibliography
+
+% 标志附录章节的开启
 \appendix
 \chapter{补充内容}
 如果有不宜放在正文中的重要支撑材料，可编入毕业论文的附录中。包括某
@@ -116,7 +171,10 @@
 \begin{verbatim}
 Some mono font
 \end{verbatim}
-\backmatter % \backmatter标记附录结束，取消后续章节的编号
+
+% \backmatter标记附录结束
+\backmatter
+% 致谢
 \begin{acknowledgments}
   谢辞应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员
   （例如指导教师、答疑教师及其他人员）表示对自己的谢意，这不仅是一种礼
