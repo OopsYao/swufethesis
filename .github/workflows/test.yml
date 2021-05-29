@@ -21,9 +21,7 @@ jobs:
         os:
           - ubuntu-18.04
           - macos-10.15
-          # Windows上生成的tlg与linux、macos平台下总是有细微区别
-          # 暂时没找到办法，决定不测了
-          # - windows-2019
+          - windows-2019
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
