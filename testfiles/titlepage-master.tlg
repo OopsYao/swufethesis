@@ -103,6 +103,8 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 Completed box being shipped out [1]
 \vbox(721.50705+0.0)x434.75833
 .\hbox(0.0+0.0)x0.0
+..\special{pdfcolorstackinit 1 page direct (0 g 0 G)}
+.\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
 ...\kern -72.26999
@@ -154,9 +156,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -168,9 +170,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194 plus 1.0fill
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -178,9 +180,9 @@ Completed box being shipped out [1]
 ..........\leaders 58.08896
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\kern -54.87701
 ..........\hbox(10.98503+0.22482)x54.87701
@@ -193,9 +195,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194 plus 1.0fill
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.6001)x0.0
@@ -221,9 +223,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -235,9 +237,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194 plus 1.0fill
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -245,9 +247,9 @@ Completed box being shipped out [1]
 ..........\leaders 19.27194
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\kern -16.06
 ..........\hbox(12.25378+2.56958)x16.06
@@ -258,9 +260,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194 plus 1.35255
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -268,9 +270,9 @@ Completed box being shipped out [1]
 ..........\leaders 19.27194
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\kern -16.06
 ..........\hbox(12.5268+2.66594)x16.06
@@ -283,9 +285,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -297,9 +299,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.21194 plus 1.0fill
 ...........\hbox(0.0+3.61194)x3.21194
 ............\hbox(0.4+0.0)x3.21194, shifted 3.61194
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.21194
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.6001)x0.0
@@ -324,9 +326,9 @@ Completed box being shipped out [1]
 ........\leaders 3.21194 plus 1.0fill
 .........\hbox(0.0+3.61194)x3.21194
 ..........\hbox(0.4+0.0)x3.21194, shifted 3.61194
-...........\special{pdf:bc [0]}
+...........\special{pdfcolorstack 1 push (0 g 0 G)}
 ...........\rule(0.4+0.0)x3.21194
-...........\special{pdf:ec}
+...........\special{pdfcolorstack 1 pop}
 ........\glue -1.60597
 ........\rule(*+*)x0.0
 ........\penalty 10000
@@ -334,9 +336,9 @@ Completed box being shipped out [1]
 ........\leaders 47.37694
 .........\hbox(0.0+3.61194)x3.21194
 ..........\hbox(0.4+0.0)x3.21194, shifted 3.61194
-...........\special{pdf:bc [0]}
+...........\special{pdfcolorstack 1 push (0 g 0 G)}
 ...........\rule(0.4+0.0)x3.21194
-...........\special{pdf:ec}
+...........\special{pdfcolorstack 1 pop}
 ........\glue -1.60597
 ........\kern -44.165
 ........\hbox(10.85655+0.22482)x44.165
@@ -349,9 +351,9 @@ Completed box being shipped out [1]
 ........\leaders 3.21194 plus 1.0fill
 .........\hbox(0.0+3.61194)x3.21194
 ..........\hbox(0.4+0.0)x3.21194, shifted 3.61194
-...........\special{pdf:bc [0]}
+...........\special{pdfcolorstack 1 push (0 g 0 G)}
 ...........\rule(0.4+0.0)x3.21194
-...........\special{pdf:ec}
+...........\special{pdfcolorstack 1 pop}
 ........\glue 0.0 plus 1.0fil
 ........\glue 0.0
 ........\hbox(0.0+0.0)x0.0
@@ -556,9 +558,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.14162+1.59595)x15.05624
@@ -569,9 +571,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -579,9 +581,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.57825+2.55954)x15.05624
@@ -592,9 +594,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -602,9 +604,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.77399+2.03258)x15.05624
@@ -615,9 +617,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -625,9 +627,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(10.56949+2.55954)x15.05624
@@ -638,9 +640,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -648,9 +650,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.54814+2.1982)x15.05624
@@ -661,9 +663,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -671,9 +673,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.60837+2.52943)x15.05624
@@ -684,9 +686,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -694,9 +696,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.2169+1.92719)x15.05624
@@ -709,9 +711,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -723,9 +725,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.0fill
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+10.5001)x0.0
 ..........\penalty 10000
@@ -770,9 +772,9 @@ Completed box being shipped out [1]
 ..........\leaders 63.23618
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -60.22498
 ..........\hbox(10.20813+0.33122)x60.22498
@@ -785,9 +787,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.0fill
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+10.5001)x0.0
 ..........\penalty 10000
@@ -840,9 +842,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.5632+2.40898)x15.05624
@@ -853,9 +855,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -863,9 +865,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.60837+2.66495)x15.05624
@@ -876,9 +878,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -886,9 +888,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.26207+2.34875)x15.05624
@@ -899,9 +901,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -909,9 +911,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.51802+2.46921)x15.05624
@@ -922,9 +924,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -932,9 +934,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.60837+2.66495)x15.05624
@@ -945,9 +947,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -955,9 +957,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.6686+2.49933)x15.05624
@@ -968,9 +970,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -978,9 +980,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.60837+2.64989)x15.05624
@@ -991,9 +993,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1001,9 +1003,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.45781+2.58966)x15.05624
@@ -1014,17 +1016,17 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\glue -1.5056
 ..........\leaders 12.4063 minus 7.52812
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1032,9 +1034,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.67235
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -5.66115
 ..........\hbox(12.045+3.01123)x5.66115
@@ -1049,9 +1051,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.77399+2.00247)x15.05624
@@ -1062,9 +1064,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1072,9 +1074,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.3524+2.61977)x15.05624
@@ -1085,9 +1087,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1095,9 +1097,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.5933+2.4391)x15.05624
@@ -1108,9 +1110,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1118,9 +1120,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.75893+2.24336)x15.05624
@@ -1131,9 +1133,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1141,9 +1143,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.3524+2.5445)x15.05624
@@ -1154,9 +1156,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1164,9 +1166,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.47285+2.77034)x15.05624
@@ -1183,9 +1185,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.78903+2.33371)x15.05624
@@ -1199,9 +1201,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.67235
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -5.66115
 ..........\hbox(12.045+3.01123)x5.66115
@@ -1213,17 +1215,17 @@ Completed box being shipped out [1]
 ..........\leaders 12.4063 minus 7.52812
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\glue -1.5056
 ..........\leaders 3.0112 plus 1.0fill
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+10.5001)x0.0
 ..........\penalty 10000
@@ -1276,9 +1278,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.14162+1.59595)x15.05624
@@ -1289,9 +1291,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1299,9 +1301,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.57825+2.55954)x15.05624
@@ -1312,9 +1314,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1322,9 +1324,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.77399+2.03258)x15.05624
@@ -1335,9 +1337,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1345,9 +1347,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(10.56949+2.55954)x15.05624
@@ -1358,9 +1360,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1368,9 +1370,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.54814+2.1982)x15.05624
@@ -1381,9 +1383,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1391,9 +1393,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.60837+2.52943)x15.05624
@@ -1404,9 +1406,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1414,9 +1416,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.2169+1.92719)x15.05624
@@ -1429,9 +1431,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -1443,9 +1445,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.0fill
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+10.5001)x0.0
 ..........\penalty 10000
@@ -1498,9 +1500,9 @@ Completed box being shipped out [1]
 ..........\leaders 23.09624
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -20.08504
 ..........\hbox(10.44904+0.0)x20.08504
@@ -1511,9 +1513,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.02493 plus 2.50687 minus 1.67123
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1521,9 +1523,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.60837+2.39392)x15.05624
@@ -1534,9 +1536,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.00346
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1544,9 +1546,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.51802+2.49933)x15.05624
@@ -1559,9 +1561,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -1573,9 +1575,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.0fill
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+10.5001)x0.0
 ..........\penalty 10000
@@ -1628,9 +1630,9 @@ Completed box being shipped out [1]
 ..........\leaders 33.12369
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -30.11249
 ..........\hbox(10.20813+0.33122)x30.11249
@@ -1641,9 +1643,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.02493 plus 2.50687 minus 1.67123
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1651,9 +1653,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(11.74387+2.61977)x15.05624
@@ -1664,9 +1666,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.02493 plus 2.50687 minus 1.67123
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1674,9 +1676,9 @@ Completed box being shipped out [1]
 ..........\leaders 10.53932
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -7.52812
 ..........\hbox(10.20813+0.0)x7.52812
@@ -1687,9 +1689,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.02493 plus 2.50687 minus 1.67123
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1697,9 +1699,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(10.8706+2.45415)x15.05624
@@ -1710,9 +1712,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.02493 plus 2.50687 minus 1.67123
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1720,9 +1722,9 @@ Completed box being shipped out [1]
 ..........\leaders 10.53932
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -7.52812
 ..........\hbox(9.86185+0.0)x7.52812
@@ -1733,9 +1735,9 @@ Completed box being shipped out [1]
 ..........\leaders 8.02493 plus 2.50687 minus 1.67123
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\rule(*+*)x0.0
 ..........\penalty 10000
@@ -1743,9 +1745,9 @@ Completed box being shipped out [1]
 ..........\leaders 18.06744
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern -15.05624
 ..........\hbox(10.29848+2.13797)x15.05624
@@ -1758,9 +1760,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\glue -1.5056
 ..........\kern 0.0
 ..........\hbox(0.0+0.0)x0.0
@@ -1772,9 +1774,9 @@ Completed box being shipped out [1]
 ..........\leaders 3.0112 plus 1.0fill
 ...........\hbox(0.0+3.4112)x3.0112
 ............\hbox(0.4+0.0)x3.0112, shifted 3.4112
-.............\special{pdf:bc [0]}
+.............\special{pdfcolorstack 1 push (0 g 0 G)}
 .............\rule(0.4+0.0)x3.0112
-.............\special{pdf:ec}
+.............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+10.5001)x0.0
 ..........\penalty 10000
@@ -1813,5 +1815,6 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 721.50705
+.\kern 0.0
 .\kern 0.0
 ============================================================
