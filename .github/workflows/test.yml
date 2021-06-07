@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cache-version: [v20210529.1]
+        cache-version: [v20210607.1]
         os:
           - ubuntu-18.04
           - macos-10.15

@@ -46,6 +46,7 @@ Completed box being shipped out [1]
 .........\vbox(0.0+0.0)x426.79135
 ..........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
 ...........\hbox(0.0+0.0)x0.0
+...........\kern 0.0
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0 plus 1.0fil
 ...........\glue(\rightskip) 0.0 plus 1.0fil
@@ -55,6 +56,7 @@ Completed box being shipped out [1]
 .........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
+..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0 plus 1.0fil
@@ -65,6 +67,7 @@ Completed box being shipped out [1]
 ..........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
 ...........\glue(\leftskip) 0.0 plus 1.0fil
 ...........\hbox(0.0+0.0)x0.0
+...........\kern 0.0
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
@@ -86,6 +89,7 @@ Completed box being shipped out [1]
 .....\write1{\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\ETC.}
 .....\special{color push gray 0}
 .....\glue 7.22699
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(8.85303+3.7942)x426.79135
 ......\hbox(0.0+0.0)x0.0
@@ -117,9 +121,11 @@ Completed box being shipped out [1]
 ........\kern 0.00017
 ........\penalty 10000
 ........\rule(0.0+3.7942)x0.0
+........\kern 0.0
 ........\penalty 10000
 ........\glue(\parfillskip) 0.0
 ........\glue(\rightskip) 0.0 plus 1.0fil
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
@@ -147,6 +153,7 @@ Completed box being shipped out [1]
 ........\vbox(0.0+0.0)x426.79135
 .........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
 ..........\hbox(0.0+0.0)x0.0
+..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0 plus 1.0fil
@@ -160,6 +167,7 @@ Completed box being shipped out [1]
 .........\kern -0.0002
 .........\kern 0.0002
 .........\rule(7.5883+3.25217)x0.0
+.........\kern 0.0
 .........\penalty 10000
 .........\glue(\parfillskip) 0.0
 .........\glue(\rightskip) 0.0 plus 1.0fil
@@ -170,6 +178,7 @@ Completed box being shipped out [1]
 .........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
+..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
