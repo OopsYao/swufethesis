@@ -26,7 +26,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: source ci/latexindent-install.sh
       - name: Setup Perl environment (for cpanm)
-        uses: shogo82148/actions-setup-perl@v1.13.0
+        uses: shogo82148/actions-setup-perl@v1.13.1
       - name: Install Perl dependencies
         run: source ci/latexindent-deps-install.sh
       - name: Check format
