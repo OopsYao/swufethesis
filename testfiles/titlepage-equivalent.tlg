@@ -201,7 +201,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.6001)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -306,7 +305,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.6001)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -363,7 +361,6 @@ Completed box being shipped out [1]
 .......\hbox(0.0+0.0)x208.27438
 .......\glue(\tabskip) 0.0
 .....\mathoff
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -433,7 +430,6 @@ Completed box being shipped out [1]
 ....\kern 0.0
 ....\kern -0.00018
 ....\kern 0.00018
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -501,7 +497,6 @@ Completed box being shipped out [1]
 ....\kern 0.0
 ....\kern -0.00018
 ....\kern 0.00018
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -573,7 +568,6 @@ Completed box being shipped out [1]
 ....\kern 0.0
 ....\kern -0.0002
 ....\kern 0.0002
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -798,7 +792,6 @@ Completed box being shipped out [1]
 .............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+11.10011)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1235,7 +1228,6 @@ Completed box being shipped out [1]
 .............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+11.10011)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1458,7 +1450,6 @@ Completed box being shipped out [1]
 .............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+11.10011)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1589,7 +1580,6 @@ Completed box being shipped out [1]
 .............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+11.10011)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1789,7 +1779,6 @@ Completed box being shipped out [1]
 .............\special{pdfcolorstack 1 pop}
 ..........\penalty 10000
 ..........\rule(0.0+11.10011)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1799,7 +1788,6 @@ Completed box being shipped out [1]
 .....\mathoff
 ....\glue 5.01373 plus 2.50687 minus 1.67123
 ....\penalty 10000
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil

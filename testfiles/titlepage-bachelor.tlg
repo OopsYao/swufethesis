@@ -122,7 +122,6 @@ Completed box being shipped out [1]
 .....\special{pdf:image bbox 0 0 382.9512 109.98598 clip 0 width 294.49005pt height\ETC.}
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\penalty 10000
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -149,7 +148,6 @@ Completed box being shipped out [1]
 ....\TU/FandolHei(0)/b/n/36.135 届
 ....\kern -0.00017
 ....\kern 0.00017
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -184,7 +182,6 @@ Completed box being shipped out [1]
 ....\kern -0.00139
 ....\kern -0.99623
 ....\kern 0.99623
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -653,7 +650,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -868,7 +864,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1106,7 +1101,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1533,7 +1527,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1594,7 +1587,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1717,7 +1709,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1761,7 +1752,6 @@ Completed box being shipped out [1]
 ..........\glue -1.60597
 ..........\penalty 10000
 ..........\rule(0.0+9.36009)x0.0
-..........\kern 0.0
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0 plus 1.0fil
 ..........\glue(\rightskip) 0.0
@@ -1772,7 +1762,6 @@ Completed box being shipped out [1]
 ....\glue 5.34798 plus 2.67398 minus 1.78265
 ....\glue 5.34798 plus 2.67398 minus 1.78265
 ....\penalty 10000
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -1793,7 +1782,6 @@ Completed box being shipped out [1]
 ....\TU/FandolFang(0)/b/n/16.06 月
 ....\kern -0.00018
 ....\kern 0.00018
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
