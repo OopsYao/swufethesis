@@ -29,7 +29,7 @@ jobs:
       - name: Cache TeX Live
         if: github.event_name != 'schedule' # 定时测试不使用缓存
         id: cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: .ci-dock
           key: tl-${{ runner.os }}-${{ hashFiles('ci/texlive-packages') }}-${{ matrix.cache-version }}
