@@ -49,3 +49,7 @@ pdflscape
 # 其他依赖
 lipsum
 zhlipsum
+
+# doc包需依赖
+# https://ctan.org/ctan-ann/id/mailman.686.1637170877.10251.ctan-ann@ctan.org
+hypdoc
