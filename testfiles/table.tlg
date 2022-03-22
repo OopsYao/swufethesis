@@ -83,7 +83,7 @@ Completed box being shipped out [1]
 ...\vbox(27.10121+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(27.10121+0.0)x426.79135
-.....\write1{\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\ETC.}
+.....\write1{\@writefile{lot}{\protect \contentsline {table}{\protect \numberline \ETC.}
 .....\special{color push gray 0}
 .....\glue 7.22699
 .....\glue(\parskip) 0.0

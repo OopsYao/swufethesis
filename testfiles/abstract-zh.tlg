@@ -81,10 +81,11 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write-{}
 ...\write-{}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{摘要}{\thepage }{\ET
+C.}
 ...\mark{{摘要}{摘要}}
-...\write1{\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\ETC.}
-...\write1{\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\ETC.}
+...\write1{\@writefile{lof}{\protect \addvspace {10.0pt}}}
+...\write1{\@writefile{lot}{\protect \addvspace {10.0pt}}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000

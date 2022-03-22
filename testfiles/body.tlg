@@ -40,10 +40,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active
 .\special{color push gray 0}
 .\write-{}
 .\write-{}
-.\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+.\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 .\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.\hskip 1em\relax 毕\ETC.}
-.\write1{\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\ETC.}
-.\write1{\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\ETC.}
+.\write1{\@writefile{lof}{\protect \addvspace {10.0pt}}}
+.\write1{\@writefile{lot}{\protect \addvspace {10.0pt}}}
 .\glue(\topskip) 12.0
 .\rule(0.0+0.0)x*
 .\penalty 10000
@@ -345,7 +345,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active
 ..\glue(\parfillskip) 0.0 plus 1.0fil
 ..\glue(\rightskip) 0.0
 .\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.1.\hskip 1em\relax \ETC.}
-.\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+.\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 .\penalty 10000
 .\glue 30.0 plus -1.0
 .\glue(\parskip) 0.0 plus 1.0
@@ -566,7 +566,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active
 ..\glue(\parfillskip) 0.0 plus 1.0fil
 ..\glue(\rightskip) 0.0
 .\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.2.\hskip 1em\relax \ETC.}
-.\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+.\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 .\penalty 10000
 .\glue 30.0 plus -1.0
 .\glue(\parskip) 0.0 plus 1.0
@@ -895,7 +895,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active
 ..\glue(\parfillskip) 0.0 plus 1.0fil
 ..\glue(\rightskip) 0.0
 .\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.3.\hskip 1em\relax \ETC.}
-.\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+.\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 .\penalty 10000
 .\glue 30.0 plus -1.0
 .\glue(\parskip) 0.0 plus 1.0
@@ -1190,10 +1190,10 @@ Completed box being shipped out [1]
 ...\special{color push gray 0}
 ...\write-{}
 ...\write-{}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.\hskip 1em\relax 毕\ETC.}
-...\write1{\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\ETC.}
-...\write1{\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\ETC.}
+...\write1{\@writefile{lof}{\protect \addvspace {10.0pt}}}
+...\write1{\@writefile{lot}{\protect \addvspace {10.0pt}}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
@@ -1495,7 +1495,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.1.\hskip 1em\relax \ETC.}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ...\penalty 10000
 ...\glue 30.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
@@ -1716,7 +1716,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.2.\hskip 1em\relax \ETC.}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ...\penalty 10000
 ...\glue 30.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
@@ -2045,7 +2045,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.3.\hskip 1em\relax \ETC.}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ...\penalty 10000
 ...\glue 30.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
@@ -2433,7 +2433,7 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.4.\hskip 1em\relax \ETC.}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ...\penalty 10000
 ...\glue 30.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
@@ -2925,7 +2925,7 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\mark{{1.\hskip 1em\relax 毕业论文的撰写规范}{1.5.\hskip 1em\relax \ETC.}
-...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ...\penalty 10000
 ...\glue 30.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
