@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master # 这个action没有发布release（考虑换一个）
         with:
