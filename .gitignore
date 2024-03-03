@@ -1,6 +1,10 @@
 *.aux
 *.fls
 *.fdb_latexmk
+*.hd
+*.idx
+*.ilg
+*.ind
 *.log
 main.pdf
 *.synctex.gz
@@ -12,7 +16,9 @@ main.pdf
 *.bcf
 *.blg
 *.run.xml
+*.glo
 
+swufedoc.cls
 swufethesis.cls
 swufethesis.pdf
 swufedoc.pdf

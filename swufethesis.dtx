@@ -605,6 +605,27 @@
 }
 %    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\swufe@conditional@center@underline}
+% 封面里面常常有表单一样的排版，例如“学号：417XXXXX”，其中“417XXXXX”需要有下划线并居中；
+% 同时我们也希望在值较长时，能够自然地断行而不居中。这个宏就实现了这样的功能：如果文本短于一行，则居中，并有延长至两端的下划线；
+% 如果是一行以上，则不居中，且末端的下划线尽可能延长。
+% 它的实现原理在于将文本存在盒子里，并判断盒子的长度。可以参考 Stack Exchange 上的回答\footnote{\url{https://tex.stackexchange.com/a/16329}}。
+% 事实上，浮动体标题 \cs{caption} 就是这样实现的。
+% 另外也有通过 \cs{prevgraf} 实现的例子\footnote{\url{https://tex.stackexchange.com/a/97080}}，即判断前一自然段的行数，故这种方式依赖于换段，在表格环境中会引起多余的行。
+%    \begin{macrocode}
+\NewDocumentCommand{\swufe@conditional@center@underline}{m}{%
+  \noindent%
+  \newbox\somelittlebox%
+  \savebox\somelittlebox{#1}%
+  \let\ep\expandafter%
+  \ifdim\wd\somelittlebox>\hsize%
+    \CJKunderline*{#1\hfill}%
+  \else%
+    \CJKunderline*{\hfill#1\hfill}%
+  \fi%
+}
+%    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\swufe@make@bachelor@cover}
 % 本科生封面。由于“届数”与数字之间间距相较于MS Word来是过大，于是特别调整了\textsf{CJKecglue}，
 % 之后再还原成默认设置（参见\pkg{xeCJK}的文档的代码实现部分的初始化设置）。
@@ -632,9 +653,8 @@
 % 下划线部分使用\pkg{xeCJKfntef}的\cs{CJKunderline*}实现（星号版本将不会跳过中文标点）。
 %    \begin{macrocode}
     {
-    \let\ep\expandafter
     \def\swufe@@item##1:##2 {%
-    {\bfseries ##1：}&{\CJKfamily+{hwfs}\ep\CJKunderline\ep*\ep{##2\hfill}} \\}
+    {\bfseries ##1：}&{\CJKfamily+{hwfs}\swufe@conditional@center@underline{##2}} \\}
     \begin{tabular}{lp{252.1pt}}
       \swufe@@item 论文题目:\swufe@title{}
       \swufe@@item 学生姓名:\swufe@author{}
@@ -686,7 +706,7 @@
 
     \vfill
     \def\swufe@@item##1:##2{%
-    \makebox[5em][s]{##1} & \CJKunderline*{##2\hfill}\\
+    \makebox[5em][s]{##1} & \swufe@conditional@center@underline{##2}\\
     }
     \ifswufe@degree@type@equivalent%
       \fontsize{15bp}{37pt}\selectfont
