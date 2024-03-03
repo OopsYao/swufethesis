@@ -430,11 +430,17 @@
 % 重新定义\cs{frontmatter}、\cs{mainmatter}与\cs{backmatter}。
 % \begin{macro}{\frontmatter}
 % \cs{frontmatter}标记摘要与目录章节的开始。
+% 根据规范，本科生论文的页码通篇都要用阿拉伯数字，且中英摘要都是重新编号；
+% 研究生论文则未作规定，采用书籍排版上常用的罗马数字。
 %    \begin{macrocode}
 \renewcommand{\frontmatter}{%
   \cleardoublepage
   \@mainmatterfalse
-  \pagenumbering{arabic}%
+  \ifswufe@degree@bachelor%
+    \pagenumbering{arabic}%
+  \else%
+    \pagenumbering{Roman}%
+  \fi
 }
 %    \end{macrocode}
 % \end{macro}
@@ -467,10 +473,18 @@
 % \begin{macro}{\tableofcontents}
 % 目录的相关设定。目录的字号字体与正文相同，同时大标题与章节标题相同。
 % 这里为了让目录重新开始编号并右开，重新定义了一下\cs{tableofcontents}。
+% 本科毕业论文要求中英文摘要各自从阿拉伯数字 1 开始编码，对于目录没有作说明。
+% 从文章逻辑上讲，目录没有理由接续英文摘要的编码，也将其设置为从阿拉伯数字 1 开始。
 %    \begin{macrocode}
 \renewcommand{\cftchapfont}{\bfseries}
 \let\swufe@tableofcontents\tableofcontents
-\def\tableofcontents{\cleardoublepage\pagenumbering{arabic}\swufe@tableofcontents}
+\def\tableofcontents{%
+  \cleardoublepage%
+  \ifswufe@degree@bachelor%
+    \pagenumbering{arabic}%
+  \fi%
+  \swufe@tableofcontents%
+}
 %    \end{macrocode}
 % \end{macro}
 % \subsection{图表标题}
@@ -500,15 +514,18 @@
 %\end{environment}
 %
 % \subsection{摘要与关键词}
-% 定义\env{abstract}与\env{abstract*}环境。
+% 定义 \env{abstract} 与 \env{abstract*} 环境。
+% 根据本科毕业论文规范，中英文摘要各自都需要从阿拉伯数字 1 开始编码。
 % \begin{environment}{abstract}
 % 中文摘要\env{abstract}。
 %    \begin{macrocode}
 \newenvironment{abstract}[1]{%
-  \cleardoublepage
-  \pagenumbering{arabic}
-  \chapter{摘要}
-  \newcommand{\swufe@keywords}{#1}
+  \cleardoublepage%
+  \ifswufe@degree@bachelor%
+    \pagenumbering{arabic}%
+  \fi%
+  \chapter{摘要}%
+  \newcommand{\swufe@keywords}{#1}%
 }{%
 %    \end{macrocode}
 % 对于比较长的摘要，这里禁止断页后，\LaTeX 会优先调整段落间距来使关键词与最后一页摘要在同一页，
@@ -527,10 +544,12 @@
 % 英文摘要\env{abstract*}。
 %    \begin{macrocode}
 \newenvironment{abstract*}[1]{%
-  \cleardoublepage
-  \pagenumbering{arabic}
-  \chapter{Abstract}
-  \newcommand{\swufe@keywords@en}{#1}
+  \cleardoublepage%
+  \ifswufe@degree@bachelor%
+    \pagenumbering{arabic}%
+  \fi%
+  \chapter{Abstract}%
+  \newcommand{\swufe@keywords@en}{#1}%
 }{%
 
   \nopagebreak
@@ -545,25 +564,29 @@
 % 我们将\textsf{plain}的样式也置为\textsf{fancy}。
 % 为了设置中文的页眉，使用了\pkg{ctex}中的\cs{CTEXifname}与\cs{CTEXthechapter}等命令，
 % 其中\cs{CTEXifname}表示标题不被编号时则不显示，详见其文档。
+% 实际上，通过 \pkg{fancyhdr}，我们可以越过 \LaTeX\ 内建的 \cs{leftmark}、\cs{rightmark} 等来直接设置页眉。
+% 但考虑到兼容性，我们仍需要正确地配置 \cs{sectionmark}、\cs{chaptermark} 的行为，
+% 通过 \cs{markboth}、\cs{markleft}、\cs{markright} 来配置 \cs{leftmark}（章名）以及 \cs{rightmark}（节名）这种具有意义的全局变量。
 %    \begin{macrocode}
 \newcommand{\swufe@set@fancyhf}{%
   \pagestyle{fancy}
   \fancyhf{}
-  \fancyfoot[C]{\zihao{-5}\thepage}
   \ifswufe@degree@bachelor
+    \fancyfoot[C]{\zihao{-5}\thepage}
     \renewcommand{\headrulewidth}{0pt}
   \else
-    \fancyhead[CO]{\zihao{-5}\leftmark}
-    \fancyhead[CE]{\zihao{-5}\rightmark}
+    \fancyhead[RO]{\zihao{-5}\leftmark}
+    \fancyhead[LE]{\zihao{-5}\swufe@title}
+    \fancyfoot[RO]{\zihao{-5}\thepage}
+    \fancyfoot[LE]{\zihao{-5}\thepage}
     \renewcommand{\headrulewidth}{1pt}
   \fi
   \fancypagestyle{plain}{}
   \renewcommand\chaptermark[1]{%
-    \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}%
-    {\CTEXifname{\CTEXthechapter\quad}{}##1}
+    \markboth{\CTEXifname{\CTEXthechapter}{}##1}{}%
   }
   \renewcommand\sectionmark[1]{%
-    \markright{\CTEXthesection\quad ##1}
+    \markright{\CTEXthesection##1}%
   }
 }
 \AtBeginDocument{%

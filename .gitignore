@@ -8,6 +8,7 @@
 *.log
 main.pdf
 *.synctex.gz
+*.synctex(busy)
 *.toc
 *.out
 *.xdv

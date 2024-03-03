@@ -59,14 +59,17 @@
 }
 
 \begin{document}
+% \frontmatter 表示正文前面的内容，如摘要目录等。
+% 从功能上讲，\frontmatter 标志着（正文前置内容）页码计数的开始，对于本科生来说有页码的摘要目录都是强制重新编码，\frontmatter 前后的位置没有影响（甚至不要都可以）；
+% 而对研究生来说，如果不想将封面或者学术声明的页数也计入，就将 \frontmatter 放在它们的后面。
+\frontmatter
+
 % 打印封面
 \maketitle
 
 % 打印学术声明
 \statement
 
-% \frontmatter标志摘要、目录的开始
-\frontmatter
 
 % 中文摘要，关键词写在参数里
 \begin{abstract}{毕业论文, 毕业设计, 西南财经大学}
