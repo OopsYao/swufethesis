@@ -304,11 +304,11 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\swufe@index@formatter}
-% 根据日期的年月转化为相应的届数。
+% 根据日期的年月转化为相应的届数。逻辑是届数等于当前年份，如果月份大于8，则再加一。
 %^^A 若在\fi后面使用\relax会使封面的届数数字后面多些空白（尚不清楚原理）
 %    \begin{macrocode}
 \newcommand{\swufe@index@formatter}[3]{%
-  \the\numexpr#1 - 4 \ifnum#2>8 + 1\fi
+  \the\numexpr#1 \ifnum#2>8 + 1\fi
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1231,7 +1231,7 @@
 %    \begin{macrocode}
 \swufesetup{
 %    \end{macrocode}
-% 例如2020年9月（含）至2021年9月（不含）设定为2017届
+% 例如2020年9月（含）至2021年9月（不含）设定为2021届
 %    \begin{macrocode}
   index = \swufe@date@format{\swufe@date}{\swufe@index@formatter},
   date = {\the\year-\swufe@twodigits\month-\swufe@twodigits\day},
