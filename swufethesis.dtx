@@ -207,7 +207,7 @@
         }
     },
 %    \end{macrocode}
-% 硕士学位类型，分别为学术型、专业型和同等学力。
+% 硕士学位类型，分别为学术型、专业型和同等学力。以及研究生的学位类别、研究方向。
 %    \begin{macrocode}
   degree-type = {
       name = degree@type,
@@ -217,6 +217,12 @@
           equivalent,
         }
     },
+  degree-in = {
+      name = degree@in,
+  },
+  research-field = {
+      name = research@field,
+  },
   secret-level = {
       name = secret@level,
     },
@@ -748,7 +754,7 @@
         \swufe@@item 学\hfil 号:\swufe@student@id{}
       \fi%
       \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline{}
-      \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@author{}
+      \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@research@field{}
       \swufe@@item 指\hfil 导\hfil 教\hfil 师:\swufe@supervisor{}
       \swufe@@item 定\hfil 稿\hfil 时\hfil 间:\swufe@@issue@date{}
     \end{tabular}
