@@ -383,6 +383,17 @@
 % \subsection{章节标题}
 % 对章节标题进行汉化和格式调整。
 %    \begin{macrocode}
+\ifswufe@degree@bachelor
+  \ctexset{
+    chapter/format = \CJKfamily{xbs}\fontsize{22bp}{1.5\dimexpr15.6pt}%
+    \bfseries\centering\selectfont,
+  }
+\else
+  \ctexset{
+    chapter/format = \CJKfamily{hwzs}\fontsize{22bp}{1.5\dimexpr15.6pt}%
+    \bfseries\centering\selectfont,
+  }
+\fi
 \ctexset{
   autoindent = true,
   contentsname = 目录,
@@ -398,8 +409,6 @@
     name = {,.},
     afterindent = true,
     aftername = \quad,
-    format = \CJKfamily{hwzs}\fontsize{22bp}{1.5\dimexpr 15.6pt}%
-    \bfseries\centering\selectfont,
     titleformat = {},
     fixskip = true,
 %    \end{macrocode}
@@ -1006,6 +1015,13 @@
       BoldFont = *-Bold,
     ]%
   }
+  \def\swufe@xbs@fallback{%
+    \setCJKfamilyfont{xbs}{FandolSong}[
+      Extension = .otf,
+      UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ]%
+  }
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1045,11 +1061,10 @@
     ]%
   }
   \def\swufe@hwzs@fallback{%
-    \setCJKfamilyfont{hwzs}{FandolSong}[
-      Extension = .otf,
-      UprightFont = *-Regular,
-      BoldFont = *-Bold,
-    ]%
+    \setCJKfamilyfont{hwzs}{Noto Serif CJK SC}%
+  }
+  \def\swufe@xbs@fallback{%
+    \setCJKfamilyfont{xbs}{Noto Serif CJK SC}%
   }
 }
 %    \end{macrocode}
@@ -1086,6 +1101,15 @@
       BoldFont = * Bold,
     ]%
   }
+  \def\swufe@xbs@fallback{%
+    \setCJKfamilyfont{xbs}{Songti SC}[
+      UprightFont = * Light,
+      BoldFont = * Bold,
+    ]%
+  }
+  \def\swufe@hwfs@fallback{%
+    \setCJKfamilyfont{zhfs}{STFangsong}%
+  }
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1107,6 +1131,9 @@
     \setCJKfamilyfont{hwfs}{FangSong}%
   }
   \def\swufe@hwzs@fallback{%
+    \setCJKfamilyfont{hwzs}{SimSun}%
+  }
+  \def\swufe@xbs@fallback{%
     \setCJKfamilyfont{hwzs}{SimSun}%
   }
 }
@@ -1147,6 +1174,19 @@
 }
 %    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\swufe@set@cjk@font@auto}
+% \textsf{none}方案，不作设置。
+% 需要用户自行设置 \textsf{zhsong}、\textsf{zhhei}、\textsf{zhfs}、\textsf{zhkai}、\textsf{hwzs}、\textsf{hwfs}、\textsf{xbs} 等 CJK 字体，
+% （它们分别代表宋体、黑体、仿宋、楷体等基础字体，以及特别要求的华文中宋、华文仿宋、小标宋，）
+% 以及设置 \cs{setCJKmainfont}、\cs{setCJKsansfont} 和 \cs{setCJKmonofont}。
+%    \begin{macrocode}
+\newcommand{\swufe@set@cjk@font@none}{%
+  \providecommand{\swufe@hwzs@fallback}{}
+  \providecommand{\swufe@hwfs@fallback}{}
+  \providecommand{\swufe@xbs@fallback}{}
+}
+%    \end{macrocode}
+% \end{macro}
 % Preamble结束前设置字体。
 %    \begin{macrocode}
 \AtEndPreamble{%
@@ -1165,6 +1205,7 @@
 \AtBeginDocument{%
   \swufe@hwzs@fallback
   \swufe@hwfs@fallback
+  \swufe@xbs@fallback
 }
 %    \end{macrocode}
 %
