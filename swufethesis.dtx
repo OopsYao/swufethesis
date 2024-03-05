@@ -674,6 +674,7 @@
     \fontsize{16bp}{2\dimexpr 15.6pt}\selectfont
 %    \end{macrocode}
 % 下划线部分使用\pkg{xeCJKfntef}的\cs{CJKunderline*}实现（星号版本将不会跳过中文标点）。
+% 注意 \verb|\\| 前面的空白，如果去除的话，在载入 \pkg{siunitx} 后，表格会向右对齐。原因尚不明确。
 %    \begin{macrocode}
     {
     \def\swufe@@item##1:##2 {%
@@ -728,8 +729,8 @@
     \textbf{\swufe@title@en}
 
     \vfill
-    \def\swufe@@item##1:##2{%
-    \makebox[5em][s]{##1} & \swufe@conditional@center@underline{##2}\\
+    \def\swufe@@item##1:##2 {%
+      \makebox[5em][s]{##1}&\swufe@conditional@center@underline{##2} \\
     }
     \ifswufe@degree@type@equivalent%
       \fontsize{15bp}{37pt}\selectfont
@@ -741,14 +742,14 @@
       \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}%
     }
     \begin{tabular}{c@{：}p{235pt}}
-      \swufe@@item 学位申请人:\swufe@author
+      \swufe@@item 学位申请人:\swufe@author{}
       \ifswufe@degree@type@equivalent\else%
-        \swufe@@item 学\hfil 号:\swufe@student@id
+        \swufe@@item 学\hfil 号:\swufe@student@id{}
       \fi%
-      \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline
-      \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@author
-      \swufe@@item 指\hfil 导\hfil 教\hfil 师:\swufe@supervisor
-      \swufe@@item 定\hfil 稿\hfil 时\hfil 间:\swufe@@issue@date
+      \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline{}
+      \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@author{}
+      \swufe@@item 指\hfil 导\hfil 教\hfil 师:\swufe@supervisor{}
+      \swufe@@item 定\hfil 稿\hfil 时\hfil 间:\swufe@@issue@date{}
     \end{tabular}
     \ifswufe@degree@type@equivalent%
       \vspace{140pt}
