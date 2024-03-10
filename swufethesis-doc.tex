@@ -77,10 +77,12 @@ TDS安装包里直接含有\textsf{tex}、\textsf{doc}以及\textsf{source}等�
 
 \subsubsection{输出格式}
 \DescribeOption{output}
-可选项有 |print|与 |check|，分别表示打印版和检测版，默认为 |print|。
+可选项有 |print|、|check| 以及 |anon|，分别表示打印版、检测版和匿名版，默认为 |print|。
 打印版会输出封面、承诺页、封底等页面，且保证章节页面都是右开的，从而
 会产生一些必要的对打印友好的空白页；
-检测版将去除封面、承诺页和封底。
+检测版将去除封面、承诺页和封底；
+匿名版适用于研究生论文，与打印版相同，但会隐藏姓名、学号和导师的信息。
+如果致谢里有相关信息，可以使用 \cs{swufeanonmask} \oarg{alter} \marg{text} 来条件化地隐藏信息，具体见其说明。
 \begin{latex}
   \swufesetup{
     output = print
@@ -268,8 +270,16 @@ TDS安装包里直接含有\textsf{tex}、\textsf{doc}以及\textsf{source}等�
 \DescribeMacro{\swufethesis}
 \DescribeMacro{\swufeversion}
 \DescribeMacro{\swufedate}
+\DescribeMacro{\swufeanonmask}
 \cs{SwufeThesis}或者\cs{swufethesis}会打印项目标识\SwufeThesis{}，
 而 \cs{swufeversion}与 \cs{swufedate}会打印当前的版本和发布日期（YYYY/MM/DD）。
+
+研究生的学位论文需要提交匿名版，即使是致谢里的信息也需要匿名化处理。
+\cs{swufeanonmask} 能够根据 |output| 的选项来自动匿名其参数。
+\cs{swufeanonmask} \oarg{alter} \marg{text} 在匿名模式 |output = anon| 时会将 \meta{text} 输出成固定长度的空白；
+如果给定了可选参数 \meta{alter}，则输出该参数；在其他情况下原样输出。
+而变体 \cs{swufeanonmask*}\marg{text} 输出的空白的长度与 \meta{text} 相同。
+变体 \cs{swufeanonmask-}\marg{text} 则在匿名时完全不输出。
 
 \section{致谢}
 这个项目在开发的过程借鉴了许多 \href{https://github.com/tuna/thuthesis}{tuna/thuthesis}

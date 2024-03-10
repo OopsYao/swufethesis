@@ -204,6 +204,7 @@
       choices = {
           print,
           check,
+          anon,
         }
     },
 %    \end{macrocode}
@@ -758,13 +759,13 @@
       \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}%
     }
     \begin{tabular}{c@{：}p{235pt}}
-      \swufe@@item 学位申请人:\swufe@author{}
+      \swufe@@item 学位申请人:{\ifswufe@output@anon\else\swufe@author\fi}
       \ifswufe@degree@type@equivalent\else%
-        \swufe@@item 学\hfil 号:\swufe@student@id{}
+        \swufe@@item 学\hfil 号:{\ifswufe@output@anon\else\swufe@student@id\fi}
       \fi%
       \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline{}
       \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@research@field{}
-      \swufe@@item 指\hfil 导\hfil 教\hfil 师:\swufe@supervisor{}
+      \swufe@@item 指\hfil 导\hfil 教\hfil 师:{\ifswufe@output@anon\else\swufe@supervisor\fi}
       \swufe@@item 定\hfil 稿\hfil 时\hfil 间:\swufe@@issue@date{}
     \end{tabular}
     \ifswufe@degree@type@equivalent%
@@ -1308,6 +1309,27 @@
 %    \begin{macrocode}
 \newcommand{\swufeversion}{1.0.0-alpha.0}
 \newcommand{\swufedate}{2021/03/15}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\swufeanonmask}
+% 研究生的学位论文需要提交匿名版，即使是致谢里的信息也需要匿名化处理。这里提供一个宏使得能够根据 |output| 的选项来自动匿名其参数。
+% \cs{swufeanonmask} \oarg{alter} \marg{text} 在 |output = anon| 时会将 \meta{text} 输出成固定长度的空白；
+% 如果给定了可选参数 \meta{alter}，则输出该参数；在其他情况下原样输出。
+% 而变体 \cs{swufeanonmask*}\marg{text} 输出的空白的长度与 \meta{text} 相同，相当于 \cs{phantom}。
+% 变体 \cs{swufeanonmask-}\marg{text} 则在匿名时完全不输出。
+%    \begin{macrocode}
+\NewDocumentCommand{\swufeanonmask}{s t- o m}{%
+  \ifswufe@output@anon%
+    \IfBooleanTF{#2}{}{%
+      \IfBooleanTF{#1}{%
+        \phantom{#4}%
+      }{%
+        \IfValueTF{#3}{#3}{\hspace{2em}}%
+      }%
+    }%
+  \else#4\fi%
+}
 %    \end{macrocode}
 % \end{macro}
 % \Finale

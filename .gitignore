@@ -23,6 +23,7 @@ swufedoc.cls
 swufethesis.cls
 swufethesis.pdf
 swufedoc.pdf
+swufethesis-doc.pdf
 
 #l3build
 build/
