@@ -17,14 +17,26 @@
 % \StopEventually{}
 % \section{实现细节}
 % 这里是文档类\textsf{swufethesis}的具体实现细节。对于文档的正常使用来说，是不需要查询这里的内容的。
-% \subsection{宏包和类文件的加载}
-% 文档类\cls{swufethesis}基于\cls{ctexbook}。对于\pkg{tocloft}宏包，启用 |titles|选项
-% 使其采用\pkg{ctex}的章节标题设定。\pkg{emptypage}宏包的作用是使\cs{cleardoublepage}等命令添加
-% 的页面不含页码。
+% \subsection{宏包选项}
+% 设定选项互补选项 |openright| 和 |openany| 并传递给基类。
 %    \begin{macrocode}
-\LoadClass[scheme=plain,zihao=-4,fontset=none]{ctexbook}
 \RequirePackage{kvoptions}
 \RequirePackage{kvdefinekeys}
+\DeclareBoolOption[false]{openright}
+\DeclareComplementaryOption{openany}{openright}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+\ProcessKeyvalOptions{swufethesis}
+\ifswufethesis@openright
+  \PassOptionsToClass{openright}{ctexbook}
+\else
+  \PassOptionsToClass{openany}{ctexbook}
+\fi
+%    \end{macrocode}
+% \subsection{宏包和类文件的加载}
+% 文档类\cls{swufethesis}基于\cls{ctexbook}。对于\pkg{tocloft}宏包，启用 |titles|选项
+% 使其采用\pkg{ctex}的章节标题设定。\pkg{emptypage} 宏包的作用是使 \cs{cleardoublepage} 等命令添加的页面不含页码。
+%    \begin{macrocode}
+\LoadClass[scheme=plain,zihao=-4,fontset=none]{ctexbook}
 \RequirePackage{xparse}
 \RequirePackage{filehook}
 \RequirePackage{xeCJKfntef}
@@ -38,6 +50,7 @@
 \RequirePackage{emptypage}
 \RequirePackage{pdfpages}
 %    \end{macrocode}
+%
 % \subsection{用户接口设置}
 % \begin{macro}{\swufesetup}
 % 通过键值对的方式来传入用户的设置是一种比较常见的方式，
@@ -203,10 +216,16 @@
   output = {
       choices = {
           print,
-          check,
-          anon,
+          electronic,
         }
     },
+  usage = {
+    choices = {
+      normal,
+      check,
+      anon,
+    },
+  },
 %    \end{macrocode}
 % 硕士学位类型，分别为学术型、专业型和同等学力。以及研究生的学位类别、研究方向。
 %    \begin{macrocode}
@@ -444,6 +463,17 @@
 }
 %    \end{macrocode}
 % \subsection{Three matters}
+% 我们先修改 \cs{cleardoublepage} 的定义，给右开增加一个前提——非 |electronic| 模式，从而在 |electronic| 模式下将不会因为右开产生空白页。
+%    \begin{macrocode}
+\let\swufe@oldcleardoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{%
+  \ifswufe@output@electronic%
+    \clearpage%
+  \else%
+    \swufe@oldcleardoublepage%
+  \fi%
+}
+%    \end{macrocode}
 % 重新定义\cs{frontmatter}、\cs{mainmatter}与\cs{backmatter}。
 % \begin{macro}{\frontmatter}
 % \cs{frontmatter}标记摘要与目录章节的开始。
@@ -451,7 +481,7 @@
 % 研究生论文则未作规定，采用书籍排版上常用的罗马数字。
 %    \begin{macrocode}
 \renewcommand{\frontmatter}{%
-  \cleardoublepage
+  \cleardoublepage%
   \@mainmatterfalse
   \ifswufe@degree@bachelor%
     \pagenumbering{arabic}%
@@ -465,7 +495,7 @@
 % \cs{mainmatter}标记正文的开始。
 %    \begin{macrocode}
 \renewcommand{\mainmatter}{%
-  \cleardoublepage
+  \cleardoublepage%
   \@mainmattertrue
   \pagenumbering{arabic}%
 }
@@ -476,13 +506,9 @@
 % 之后的内容不再输出。
 %    \begin{macrocode}
 \renewcommand{\backmatter}{%
-  \ifswufe@output@check\end{document}\fi % 检测版直接结束
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \ifswufe@usage@check\end{document}\fi % 检测版直接结束
   \@mainmatterfalse%
+  \cleardoublepage%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -633,12 +659,19 @@
 %    \end{macrocode}
 % \end{environment}
 % \begin{macro}{\maketitle}
-% 重新定义\cs{maketitle}来打印封面与扉页（如果有）。根据用户的设置
-% 来具体调用相应打印命令。
+% 重新定义\cs{maketitle}来打印封面与扉页（如果有）。根据用户的设置来具体调用相应打印命令。
+% 本科生的检测版论文 |usage = check| 将不再打印封面。
 %    \begin{macrocode}
 \renewcommand{\maketitle}{%
-  \ifswufe@output@check\else%
-    \cleardoublepage
+  \newif\ifswufe@should@maketitle%
+  \swufe@should@maketitletrue%
+  \ifswufe@usage@check%
+    \ifswufe@degree@bachelor%
+      \swufe@should@maketitlefalse%
+    \fi%
+  \fi%
+  \ifswufe@should@maketitle%
+    \cleardoublepage%
     \begin{swufe@msword@geometry}
       \thispagestyle{empty}%
       \ifswufe@degree@bachelor%
@@ -765,13 +798,13 @@
       \swufe@date@format{\swufe@date}{\swufe@date@zh@digit}%
     }
     \begin{tabular}{c@{：}p{235pt}}
-      \swufe@@item 学位申请人:{\ifswufe@output@anon\else\swufe@author\fi}
+      \swufe@@item 学位申请人:{\ifswufe@usage@anon\else\swufe@author\fi}
       \ifswufe@degree@type@equivalent\else%
-        \swufe@@item 学\hfil 号:{\ifswufe@output@anon\else\swufe@student@id\fi}
+        \swufe@@item 学\hfil 号:{\ifswufe@usage@anon\else\swufe@student@id\fi}
       \fi%
       \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline{}
       \swufe@@item 研\hfil 究\hfil 方\hfil 向:\swufe@research@field{}
-      \swufe@@item 指\hfil 导\hfil 教\hfil 师:{\ifswufe@output@anon\else\swufe@supervisor\fi}
+      \swufe@@item 指\hfil 导\hfil 教\hfil 师:{\ifswufe@usage@anon\else\swufe@supervisor\fi}
       \swufe@@item 定\hfil 稿\hfil 时\hfil 间:\swufe@@issue@date{}
     \end{tabular}
     \ifswufe@degree@type@equivalent%
@@ -789,8 +822,8 @@
 % 定义\cs{statement}命令打印学术申明页。
 %    \begin{macrocode}
 \newcommand{\statement}{
-  \ifswufe@output@check\else%
-    \cleardoublepage
+  \ifswufe@usage@check\else%
+    \cleardoublepage%
     \thispagestyle{empty}
     \begin{swufe@msword@geometry}
       \ifswufe@degree@bachelor%
@@ -937,10 +970,12 @@
 % \subsection{封底}
 % 本科生专用。
 \AtEndDocument{%
-  \ifswufe@output@check\else%
+  \ifswufe@usage@check\else%
     \ifswufe@degree@bachelor%
       \cleardoublepage%
-      \null\thispagestyle{empty}\newpage%
+      \ifswufe@output@electronic\else%
+        \null\thispagestyle{empty}\newpage%
+      \fi%
       \includepdf{swufethesis-bachelor-backcover.pdf}%
     \fi
   \fi
@@ -1298,6 +1333,8 @@
   secret-level = {},
   degree = bachelor,
   degree-type = academic,
+  output = print,
+  usage = normal,
 }
 %    \end{macrocode}
 %
@@ -1327,7 +1364,7 @@
 % 变体 \cs{swufeanonmask-}\marg{text} 则在匿名时完全不输出。
 %    \begin{macrocode}
 \NewDocumentCommand{\swufeanonmask}{s t- o m}{%
-  \ifswufe@output@anon%
+  \ifswufe@usage@anon%
     \IfBooleanTF{#2}{}{%
       \IfBooleanTF{#1}{%
         \phantom{#4}%

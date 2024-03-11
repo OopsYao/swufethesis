@@ -74,20 +74,35 @@ TDS安装包里直接含有\textsf{tex}、\textsf{doc}以及\textsf{source}等�
     key2 = {a value, with comma}
   }
 \end{latex}
+另一种选项只适用于载入 \cls{swufethesis} 时，不能通过后续的 \cs{swufesetup} 设定。
+\begin{latex}
+  \documentclass[option1,option2]{swufethesis}
+\end{latex}
 
-\subsubsection{输出格式}
+\subsubsection{文档右开}
+\DescribeOption{openright}
+\DescribeOption{openany}
+文档右开控制。该选项只能从文档类 |\documentclass[openright]{swufethesis}| 指定，不能使用 \cs{swufesetup}。
+|openright| 和 |openany| 为互补选项，控制正文章节的右开与否（即保证该章节一定位于奇数页）。
+默认为 |openany|。
+
+\subsubsection{输出格式与版本}
 \DescribeOption{output}
-可选项有 |print|、|check| 以及 |anon|，分别表示打印版、检测版和匿名版，默认为 |print|。
-打印版会输出封面、承诺页、封底等页面，且保证章节页面都是右开的，从而
-会产生一些必要的对打印友好的空白页；
-检测版将去除封面、承诺页和封底；
-匿名版适用于研究生论文，与打印版相同，但会隐藏姓名、学号和导师的信息。
-如果致谢里有相关信息，可以使用 \cs{swufeanonmask} \oarg{alter} \marg{text} 来条件化地隐藏信息，具体见其说明。
+输出格式。可选项有 |print| 和 |electronic|，分别表示打印版和电子版，默认为打印版。
+打印版会输出必要的空白页面，保证封面、摘要、正文开始等地方都是右开的，从而可以直接双面打印文档。
+正文章节的右开与否则与互补的宏包选项 |openright| 或者 |openany| 决定，与 |output = print| 无关；
+电子版则会抑制上述的所有空白页，但不包括用户通过 \cs{newpage} 主动引入的空白页。
 \begin{latex}
   \swufesetup{
     output = print
   }
 \end{latex}
+
+\DescribeOption{usage}
+论文提交用途。可选项有 |normal|、|check| 和 |anon|，分别表示正常版、检测版和匿名版。
+正常版正常输出全文；检测版和匿名版各自适用于学校在论文评审过程中的两种版本要求。
+匿名版可以配合 \cs{swufeanonmask} \oarg{alter} \marg{text} 使用，如在致谢里条件化地隐藏信息，具体见其说明。
+默认为 |normal|。
 
 \subsubsection{学位}
 \DescribeOption{degree}
