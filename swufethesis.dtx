@@ -620,6 +620,18 @@
 %    \end{macrocode}
 % \end{environment}
 % \subsection{封面与扉页}
+% \begin{environment}{swufe@msword@geometry}
+% 虽然规范上要求上下左右页边距为3cm，但实际给出的封面与申明页模板采用的Word默认页边距
+% 为达到一致的视觉效果，对封面页和申明页使用特别的页边距，并在其他页面重置
+%    \begin{macrocode}
+\newenvironment{swufe@msword@geometry}{%
+  \newgeometry{%
+    vmargin=2.54cm,
+    hmargin=3.18cm,
+  }%
+}{\restoregeometry}
+%    \end{macrocode}
+% \end{environment}
 % \begin{macro}{\maketitle}
 % 重新定义\cs{maketitle}来打印封面与扉页（如果有）。根据用户的设置
 % 来具体调用相应打印命令。
@@ -627,20 +639,14 @@
 \renewcommand{\maketitle}{%
   \ifswufe@output@check\else%
     \cleardoublepage
-%    \end{macrocode}
-% 虽然规范上要求上下左右页边距为3cm，但实际给出的封面与申明页模板采用的Word默认页边距
-% 为达到一致的视觉效果，对封面页和申明页使用特别的页边距，并在其他页面重置
-%    \begin{macrocode}
-    \newgeometry{
-      vmargin=2.54cm,
-      hmargin=3.18cm,
-    }
-    \thispagestyle{empty} % 取消页码
-    \ifswufe@degree@bachelor%
-      \swufe@make@bachelor@cover%
-    \else%
-      \swufe@make@postgraduate@titlepage%
-    \fi%
+    \begin{swufe@msword@geometry}
+      \thispagestyle{empty}%
+      \ifswufe@degree@bachelor%
+        \swufe@make@bachelor@cover%
+      \else%
+        \swufe@make@postgraduate@titlepage%
+      \fi%
+    \end{swufe@msword@geometry}
   \fi%
 }
 %    \end{macrocode}
@@ -786,12 +792,13 @@
   \ifswufe@output@check\else%
     \cleardoublepage
     \thispagestyle{empty}
-    \ifswufe@degree@bachelor%
-      \swufe@make@bachelor@statement%
-    \else%
-      \swufe@make@postgraduate@statement%
-    \fi%
-    \restoregeometry
+    \begin{swufe@msword@geometry}
+      \ifswufe@degree@bachelor%
+        \swufe@make@bachelor@statement%
+      \else%
+        \swufe@make@postgraduate@statement%
+      \fi%
+    \end{swufe@msword@geometry}
   \fi
 }
 %    \end{macrocode}
