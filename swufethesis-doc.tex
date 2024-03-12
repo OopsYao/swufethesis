@@ -79,6 +79,13 @@ TDS安装包里直接含有\textsf{tex}、\textsf{doc}以及\textsf{source}等�
   \documentclass[option1,option2]{swufethesis}
 \end{latex}
 
+\subsubsection{参考文献}
+\DescribeOption{nobib}
+是否由 \cls{swufethesis} 配置参考文献相关宏包。
+参考文献的样式细节非常多，学校也没有比较明确的统一规范，更多时候可能取决于评委老师的个人喜好。
+如果指定 |nobib|，则完全由用户进行参考文献相关设定。
+该选项只能在载入 \cls{swufethesis} 时使用，默认不使用该选项。
+
 \subsubsection{文档右开}
 \DescribeOption{openright}
 \DescribeOption{openany}

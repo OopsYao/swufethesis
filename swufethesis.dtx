@@ -19,9 +19,13 @@
 % 这里是文档类\textsf{swufethesis}的具体实现细节。对于文档的正常使用来说，是不需要查询这里的内容的。
 % \subsection{宏包选项}
 % 设定选项互补选项 |openright| 和 |openany| 并传递给基类。
+% 设定选项 |nobib| 决定是否需要设置参考文献。
+% 由于 \pkg{biblatex} 需要在 preamble 里调用 \cs{addbibresource}，故需要将是否由 \cls{swufethesis} 设定参考文献的决定提前至载入类的时候。
 %    \begin{macrocode}
 \RequirePackage{kvoptions}
 \RequirePackage{kvdefinekeys}
+\RequirePackage{etoolbox}
+\DeclareBoolOption[false]{nobib}
 \DeclareBoolOption[false]{openright}
 \DeclareComplementaryOption{openany}{openright}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -45,7 +49,9 @@
 \RequirePackage[titles]{tocloft}
 \RequirePackage{caption}
 \RequirePackage{graphicx}
-\RequirePackage[style=gb7714-2015,sorting=gb7714-2015]{biblatex}
+\ifswufethesis@nobib\else
+  \RequirePackage[style=gb7714-2015,sorting=gb7714-2015]{biblatex}
+\fi
 \RequirePackage{unicode-math}
 \RequirePackage{emptypage}
 \RequirePackage{pdfpages}
