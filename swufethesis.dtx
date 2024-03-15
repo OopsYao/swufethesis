@@ -54,7 +54,6 @@
 \fi
 \RequirePackage{unicode-math}
 \RequirePackage{emptypage}
-\RequirePackage{pdfpages}
 %    \end{macrocode}
 %
 % \subsection{用户接口设置}
@@ -482,18 +481,24 @@
 %    \end{macrocode}
 % 重新定义\cs{frontmatter}、\cs{mainmatter}与\cs{backmatter}。
 % \begin{macro}{\frontmatter}
-% \cs{frontmatter}标记摘要与目录章节的开始。
+% \cs{frontmatter} 标记正文前内容开始编写页码的地方。
 % 根据规范，本科生论文的页码通篇都要用阿拉伯数字，且中英摘要都是重新编号；
 % 研究生论文则未作规定，采用书籍排版上常用的罗马数字。
+% 对于研究生论文来说，\cs{maketitle} 同时输出封面与扉页，而对封面编码一般说来并不符合排版规律，故规定：
+% 从页码的角度，\cs{maketitle} 视作仅仅输出扉页，忽略封面的存在。
+% 即使说 \cs{maketitle} 和 \cs{frontmatter} 的相对关系决定了是否从扉页开始计数。
+% 所以我们设置 \cs{ifswufe@frontmatter}，在 \cs{maketitle} 输出扉页时以决定是否需要重设页码。
 %    \begin{macrocode}
+\newif\ifswufe@frontmatter%
 \renewcommand{\frontmatter}{%
   \cleardoublepage%
-  \@mainmatterfalse
   \ifswufe@degree@bachelor%
     \pagenumbering{arabic}%
   \else%
     \pagenumbering{Roman}%
-  \fi
+  \fi%
+  \swufe@frontmattertrue%
+  \@mainmatterfalse%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -503,6 +508,7 @@
 \renewcommand{\mainmatter}{%
   \cleardoublepage%
   \@mainmattertrue
+  \swufe@frontmatterfalse%
   \pagenumbering{arabic}%
 }
 %    \end{macrocode}
@@ -677,12 +683,15 @@
     \fi%
   \fi%
   \ifswufe@should@maketitle%
-    \cleardoublepage%
     \begin{swufe@msword@geometry}
+      \cleardoublepage%
       \thispagestyle{empty}%
       \ifswufe@degree@bachelor%
         \swufe@make@bachelor@cover%
       \else%
+        \swufe@make@postgraduate@cover%
+        \cleardoublepage%
+        \thispagestyle{empty}%
         \swufe@make@postgraduate@titlepage%
       \fi%
     \end{swufe@msword@geometry}
@@ -718,7 +727,7 @@
 \newcommand{\swufe@make@bachelor@cover}{
   \vspace*{-8pt}
   \noindent
-  \includegraphics[width=10.35cm,height=2.88cm]{swufethesis-bachelor-logo.png}
+  \includegraphics[width=10.35cm]{swufethesis-swufetitle.pdf}
   \vspace{64pt}
   \begin{center}
     {
@@ -760,10 +769,56 @@
 }
 %    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\swufe@make@postgraduate@cover}
+% 研究生封面。文件 \textsf{swufethesis-thesistitle-master.pdf} 来源：将位图用 \textsf{Vectorizer.AI} 矢量化得到。
+%    \begin{macrocode}
+\newcommand{\swufe@make@postgraduate@cover}{%
+  \def\swufe@@item##1:##2 {%
+    \makebox[5em][s]{##1}&\swufe@conditional@center@underline{##2} \\
+  }%
+  \begingroup%
+    \setlength{\parindent}{0pt}%
+    \setlength{\tabcolsep}{0pt}%
+    \includegraphics[height=1.9cm]{swufethesis-swufetitle-green.pdf}\par%
+    \vspace{1.5cm}%
+    \begin{center}
+      \includegraphics[width=10.73cm]{swufethesis-thesistitle-master.pdf}\par%
+      \vspace{22bp}%
+      \CJKfamily{hwzs}\bfseries%
+      \begingroup
+        \fontsize{22bp}{30bp}\selectfont%
+        \textbf{\swufe@title}\par%
+      \endgroup
+      \vspace{22bp}%
+      \begingroup
+        \fontsize{14bp}{19bp}\selectfont%
+        \textbf{\swufe@title@en}\par%
+      \endgroup
+      \vspace{3cm}%
+      \fontsize{18bp}{36bp}\selectfont%
+      \begin{tabular}{c@{\hspace{1em}}p{235pt}}
+        \swufe@@item 学位申请人:{\ifswufe@usage@anon\else\swufe@author\fi}
+        \swufe@@item 指\hfil 导\hfil 教\hfil 师:{\ifswufe@usage@anon\else\swufe@supervisor\fi}
+        \swufe@@item 学\hfil 科\hfil 专\hfil 业:\swufe@discipline{}
+        \swufe@@item 学\hfil 位\hfil 类\hfil 别:\swufe@degree@in{}
+      \end{tabular}
+    \end{center}
+  \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\swufe@make@postgraduate@titlepage}
 % 研究生扉页。
+% 如前所述，页码计数不应该从封面开始，如果 \cs{maketitle} 前使用了 \cs{frontmatter}，则从扉页开始计数。
 %    \begin{macrocode}
 \newcommand{\swufe@make@postgraduate@titlepage}{%
+  \ifswufe@frontmatter%
+    \ifswufe@degree@bachelor%
+      \pagenumbering{arabic}%
+    \else%
+      \pagenumbering{Roman}%
+    \fi%
+  \fi%
   \begingroup
   \setlength{\parindent}{0pt}
   \setlength{\tabcolsep}{0pt}
@@ -772,7 +827,7 @@
   \begin{tabular}{p{.5\textwidth}p{.5\textwidth}}
     分类号\CJKunderline{\hfill\swufe@clc\hfill} &
     密级\CJKunderline{\hfill\swufe@secret@level\hfill} \\
-    \multicolumn{2}{l}{U.D.C\hspace{6pt}\CJKunderline{\hfill\swufe@udc\hfill}}
+    \multicolumn{2}{l}{\textsf{U.D.C}\hspace{6pt}\CJKunderline{\hfill\swufe@udc\hfill}}
   \end{tabular}
 
   \begin{center}
@@ -829,9 +884,9 @@
 %    \begin{macrocode}
 \newcommand{\statement}{
   \ifswufe@usage@check\else%
-    \cleardoublepage%
-    \thispagestyle{empty}
     \begin{swufe@msword@geometry}
+      \cleardoublepage%
+      \thispagestyle{empty}%
       \ifswufe@degree@bachelor%
         \swufe@make@bachelor@statement%
       \else%
@@ -972,19 +1027,61 @@
 }
 %    \end{macrocode}
 % \end{macro}
-% \begin{macrocode}
 % \subsection{封底}
-% 本科生专用。
+% \begin{macro}{\swufe@make@postgraduate@backcover}
+% 本科生封底。封底主要由校训（华文行楷，MS Word 制作）和光华铁树\footnote{提取自财大《视觉形象识别系统 UIS 导入与实施》，网址：\url{https://office.swufe.edu.cn/__local/6/7B/CF/54FB3E5ADE2CE5B10B6699DD4E1_B08122FF_1CB2319.pdf}}（颜色 |#969595|） 叠加而成。
+% 这里通过类似于 \cs{llap} 的方式来实现叠加\footnote{\url{https://tex.stackexchange.com/a/573077}}。
+% 即在铁树的后面通过 \cs{makebox} 放置图片于的插入点左侧，从而通过末尾的 \cs{hspace} 增加空白来调整左右位置，并通过 \cs{raisebox} 调整上下位置。
+%    \begin{macrocode}
+\newcommand{\swufe@make@bachelor@backcover}{%
+  \begin{swufe@msword@geometry}
+    \thispagestyle{empty}%
+    \vspace*{112bp}%
+    \begin{center}
+      \includegraphics[width=8.66cm]{swufethesis-swufecycas.pdf}%
+      \makebox[0pt][r]{% Similar to \llap
+        \raisebox{-13bp}{%
+          \includegraphics[width=168bp]{swufethesis-swufemotto-vert}%
+        }\hspace*{1.5cm}%
+      }%
+    \end{center}
+  \end{swufe@msword@geometry}
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\swufe@make@postgraduate@backcover}
+% 研究生封底。封底校训、校址信息等矢量图采用 MS Word 制作。
+% 校训用华文行楷，颜色 |#595758|，并附有阴影效果；
+% 封底信息部分，英文使用 Times New Roman 加粗，中文用方正小标宋简体（不加粗）。
+%    \begin{macrocode}
+\newcommand{\swufe@make@postgraduate@backcover}{%
+  \begin{swufe@msword@geometry}
+    \thispagestyle{empty}%
+    \begin{center}
+      \includegraphics[width=2.7cm]{swufethesis-swufeemblem-black.pdf}\par%
+      \vspace{1.4cm}%
+      \includegraphics[width=9cm]{swufethesis-swufemotto-horiz}\par%
+      \vspace{8.5cm}%
+      \includegraphics[width=12cm]{swufethesis-gradbackinfo.pdf}\par%
+    \end{center}
+  \end{swufe@msword@geometry}
+}
+%    \end{macrocode}
+% \end{macro}
+% 通过钩子设置封底。
+% \begin{macrocode}
 \AtEndDocument{%
   \ifswufe@usage@check\else%
+    \cleardoublepage%
+    \ifswufe@output@electronic\else%
+      \null\thispagestyle{empty}\newpage%
+    \fi%
     \ifswufe@degree@bachelor%
-      \cleardoublepage%
-      \ifswufe@output@electronic\else%
-        \null\thispagestyle{empty}\newpage%
-      \fi%
-      \includepdf{swufethesis-bachelor-backcover.pdf}%
-    \fi
-  \fi
+      \swufe@make@bachelor@backcover%
+    \else%
+      \swufe@make@postgraduate@backcover%
+    \fi%
+  \fi%
 }
 %    \end{macrocode}
 %
